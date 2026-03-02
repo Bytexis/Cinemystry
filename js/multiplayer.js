@@ -80,6 +80,17 @@ async function mpLoad() {
         if (CONFIG.API_KEY === 'YOUR_TMDB_API_KEY_HERE') throw new Error('nokey');
         MP.movie = await API.fetchRandomMovie('medium');
         MP.det = await API.fetchMovieDetails(MP.movie.id);
+        
+        // Reveal 20% of letters for multiplayer (medium difficulty)
+        const letterIndices = [...MP.movie.title].map((c, i) => [c, i])
+            .filter(([c]) => /[A-Z0-9]/i.test(c))
+            .map(([, i]) => i);
+        const revealCount = Math.ceil(letterIndices.length * 0.2);
+        const shuffled = [...letterIndices].sort(() => Math.random() - 0.5);
+        for (let i = 0; i < Math.min(revealCount, shuffled.length); i++) {
+            MP.revealed.add(shuffled[i]);
+        }
+        
         mpTiles(); mpUI(); MP.busy = false; mpS('mpGuessInput').focus();
     } catch (e) {
         if (e.message === 'nokey') {

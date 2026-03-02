@@ -1,10 +1,14 @@
 const API = (() => {
     const get = async (path, params = {}) => {
         const url = new URL(CONFIG.BASE_URL + path);
-        url.searchParams.set('api_key', CONFIG.API_KEY);
         url.searchParams.set('include_adult', 'false');
         Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, v));
-        const r = await fetch(url.toString());
+        const r = await fetch(url.toString(), {
+            headers: {
+                'Authorization': `Bearer ${CONFIG.API_KEY}`,
+                'Content-Type': 'application/json'
+            }
+        });
         if (!r.ok) throw new Error(`TMDB_${r.status}`);
         return r.json();
     };

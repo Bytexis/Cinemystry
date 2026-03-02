@@ -591,7 +591,8 @@ button {
 .tile--hidden {
     background: #181818;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    color: transparent;
+    color: rgba(255, 255, 255, 0.15);
+    font-size: 1.5rem;
 }
 
 /* ── Guess Input ────────────────────────────────────── */

@@ -21,6 +21,7 @@ function toast(msg, type = 'info') {
 function renderTiles(all = false) {
     const row = $('tilesRow'); row.innerHTML = '';
     if (!G.movie) return;
+    console.log('Rendering tiles for:', G.movie.title);
     [...G.movie.title.toUpperCase()].forEach((ch, i) => {
         const d = document.createElement('div');
         if (ch === ' ') { d.className = 'tile tile--space'; }
@@ -28,7 +29,7 @@ function renderTiles(all = false) {
             const rev = all || G.revealed.has(i) || !/[A-Z0-9]/.test(ch);
             d.className = `tile ${rev ? 'tile--revealed' : 'tile--hidden'}`;
             if (all && rev && /[A-Z0-9]/.test(ch)) d.classList.add('tile--answer');
-            d.textContent = rev ? ch : '';
+            d.textContent = rev ? ch : '?';
         }
         row.appendChild(d);
     });
@@ -87,14 +88,33 @@ async function loadMovie() {
     try {
         if (CONFIG.API_KEY === 'YOUR_TMDB_API_KEY_HERE') throw new Error('nokey');
         G.movie = await API.fetchRandomMovie(G.diff);
+        console.log('Fetched movie:', G.movie);
         G.det = await API.fetchMovieDetails(G.movie.id);
+        console.log('Movie details:', G.det);
+        
+        // Reveal letters based on difficulty
+        const letterIndices = [...G.movie.title].map((c, i) => [c, i])
+            .filter(([c]) => /[A-Z0-9]/i.test(c))
+            .map(([, i]) => i);
+        
+        let revealCount = 0;
         if (G.diff === 'easy') {
-            for (let i = 0; i < G.movie.title.length; i++) {
-                if (G.movie.title[i] !== ' ') { G.revealed.add(i); break; }
-            }
+            revealCount = Math.ceil(letterIndices.length * 0.4); // 40% of letters
+        } else if (G.diff === 'medium') {
+            revealCount = Math.ceil(letterIndices.length * 0.2); // 20% of letters
+        } else if (G.diff === 'hard') {
+            revealCount = Math.ceil(letterIndices.length * 0.1); // 10% of letters
         }
+        
+        // Randomly reveal letters
+        const shuffled = [...letterIndices].sort(() => Math.random() - 0.5);
+        for (let i = 0; i < Math.min(revealCount, shuffled.length); i++) {
+            G.revealed.add(shuffled[i]);
+        }
+        
         renderTiles(); updateUI(); populateHintCards(); G.busy = false; $('guessInput').focus();
     } catch (e) {
+        console.error('Error loading movie:', e);
         if (e.message === 'nokey') { toast('⚠ Add your TMDB API key in js/config.js', 'warn'); loadDemo(); }
         else { toast('Error loading movie – retrying…', 'error'); G.busy = false; setTimeout(loadMovie, 2000); }
     }
