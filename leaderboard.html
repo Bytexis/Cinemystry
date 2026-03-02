@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cinemystery – Leaderboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="leaderboard.css" />
+</head>
+
+<body>
+    <nav class="lb-nav">
+        <a href="index.html" class="lb-nav__logo">Cinemystery</a>
+        <div class="lb-nav__links">
+            <a href="game.html" class="lb-nav__link">Single Player</a>
+            <a href="multiplayer.html" class="lb-nav__link">Multiplayer</a>
+            <a href="index.html" class="lb-nav__link">Home</a>
+        </div>
+    </nav>
+
+    <main class="lb-main">
+        <div class="lb-hero">
+            <h1 class="lb-hero__title">Leaderboard</h1>
+            <p class="lb-hero__sub">Top scores from all players on this device.</p>
+            <button class="lb-clear-btn" id="clearBtn">Clear Scores</button>
+        </div>
+
+        <div class="lb-container">
+            <div class="lb-filters">
+                <button class="lb-filter lb-filter--active" data-filter="all">All</button>
+                <button class="lb-filter" data-filter="easy">Easy</button>
+                <button class="lb-filter" data-filter="medium">Medium</button>
+                <button class="lb-filter" data-filter="hard">Hard</button>
+            </div>
+
+            <div class="lb-table-wrap">
+                <table class="lb-table">
+                    <thead>
+                        <tr>
+                            <th class="lb-th">#</th>
+                            <th class="lb-th">Player</th>
+                            <th class="lb-th">Score</th>
+                            <th class="lb-th">Streak</th>
+                            <th class="lb-th">Difficulty</th>
+                            <th class="lb-th">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lbBody"></tbody>
+                </table>
+                <div class="lb-empty" id="lbEmpty">No scores yet. Start a game!</div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/config.js"></script>
+    <script src="js/state.js"></script>
+    <script>
+        const DIFF_COLORS = { easy: '#2ecc71', medium: '#f0b429', hard: '#ff2c2c' };
+        let currentFilter = 'all';
+
+        function render() {
+            let board = GameStorage.getLeaderboard();
+            if (currentFilter !== 'all') board = board.filter(e => e.difficulty === currentFilter);
+            const body = document.getElementById('lbBody');
+            const empty = document.getElementById('lbEmpty');
+            body.innerHTML = '';
+            if (!board.length) { empty.style.display = 'block'; return; }
+            empty.style.display = 'none';
+            board.slice(0, 20).forEach((e, i) => {
+                const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : i + 1;
+                const tr = document.createElement('tr');
+                tr.className = `lb-row ${i < 3 ? 'lb-row--top' : ''}`;
+                tr.innerHTML = `
+        <td class="lb-td lb-td--rank">${medal}</td>
+        <td class="lb-td lb-td--name">${e.name || 'Player'}</td>
+        <td class="lb-td lb-td--score">${(e.score || 0).toLocaleString()}</td>
+        <td class="lb-td">${e.streak || 0} 🔥</td>
+        <td class="lb-td"><span class="lb-diff" style="color:${DIFF_COLORS[e.difficulty] || '#888'}">${e.difficulty || '—'}</span></td>
+        <td class="lb-td lb-td--date">${e.date || '—'}</td>
+      `;
+                body.appendChild(tr);
+            });
+        }
+
+        document.querySelectorAll('.lb-filter').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.lb-filter').forEach(b => b.classList.remove('lb-filter--active'));
+                btn.classList.add('lb-filter--active');
+                currentFilter = btn.dataset.filter;
+                render();
+            });
+        });
+
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            if (confirm('Clear all leaderboard scores?')) { GameStorage.clearLeaderboard(); render(); }
+        });
+
+        render();
+    </script>
+</body>
+
+</html>
