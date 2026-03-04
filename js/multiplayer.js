@@ -2,7 +2,7 @@
 /* ── Multiplayer State ── */
 const MP = {
     p: [{ name: 'Player 1', score: 0, hints: 0 }, { name: 'Player 2', score: 0, hints: 0 }],
-    turn: 0, round: 0, movie: null, det: null,
+    turn: 0, round: 0, lang: 'all', movie: null, det: null,
     pts: 0, att: 3, hints: new Set(), revealed: new Set(), busy: false
 };
 const mpS = id => document.getElementById(id);
@@ -78,7 +78,7 @@ async function mpLoad() {
     mpUI();
     try {
         if (CONFIG.API_KEY === 'YOUR_TMDB_API_KEY_HERE') throw new Error('nokey');
-        MP.movie = await API.fetchRandomMovie('medium');
+        MP.movie = await API.fetchRandomMovie('medium', MP.lang);
         MP.det = await API.fetchMovieDetails(MP.movie.id);
         
         // Reveal 20% of letters for multiplayer (medium difficulty)
@@ -155,6 +155,7 @@ function mpOver() {
 function mpStart() {
     MP.p[0].name = mpS('mp_p1name').value.trim() || 'Player 1';
     MP.p[1].name = mpS('mp_p2name').value.trim() || 'Player 2';
+    MP.lang = document.querySelector('#mpSetupOverlay .diff-btn[data-lang].diff-btn--active')?.dataset.lang || 'all';
     MP.round = 0; MP.turn = 0;
     MP.p[0].score = MP.p[1].score = MP.p[0].hints = MP.p[1].hints = 0;
     mpS('mpSetupOverlay').classList.add('overlay--hidden');
@@ -162,6 +163,10 @@ function mpStart() {
 }
 
 /* ── Bindings ── */
+document.querySelectorAll('#mpSetupOverlay .diff-btn[data-lang]').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#mpSetupOverlay .diff-btn[data-lang]').forEach(x => x.classList.remove('diff-btn--active'));
+    b.classList.add('diff-btn--active');
+}));
 mpS('mpStartBtn').addEventListener('click', mpStart);
 [mpS('mp_p1name'), mpS('mp_p2name')].forEach(el => el?.addEventListener('keydown', e => { if (e.key === 'Enter') mpStart(); }));
 mpS('mpGuessBtn').addEventListener('click', mpGuess);

@@ -7,7 +7,15 @@ const CONFIG = {
     medium: { label: 'Medium Mode', voteMin: 500,  pageMax: 50,  baseScore: 450 },
     hard:   { label: 'Hard Mode',   voteMin: 50,   pageMax: 100, baseScore: 600 }
   },
+  LANGUAGES: {
+    all:      { label: 'All Movies',    code: '' },
+    english:  { label: 'English',       code: 'en' },
+    hindi:    { label: 'Hindi',         code: 'hi' },
+    spanish:  { label: 'Spanish',       code: 'es' },
+    french:   { label: 'French',        code: 'fr' }
+  },
   HINT_COSTS: { year: 30, genre: 20, letter: 50, overview: 100 },
   MAX_ATTEMPTS: 3,
   TOTAL_ROUNDS: 10
 };
+

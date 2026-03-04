@@ -13,18 +13,23 @@ const API = (() => {
         return r.json();
     };
 
-    const fetchRandomMovie = async (diff = 'medium') => {
+    const fetchRandomMovie = async (diff = 'medium', lang = 'all') => {
         const { voteMin, pageMax } = CONFIG.DIFFICULTIES[diff];
+        const langCode = CONFIG.LANGUAGES[lang]?.code;
         const page = Math.floor(Math.random() * pageMax) + 1;
-        const data = await get('/discover/movie', {
+        const params = {
             sort_by: 'popularity.desc',
             'vote_count.gte': voteMin,
             page
-        });
+        };
+        if (langCode) {
+            params['with_original_language'] = langCode;
+        }
+        const data = await get('/discover/movie', params);
         const valid = (data.results || []).filter(
             m => m.title && m.title.length >= 2 && m.title.length <= 45
         );
-        if (!valid.length) return fetchRandomMovie(diff);
+        if (!valid.length) return fetchRandomMovie(diff, lang);
         return valid[Math.floor(Math.random() * valid.length)];
     };
 

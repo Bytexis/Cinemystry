@@ -1,7 +1,7 @@
 'use strict';
 /* ── Single Player State ── */
 const G = {
-    diff: 'medium', name: 'Player', movie: null, det: null,
+    diff: 'medium', lang: 'all', name: 'Player', movie: null, det: null,
     pts: 0, total: 0, round: 0, att: 3, streak: 0,
     hints: new Set(), revealed: new Set(), recent: [], busy: false
 };
@@ -87,7 +87,7 @@ async function loadMovie() {
     resetHintCards(); updateUI();
     try {
         if (CONFIG.API_KEY === 'YOUR_TMDB_API_KEY_HERE') throw new Error('nokey');
-        G.movie = await API.fetchRandomMovie(G.diff);
+        G.movie = await API.fetchRandomMovie(G.diff, G.lang);
         console.log('Fetched movie:', G.movie);
         G.det = await API.fetchMovieDetails(G.movie.id);
         console.log('Movie details:', G.det);
@@ -198,7 +198,8 @@ function showGameOver() {
 /* ── Start Game ── */
 function startGame() {
     G.name = $('playerNameInput').value.trim() || 'Player';
-    G.diff = document.querySelector('.diff-btn.diff-btn--active')?.dataset.diff || 'medium';
+    G.diff = document.querySelector('#setupOverlay .diff-btn[data-diff].diff-btn--active')?.dataset.diff || 'medium';
+    G.lang = document.querySelector('#setupOverlay .diff-btn[data-lang].diff-btn--active')?.dataset.lang || 'all';
     $('diffBadgeText').textContent = CONFIG.DIFFICULTIES[G.diff].label;
     $('setupOverlay').classList.add('overlay--hidden');
     document.querySelectorAll('.sidebar__profile-name').forEach(el => el.textContent = G.name);
@@ -207,8 +208,12 @@ function startGame() {
 }
 
 /* ── Event Bindings ── */
-document.querySelectorAll('.diff-btn').forEach(b => b.addEventListener('click', () => {
-    document.querySelectorAll('.diff-btn').forEach(x => x.classList.remove('diff-btn--active'));
+document.querySelectorAll('#setupOverlay .diff-btn[data-diff]').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#setupOverlay .diff-btn[data-diff]').forEach(x => x.classList.remove('diff-btn--active'));
+    b.classList.add('diff-btn--active');
+}));
+document.querySelectorAll('#setupOverlay .diff-btn[data-lang]').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#setupOverlay .diff-btn[data-lang]').forEach(x => x.classList.remove('diff-btn--active'));
     b.classList.add('diff-btn--active');
 }));
 $('startGameBtn').addEventListener('click', startGame);
