@@ -37,42 +37,46 @@ function renderTiles(all = false) {
     });
 }
 
-/* ── Hearts ── */
+/* ── Hearts / lives ── */
 function renderHearts() {
     const c = $('heartsBox'); c.innerHTML = '';
     for (let i = 0; i < 3; i++) {
-        const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        s.setAttribute('viewBox', '0 0 24 24'); s.setAttribute('fill', 'currentColor');
-        s.classList.add('heart-icon'); if (i >= G.lives) s.classList.add('heart-icon--empty');
-        s.innerHTML = '<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>';
-        c.appendChild(s);
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('viewBox', '0 0 24 24');
+        svg.setAttribute('fill', 'currentColor');
+        svg.classList.add('heart');
+        if (i >= G.lives) svg.classList.add('heart--lost');
+        svg.innerHTML = '<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>';
+        c.appendChild(svg);
     }
 }
 
 /* ── UI Update ── */
 function updateUI() {
-    $('scoreVal').textContent = G.total.toLocaleString();
-    $('roundVal').textContent = `Round ${G.round} / ${CONFIG.TOTAL_ROUNDS}`;
+    const pts = G.total.toLocaleString();
+    const rd = `Round ${G.round} / ${CONFIG.TOTAL_ROUNDS}`;
+    $('scoreVal').textContent = pts + ' PTS';
+    const sr = $('scoreValRight'); if (sr) sr.textContent = pts + ' PTS';
+    $('roundVal').textContent = rd;
+    const r2 = $('roundVal2'); if (r2) r2.textContent = rd;
+    const rm = $('roundValMob'); if (rm) rm.textContent = rd;
     $('mptVal').textContent = G.pts;
+    const mr = $('mptValRight'); if (mr) mr.textContent = G.pts;
     $('streakVal').textContent = G.streak;
     renderHearts();
 }
 
 function updateSession() {
     const list = $('recentList'); list.innerHTML = '';
-    [...G.recent].reverse().slice(0, 3).forEach(e => {
+    [...G.recent].reverse().slice(0, 5).forEach(e => {
         const li = document.createElement('li');
-        li.className = `recent-movie recent-movie--${e.w ? 'win' : 'fail'}`;
-        li.innerHTML = `<div class="recent-movie__info">
-      <span class="recent-movie__name">${e.t}</span>
-      <span class="recent-movie__pts recent-movie__pts--${e.w ? 'win' : 'fail'}">${e.w ? '+' + e.p + ' pts' : 'Failed'}</span>
-    </div>
-    <span class="recent-movie__icon recent-movie__icon--${e.w ? 'win' : 'fail'}">
-      <svg viewBox="0 0 24 24" fill="currentColor">${e.w
-                ? '<path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>'
-                : '<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>'}
-      </svg>
-    </span>`;
+        li.className = `recent-movies__item recent-movies__item--${e.w ? 'win' : 'skip'}`;
+        const title = document.createElement('span');
+        title.textContent = e.t.length > 18 ? e.t.slice(0, 18) + '…' : e.t;
+        const pts = document.createElement('span');
+        pts.className = 'recent-movies__pts';
+        pts.textContent = e.w ? `+${e.p}` : 'Skip';
+        li.appendChild(title); li.appendChild(pts);
         list.appendChild(li);
     });
 }
@@ -195,7 +199,7 @@ function populateHintCards() {
     $('hintGenreEl').dataset.val = gn; $('hintGenreVal').textContent = '????';
 }
 function resetHintCards() {
-    ['hintYearEl', 'hintGenreEl', 'hintLetterEl', 'hintOverviewEl'].forEach(id => $(id)?.classList.remove('hint-card--disabled'));
+    ['hintYearEl', 'hintGenreEl', 'hintLetterEl', 'hintOverviewEl'].forEach(id => $(id)?.classList.remove('sp-hint--used'));
 }
 
 /* ── Use Hint ── */
@@ -205,7 +209,7 @@ function useHint(type) {
     const cost = CONFIG.HINT_COSTS[type];
     G.pts = Math.max(50, G.pts - cost); updateUI();
     const el = $({ year: 'hintYearEl', genre: 'hintGenreEl', letter: 'hintLetterEl', overview: 'hintOverviewEl' }[type]);
-    el?.classList.add('hint-card--disabled');
+    el?.classList.add('sp-hint--used');
     if (type === 'year') { $('hintYearVal').textContent = $('hintYearEl').dataset.val; }
     else if (type === 'genre') { $('hintGenreVal').textContent = $('hintGenreEl').dataset.val; }
     else if (type === 'letter') {
@@ -241,9 +245,14 @@ function startGame() {
     G.name = $('playerNameInput').value.trim() || 'Player';
     G.diff = document.querySelector('#setupOverlay .diff-btn[data-diff].diff-btn--active')?.dataset.diff || 'medium';
     G.lang = document.querySelector('#setupOverlay .diff-btn[data-lang].diff-btn--active')?.dataset.lang || 'all';
-    $('diffBadgeText').textContent = CONFIG.DIFFICULTIES[G.diff].label;
+    // Update difficulty badge text
+    const diffLabel = CONFIG.DIFFICULTIES[G.diff].label;
+    $('diffBadgeText').textContent = diffLabel;
+    const spd = $('spDiffBadge'); if (spd) spd.textContent = diffLabel;
     $('setupOverlay').classList.add('overlay--hidden');
-    document.querySelectorAll('.sidebar__profile-name').forEach(el => el.textContent = G.name);
+    // Update player name + avatar
+    document.querySelectorAll('.player-card__name').forEach(el => el.textContent = G.name);
+    const av = $('spAvatar'); if (av) av.textContent = G.name.charAt(0).toUpperCase();
     G.total = 0; G.round = 0; G.streak = 0; G.recent = [];
     updateSession(); loadMovie();
 }
@@ -292,8 +301,3 @@ $('playAgainBtn').addEventListener('click', () => {
     G.total = 0; G.round = 0; G.streak = 0; G.recent = [];
     updateSession(); loadMovie();
 });
-(() => {
-    const t = $('sidebarToggle'), s = $('sidebar'), o = $('sidebarOverlay');
-    t?.addEventListener('click', () => { s?.classList.toggle('sidebar--open'); o?.classList.toggle('sidebar-overlay--visible'); });
-    o?.addEventListener('click', () => { s?.classList.remove('sidebar--open'); o?.classList.remove('sidebar-overlay--visible'); });
-})();

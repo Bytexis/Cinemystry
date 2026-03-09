@@ -379,13 +379,13 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 32px;
-    padding: 40px 32px;
+    padding: 32px 32px 190px;
     position: relative;
     background: radial-gradient(ellipse at 50% 50%, rgba(255, 44, 44, 0.06) 0%, transparent 60%),
         linear-gradient(180deg, #0f0f0f 0%, #111111 100%);
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 /* Animated radial background glow */
@@ -501,71 +501,132 @@ button {
     color: transparent;
 }
 
-/* ── Guess Input ────────────────────────────────────── */
-.input-section {
+/* ── Active Hints ───────────────────────────────────── */
+.active-hints-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
     width: 100%;
-    max-width: 560px;
-    z-index: 2;
 }
 
-.input-wrapper {
-    width: 100%;
+.active-hint-chip {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 6px 12px;
     display: flex;
     align-items: center;
-    background: #181818;
-    border: 1px solid var(--clr-border);
-    border-radius: 50px;
-    padding: 5px 5px 5px 24px;
-    box-shadow: inset 0 2px 14px rgba(0, 0, 0, 0.45);
-    transition: border-color var(--transition), box-shadow var(--transition);
-}
-
-.input-wrapper:focus-within {
-    border-color: rgba(255, 44, 44, 0.4);
-    box-shadow: inset 0 2px 14px rgba(0, 0, 0, 0.45), 0 0 22px var(--clr-red-glow-xs);
-}
-
-.guess-input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-family: var(--font);
-    font-size: 0.92rem;
-    font-weight: 600;
-    color: var(--clr-text);
-    letter-spacing: 0.05em;
-}
-
-.guess-input::placeholder {
-    color: var(--clr-text-dim);
-    font-weight: 500;
-    letter-spacing: 0;
-}
-
-.guess-btn {
-    flex-shrink: 0;
-    background: var(--clr-red);
-    color: #fff;
-    border: none;
-    border-radius: 40px;
-    padding: 12px 30px;
+    gap: 8px;
     font-size: 0.78rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
+    font-weight: 700;
+    color: var(--clr-text);
+    animation: fadeIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.active-hint-chip__label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--clr-text-muted);
+    font-size: 0.62rem;
+    font-weight: 700;
     text-transform: uppercase;
-    box-shadow: 0 0 20px var(--clr-red-glow);
-    transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+    letter-spacing: 0.1em;
 }
 
-.guess-btn:hover {
-    background: var(--clr-red-dark);
-    box-shadow: 0 0 36px var(--clr-red-glow), 0 6px 18px rgba(0, 0, 0, 0.4);
-    transform: translateY(-1px);
+.active-hint-chip svg {
+    width: 13px;
+    height: 13px;
+    color: var(--clr-text-muted);
 }
 
-.guess-btn:active {
-    transform: translateY(0);
+/* ── MP keyboard action row (hint + skip) ───────────── */
+.mp-keyboard-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+    justify-content: center;
+}
+
+/* ── On-Screen Keyboard ─────────────────────────────── */
+.keyboard-section {
+    position: fixed;
+    bottom: 0;
+    left: 220px; /* player panel width */
+    right: 260px; /* progress panel width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px 18px;
+    background: rgba(13, 13, 13, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 -8px 40px rgba(0,0,0,0.6);
+    z-index: 100;
+}
+
+.keyboard-row {
+    display: flex;
+    gap: 9px;
+    justify-content: center;
+}
+
+.key-btn {
+    width: 52px;
+    height: 58px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #1e1e1e;
+    color: var(--clr-text);
+    font-family: var(--font);
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: background var(--transition), border-color var(--transition),
+        transform 0.1s ease, box-shadow var(--transition), color var(--transition);
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.5);
+    position: relative;
+    top: 0;
+}
+
+.key-btn:hover:not(:disabled) {
+    background: #2a2a2a;
+    border-color: rgba(255, 44, 44, 0.4);
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.5), 0 0 14px var(--clr-red-glow-xs);
+    transform: translateY(-2px);
+}
+
+.key-btn:active:not(:disabled) {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+    top: 2px;
+}
+
+.key-btn--correct {
+    background: rgba(46, 204, 113, 0.2) !important;
+    border-color: var(--clr-green) !important;
+    color: var(--clr-green) !important;
+    box-shadow: 0 0 14px rgba(46, 204, 113, 0.25) !important;
+    cursor: default;
+}
+
+.key-btn--wrong {
+    background: rgba(255, 44, 44, 0.12) !important;
+    border-color: rgba(255, 44, 44, 0.25) !important;
+    color: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: none !important;
+    cursor: default;
+}
+
+.key-btn:disabled {
+    cursor: default;
+    transform: none !important;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2) !important;
 }
 
 /* ── Action Row ─────────────────────────────────────── */
@@ -628,15 +689,6 @@ button {
 
 .action-btn--skip:hover {
     color: var(--clr-red);
-}
-
-.action-btn__cost {
-    font-size: 0.68rem;
-    font-weight: 700;
-    color: rgba(255, 44, 44, 0.65);
-    letter-spacing: 0.06em;
-    margin-left: 2px;
-    transition: color var(--transition);
 }
 
 .action-btn--skip:hover .action-btn__cost {
@@ -838,14 +890,30 @@ button {
     }
 
     .center {
-        min-height: 65vh;
-        padding: 32px 24px;
+        min-height: 60vh;
+        padding: 32px 24px 190px;
+    }
+
+    .keyboard-section {
+        left: 0;
+        right: 0;
     }
 
     .tile {
-        width: 58px;
-        height: 58px;
-        font-size: 1.35rem;
+        width: 52px;
+        height: 52px;
+        font-size: 1.2rem;
+    }
+
+    .key-btn {
+        width: 42px;
+        height: 48px;
+        font-size: 0.8rem;
+        border-radius: 8px;
+    }
+
+    .keyboard-row {
+        gap: 5px;
     }
 }
 
@@ -854,35 +922,22 @@ button {
    ════════════════════════════════════════════════════════ */
 @media (max-width: 520px) {
     .tile {
-        width: 46px;
-        height: 46px;
-        font-size: 1.05rem;
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
     }
 
     .tile--space {
-        width: 14px;
+        width: 10px;
     }
 
     .tiles-row {
-        gap: 7px;
+        gap: 5px;
     }
 
     .center {
-        gap: 24px;
-        padding: 24px 16px;
-    }
-
-    .input-wrapper {
-        padding: 4px 4px 4px 18px;
-    }
-
-    .guess-input {
-        font-size: 0.85rem;
-    }
-
-    .guess-btn {
-        padding: 11px 22px;
-        font-size: 0.72rem;
+        gap: 20px;
+        padding: 20px 12px 180px;
     }
 
     .action-row {
@@ -910,6 +965,21 @@ button {
 
     .progress-panel {
         padding: 16px 14px 28px;
+    }
+
+    .keyboard-section {
+        padding: 10px 8px 14px;
+    }
+
+    .key-btn {
+        width: 32px;
+        height: 40px;
+        font-size: 0.68rem;
+        border-radius: 6px;
+    }
+
+    .keyboard-row {
+        gap: 3px;
     }
 }
 

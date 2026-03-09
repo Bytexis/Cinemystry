@@ -3,7 +3,8 @@
 const MP = {
     p: [{ name: 'Player 1', score: 0, hints: 0 }, { name: 'Player 2', score: 0, hints: 0 }],
     turn: 0, round: 0, lang: 'all', movie: null, det: null,
-    pts: 0, att: 3, hints: new Set(), revealed: new Set(), busy: false
+    pts: 0, att: 3, hints: new Set(), revealed: new Set(), busy: false,
+    guessedLetters: new Set()
 };
 const mpS = id => document.getElementById(id);
 const mpNorm = s => s.toLowerCase().trim().replace(/[^a-z0-9 ]/g, '').replace(/ +/g, ' ').trim();
@@ -21,13 +22,16 @@ function mpToast(msg, type = 'info') {
 function mpTiles(all = false) {
     const row = mpS('mpTilesRow'); row.innerHTML = '';
     if (!MP.movie) return;
-    [...MP.movie.title.toUpperCase()].forEach((ch, i) => {
+    const title = MP.movie.title.toUpperCase();
+    [...title].forEach((ch, i) => {
         const d = document.createElement('div');
         if (ch === ' ') { d.className = 'tile tile--space'; }
         else {
-            const rev = all || MP.revealed.has(i) || !/[A-Z0-9]/.test(ch);
+            const isAlphaNum = /[A-Z0-9]/.test(ch);
+            const rev = all || MP.revealed.has(i) || (!isAlphaNum) || (isAlphaNum && MP.guessedLetters.has(ch));
             d.className = `tile ${rev ? 'tile--revealed' : 'tile--hidden'}`;
-            d.textContent = rev ? ch : '';
+            if (all && /[A-Z0-9]/.test(ch)) d.classList.add('tile--answer');
+            d.textContent = rev ? ch : '_';
         }
         row.appendChild(d);
     });
@@ -72,9 +76,10 @@ async function mpLoad() {
     if (MP.round >= 10) { mpOver(); return; }
     MP.round++; MP.busy = true;
     MP.pts = CONFIG.DIFFICULTIES['medium'].baseScore;
-    MP.att = 3; MP.hints = new Set(); MP.revealed = new Set();
+    MP.att = 3; MP.hints = new Set(); MP.revealed = new Set(); MP.guessedLetters = new Set();
     mpS('mpTilesRow').innerHTML = '<div class="tile-loading">Loading movie…</div>';
-    mpS('mpGuessInput').value = '';
+    mpS('mpActiveHints').innerHTML = '';
+    mpResetKeyboard();
     mpUI();
     try {
         if (CONFIG.API_KEY === 'YOUR_TMDB_API_KEY_HERE') throw new Error('nokey');
@@ -91,33 +96,74 @@ async function mpLoad() {
             MP.revealed.add(shuffled[i]);
         }
         
-        mpTiles(); mpUI(); MP.busy = false; mpS('mpGuessInput').focus();
+        mpTiles(); mpUI(); MP.busy = false;
     } catch (e) {
         if (e.message === 'nokey') {
             MP.movie = { id: 0, title: MP_DEMOS[Math.floor(Math.random() * MP_DEMOS.length)] };
             MP.det = { release_date: '2012-01-01', genres: [{ name: 'Action' }], overview: 'A legendary film.' };
-            mpTiles(); mpUI(); MP.busy = false; mpS('mpGuessInput').focus();
+            mpTiles(); mpUI(); MP.busy = false;
             mpToast('⚠ Demo mode – add API key in js/config.js', 'warn');
         } else { mpToast('Load error – retrying…', 'error'); MP.busy = false; setTimeout(mpLoad, 2000); }
     }
 }
 
-/* ── Guess ── */
-function mpGuess() {
+/* ── Keyboard & Guess ── */
+function mpResetKeyboard() {
+    document.querySelectorAll('.key-btn').forEach(btn => {
+        btn.disabled = false;
+        btn.classList.remove('key-btn--correct', 'key-btn--wrong');
+    });
+}
+
+function mpIsAllRevealed() {
+    if (!MP.movie) return false;
+    const title = MP.movie.title.toUpperCase();
+    return [...title].every((ch, i) => {
+        if (ch === ' ') return true;
+        if (!/[A-Z0-9]/.test(ch)) return true;
+        return MP.guessedLetters.has(ch) || MP.revealed.has(i);
+    });
+}
+
+function mpHandleKey(letter) {
     if (!MP.movie || MP.busy) return;
-    const val = mpS('mpGuessInput').value.trim();
-    if (!val) { const i = mpS('mpGuessInput'); i.classList.add('input--shake'); setTimeout(() => i.classList.remove('input--shake'), 400); return; }
-    mpS('mpGuessInput').value = '';
-    if (mpMatch(val, MP.movie.title)) {
-        MP.p[MP.turn].score += MP.pts;
-        mpTiles(true); mpUI();
-        mpToast(`✓ ${MP.p[MP.turn].name} correct! +${MP.pts} pts`, 'success');
-        setTimeout(nextTurn, 1800);
+    letter = letter.toUpperCase();
+    if (!/^[A-Z]$/.test(letter)) return;
+    if (MP.guessedLetters.has(letter)) return;
+
+    MP.guessedLetters.add(letter);
+
+    const keyBtn = document.querySelector(`.key-btn[data-key="${letter}"]`);
+    const titleUpper = MP.movie.title.toUpperCase();
+    const found = titleUpper.includes(letter);
+
+    if (keyBtn) {
+        keyBtn.disabled = true;
+        keyBtn.classList.add(found ? 'key-btn--correct' : 'key-btn--wrong');
+    }
+
+    if (found) {
+        mpTiles();
+        if (mpIsAllRevealed()) {
+            MP.p[MP.turn].score += MP.pts;
+            mpTiles(true); mpUI();
+            mpToast(`✓ ${MP.p[MP.turn].name} wins round! +${MP.pts} pts`, 'success');
+            MP.busy = true;
+            setTimeout(nextTurn, 1800);
+        } else {
+            mpToast(`✓ "${letter}" is in the title!`, 'success');
+        }
     } else {
         MP.att--; MP.pts = Math.max(0, MP.pts - 50);
-        const i = mpS('mpGuessInput'); i.classList.add('input--shake'); setTimeout(() => i.classList.remove('input--shake'), 400);
-        mpUI(); mpToast(MP.att > 0 ? `✗ Wrong! −50 pts (${MP.att} left)` : 'No attempts left!', 'error');
-        if (!MP.att) { mpTiles(true); setTimeout(nextTurn, 2000); }
+        mpUI();
+        if (MP.att <= 0) {
+            mpTiles(true);
+            mpToast(`✗ No "${letter}" — Out of attempts!`, 'error');
+            MP.busy = true;
+            setTimeout(nextTurn, 2500);
+        } else {
+            mpToast(`✗ No "${letter}" — ${MP.att} attempts left`, 'error');
+        }
     }
 }
 
@@ -128,14 +174,34 @@ function mpUseHint() {
     const type = !used.has('year') ? 'year' : !used.has('genre') ? 'genre' : 'letter';
     used.add(type); MP.p[MP.turn].hints++;
     const cost = CONFIG.HINT_COSTS[type]; MP.pts = Math.max(50, MP.pts - cost); mpUI();
-    if (type === 'year') { mpToast(`Year: ${MP.det?.release_date?.split('-')[0] || '????'} (−${cost} pts)`, 'warn'); }
-    else if (type === 'genre') { mpToast(`Genre: ${MP.det?.genres?.[0]?.name || '????'} (−${cost} pts)`, 'warn'); }
+
+    const addPersistentHint = (label, value) => {
+        const chip = document.createElement('div');
+        chip.className = 'active-hint-chip';
+        chip.innerHTML = `<span class="active-hint-chip__label"><svg viewBox="0 0 24 24" fill="currentColor"><path d="${label === 'Year' ? 'M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z' : 'M18 3v2h-2V3H8v2H6V3H4v18h2v-2h2v2h8v-2h2v2h2V3h-2z'}"></path></svg>${label}</span> <span>${value}</span>`;
+        mpS('mpActiveHints').appendChild(chip);
+    };
+
+    if (type === 'year') {
+        const yr = MP.det?.release_date?.split('-')[0] || '????';
+        mpToast(`Year hint used (−${cost} pts)`, 'warn');
+        addPersistentHint('Year', yr);
+    }
+    else if (type === 'genre') {
+        const gn = MP.det?.genres?.[0]?.name || '????';
+        mpToast(`Genre hint used (−${cost} pts)`, 'warn');
+        addPersistentHint('Genre', gn);
+    }
     else {
-        const pool = [...MP.movie.title.toUpperCase()].map((c, i) => [c, i])
-            .filter(([c, i]) => c !== ' ' && /[A-Z0-9]/.test(c) && !MP.revealed.has(i)).map(([, i]) => i);
-        if (!pool.length) { mpToast('All letters shown!', 'info'); return; }
-        MP.revealed.add(pool[Math.floor(Math.random() * pool.length)]); mpTiles();
-        mpToast(`Letter revealed (−${cost} pts)`, 'warn');
+        const title = MP.movie.title.toUpperCase();
+        const unguessedInTitle = [...new Set([...title].filter(c => /[A-Z0-9]/.test(c)))]
+            .filter(c => !MP.guessedLetters.has(c));
+        const pool = unguessedInTitle.filter(c => {
+            return [...title].some((ch, i) => ch === c && !MP.revealed.has(i));
+        });
+        if (!pool.length) { mpToast('All letters already revealed!', 'info'); return; }
+        const letter = pool[Math.floor(Math.random() * pool.length)];
+        mpHandleKey(letter);
     }
 }
 
@@ -169,8 +235,14 @@ document.querySelectorAll('#mpSetupOverlay .diff-btn[data-lang]').forEach(b => b
 }));
 mpS('mpStartBtn').addEventListener('click', mpStart);
 [mpS('mp_p1name'), mpS('mp_p2name')].forEach(el => el?.addEventListener('keydown', e => { if (e.key === 'Enter') mpStart(); }));
-mpS('mpGuessBtn').addEventListener('click', mpGuess);
-mpS('mpGuessInput').addEventListener('keydown', e => { if (e.key === 'Enter') mpGuess(); });
+document.querySelectorAll('.key-btn').forEach(btn => {
+    btn.addEventListener('click', () => mpHandleKey(btn.dataset.key));
+});
+
+document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT') return;
+    if (/^[a-zA-Z]$/.test(e.key)) mpHandleKey(e.key.toUpperCase());
+});
 mpS('mpSkipBtn').addEventListener('click', () => {
     if (!MP.movie || MP.busy) return;
     mpTiles(true); mpToast(`${MP.p[MP.turn].name} skipped`, 'warn'); setTimeout(nextTurn, 1500);
