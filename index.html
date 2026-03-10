@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cinemystery – The Ultimate Movie Guessing Game</title>
     <meta name="description"
-        content="Cinemystery – A real-time cinematic movie guessing game powered by live TMDB data. Test your instinct across multiple difficulties or battle friends locally." />
-    <title>Cinemystery – Think You Know Movies?</title>
+        content="Cinemystery is a free online movie guessing game where players guess movie titles using hints, hidden letters, and real-time TMDB movie data. Think you know movies? Prove it." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
@@ -22,7 +22,7 @@
             <a href="#" class="navbar__logo">Cinemystery</a>
             <ul class="navbar__links">
                 <li><a href="leaderboard.html" class="navbar__link">Leaderboard</a></li>
-                <li><a href="#" class="navbar__link">How To Play</a></li>
+                <li><a href="how-to-play.html" class="navbar__link">How To Play</a></li>
                 <li><a href="#" class="navbar__link navbar__link--cta">Sign In</a></li>
             </ul>
             <button class="navbar__burger" id="navBurger" aria-label="Toggle menu">
@@ -31,7 +31,7 @@
         </div>
         <div class="navbar__mobile" id="navMobile">
             <a href="#" class="navbar__mobile-link">Leaderboard</a>
-            <a href="#" class="navbar__mobile-link">How To Play</a>
+            <a href="how-to-play.html" class="navbar__mobile-link">How To Play</a>
             <a href="#" class="navbar__mobile-link">Sign In</a>
         </div>
     </nav>
@@ -43,14 +43,21 @@
         <div class="hero__content fade-in">
             <span class="hero__badge">
                 <span class="hero__badge-dot"></span>
-                Season 3 Now Live
+                Season 3 Now Live – New Movies Added Weekly
             </span>
             <h1 class="hero__title">Cinemystery</h1>
-            <p class="hero__subtitle">Think You Know Movies?</p>
+            <p class="hero__subtitle">Think You Know Movies? Prove It.</p>
             <p class="hero__description">
-                A real-time, cinematic movie guessing game powered by live TMDB data.
-                Test your instinct across multiple difficulties or battle friends locally.
+                Test your knowledge with Cinemystery, a fast-paced movie guessing game powered by real-time TMDB data.
+                Guess movie titles from hidden letters, build streaks, use hints strategically, and compete with friends
+                or players worldwide.
             </p>
+            <div class="hero__features">
+                <span class="hero__feature">🎬 Thousands of movies</span>
+                <span class="hero__feature">🎯 Multiple difficulty levels</span>
+                <span class="hero__feature">🏆 Global leaderboard rankings</span>
+            </div>
+            <p class="hero__cta-note">Play solo or challenge friends.</p>
             <div class="hero__actions">
                 <a href="game.html" class="btn btn--primary">
                     <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor">
@@ -81,9 +88,14 @@
                                 d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                         </svg>
                     </div>
-                    <h2 class="card__title">Single Player</h2>
-                    <p class="card__desc">Challenge yourself across thousands of movies. Build your streak, set hints
-                        strategically, and climb the game ranks.</p>
+                    <h2 class="card__title">Single Player Mode</h2>
+                    <p class="card__desc">Challenge yourself with thousands of movies from different genres and eras.
+                        Build streaks, earn points, and climb the global leaderboard.</p>
+                    <ul class="card__features">
+                        <li>✔ Unlimited movie challenges</li>
+                        <li>✔ Strategic hint system</li>
+                        <li>✔ Score multipliers and streak bonuses</li>
+                    </ul>
                     <a href="game.html" class="card__btn">Play Now →</a>
                 </article>
 
@@ -94,9 +106,13 @@
                                 d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
                         </svg>
                     </div>
-                    <h2 class="card__title">Multiplayer (Local)</h2>
-                    <p class="card__desc">Compete against a friend on the same device. Take turns, steal points, and
-                        prove who the ultimate cinephile is.</p>
+                    <h2 class="card__title">Multiplayer Mode (Local)</h2>
+                    <p class="card__desc">Play with a friend on the same device and compete turn by turn.</p>
+                    <ul class="card__features">
+                        <li>✔ Take turns guessing titles</li>
+                        <li>✔ Steal points if opponent fails</li>
+                        <li>✔ Perfect for game nights</li>
+                    </ul>
                     <a href="multiplayer.html" class="card__btn">Start Match →</a>
                 </article>
 
@@ -107,9 +123,13 @@
                                 d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z" />
                         </svg>
                     </div>
-                    <h2 class="card__title">Leaderboard</h2>
-                    <p class="card__desc">See where you stand globally. Track top players, highest streaks, and fastest
-                        guessers from around the world.</p>
+                    <h2 class="card__title">Global Leaderboard</h2>
+                    <p class="card__desc">See where you rank among movie lovers around the world.</p>
+                    <ul class="card__features">
+                        <li>🏆 Top players</li>
+                        <li>🔥 Longest streaks</li>
+                        <li>⚡ Fastest guesses</li>
+                    </ul>
                     <a href="leaderboard.html" class="card__btn">View Rankings →</a>
                 </article>
 
@@ -120,6 +140,9 @@
     <!-- ═══════════════════════════════ STATS ════════════════════════════════ -->
     <section class="stats-section" id="stats">
         <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Cinemystery by the Numbers</h2>
+            </div>
             <div class="stats-grid">
                 <div class="stat fade-in-up">
                     <span class="stat__value">1.2M+</span>
@@ -145,7 +168,7 @@
     <section class="features-section" id="features">
         <div class="container">
             <div class="section-header fade-in-up">
-                <h2 class="section-title">Designed for Cinephiles</h2>
+                <h2 class="section-title">Why Cinemystery Is Different</h2>
                 <p class="section-desc">Every feature is built to deliver a premium, fast-paced movie trivia experience.
                 </p>
             </div>
@@ -170,9 +193,9 @@
                                 d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" />
                         </svg>
                     </div>
-                    <h3 class="feature__title">Dynamic Difficulty</h3>
-                    <p class="feature__desc">Scale the challenge to obscure indie films. Scale the challenge to match
-                        your movie knowledge.</p>
+                    <h3 class="feature__title">Dynamic Difficulty System</h3>
+                    <p class="feature__desc">Choose your challenge level from casual movie fan to hardcore cinephile.
+                    </p>
                 </article>
 
                 <article class="feature fade-in-up" style="animation-delay:.16s">
@@ -182,9 +205,9 @@
                                 d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z" />
                         </svg>
                     </div>
-                    <h3 class="feature__title">Strategic Hints</h3>
-                    <p class="feature__desc">Stuck? Reveal a letter, the release year, or the genre—but at the cost of
-                        your potential points.</p>
+                    <h3 class="feature__title">Strategic Hint System</h3>
+                    <p class="feature__desc">Need help? Reveal a letter, the release year, or the genre—but every hint
+                        reduces your potential score.</p>
                 </article>
 
                 <article class="feature fade-in-up" style="animation-delay:.24s">
@@ -203,12 +226,12 @@
                     <div class="feature__icon-wrap">
                         <svg class="feature__icon" viewBox="0 0 24 24" fill="currentColor">
                             <path
-                                d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" />
+                                d="M11 18h2v-6h-2v6zm0-8h2V8h-2v2zm1-8C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
                         </svg>
                     </div>
-                    <h3 class="feature__title">Turn-Based Battles</h3>
-                    <p class="feature__desc">Face the movie masters and battle friends. Perfect for game nights and
-                        quick showdowns.</p>
+                    <h3 class="feature__title">Multiplayer Battles</h3>
+                    <p class="feature__desc">Compete with friends in turn-based matches and prove who knows movies best.
+                        Perfect for game nights.</p>
                 </article>
 
                 <article class="feature fade-in-up" style="animation-delay:.40s">
@@ -233,8 +256,8 @@
             <div class="footer__grid">
                 <div class="footer__brand">
                     <span class="footer__logo">Cinemystery</span>
-                    <p class="footer__tagline">The ultimate cinematic guessing game.<br>Trust your instinct. Conquer the
-                        leaderboard.</p>
+                    <p class="footer__tagline">The ultimate movie guessing game for film lovers.<br>Trust your
+                        instincts. Guess the movie. Conquer the leaderboard.</p>
                 </div>
                 <nav class="footer__nav">
                     <div class="footer__nav-col">
@@ -242,6 +265,7 @@
                         <a href="game.html" class="footer__nav-link">Single Player</a>
                         <a href="multiplayer.html" class="footer__nav-link">Multiplayer</a>
                         <a href="leaderboard.html" class="footer__nav-link">Leaderboard</a>
+                        <a href="how-to-play.html" class="footer__nav-link">How to Play</a>
                     </div>
                     <div class="footer__nav-col">
                         <h4 class="footer__nav-heading">Community</h4>
