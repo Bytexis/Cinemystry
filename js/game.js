@@ -55,14 +55,14 @@ function renderHearts() {
 function updateUI() {
     const pts = G.total.toLocaleString();
     const rd = `Round ${G.round} / ${CONFIG.TOTAL_ROUNDS}`;
-    $('scoreVal').textContent = pts + ' PTS';
+    const sv = $('scoreVal'); if (sv) sv.textContent = pts + ' PTS';
     const sr = $('scoreValRight'); if (sr) sr.textContent = pts + ' PTS';
-    $('roundVal').textContent = rd;
+    const rv = $('roundVal'); if (rv) rv.textContent = rd;
     const r2 = $('roundVal2'); if (r2) r2.textContent = rd;
+    const rr = $('roundValRight'); if (rr) rr.textContent = rd;
     const rm = $('roundValMob'); if (rm) rm.textContent = rd;
-    $('mptVal').textContent = G.pts;
-    const mr = $('mptValRight'); if (mr) mr.textContent = G.pts;
-    $('streakVal').textContent = G.streak;
+    const hnt = $('spHintsVal'); if (hnt) hnt.textContent = `${G.hints.size}/3`;
+    const stv = $('streakVal'); if (stv) stv.textContent = G.streak;
     renderHearts();
 }
 
@@ -155,7 +155,7 @@ async function loadMovie() {
     G.lives = 3; G.hints = new Set(); G.revealed = new Set(); G.guessedLetters = new Set();
     $('tilesRow').innerHTML = '<div class="tile-loading">Fetching movie…</div>';
     $('overviewPanel').classList.add('panel--hidden');
-    resetKeyboard(); resetHintCards(); updateUI();
+    resetKeyboard(); renderHintChips(); updateUI();
     try {
         if (CONFIG.API_KEY === 'YOUR_TMDB_API_KEY_HERE') throw new Error('nokey');
         G.movie = await API.fetchRandomMovie(G.diff, G.lang);
@@ -176,7 +176,7 @@ async function loadMovie() {
             G.revealed.add(shuffled[i]);
         }
 
-        renderTiles(); updateUI(); populateHintCards(); G.busy = false;
+        renderTiles(); updateUI(); renderHintChips(); G.busy = false;
     } catch (e) {
         if (e.message === 'nokey') { toast('⚠ Add your TMDB API key in js/config.js', 'warn'); loadDemo(); }
         else { toast('Error loading movie – retrying…', 'error'); G.busy = false; setTimeout(loadMovie, 2000); }
@@ -187,49 +187,66 @@ const DEMOS = ['Inception', 'The Godfather', 'Pulp Fiction', 'Interstellar', 'Th
 function loadDemo() {
     G.movie = { id: 0, title: DEMOS[Math.floor(Math.random() * DEMOS.length)] };
     G.det = { release_date: '2010-07-16', genres: [{ name: 'Sci-Fi' }, { name: 'Action' }], overview: 'A legendary cinematic masterpiece that changed the world.' };
-    renderTiles(); updateUI(); populateHintCards(); G.busy = false;
+    renderTiles(); updateUI(); renderHintChips(); G.busy = false;
     toast('Demo mode – replace API key in js/config.js for live movies', 'warn');
 }
 
-/* ── Hint Cards ── */
-function populateHintCards() {
-    const yr = G.det?.release_date?.split('-')[0] || '????';
-    const gn = G.det?.genres?.[0]?.name || '????';
-    $('hintYearEl').dataset.val = yr; $('hintYearVal').textContent = '????';
-    $('hintGenreEl').dataset.val = gn; $('hintGenreVal').textContent = '????';
-}
-function resetHintCards() {
-    ['hintYearEl', 'hintGenreEl', 'hintLetterEl', 'hintOverviewEl'].forEach(id => $(id)?.classList.remove('sp-hint--used'));
+/* ── Hints ── */
+function renderHintChips() {
+    const container = $('spActiveHints');
+    if (!container) return;
+    container.innerHTML = '';
+
+    G.hints.forEach(type => {
+        if (type === 'letter' || type === 'overview') return;
+        const chip = document.createElement('div');
+        chip.className = 'active-hint-chip';
+
+        const label = type === 'year' ? 'Year' : 'Genre';
+        const val = type === 'year' ? (G.det?.release_date?.split('-')[0] || '????') : (G.det?.genres?.[0]?.name || '????');
+        const iconPath = type === 'year'
+            ? 'M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z'
+            : 'M18 3v2h-2V3H8v2H6V3H4v18h2v-2h2v2h8v-2h2v2h2V3h-2z';
+
+        chip.innerHTML = `<span class="active-hint-chip__label"><svg viewBox="0 0 24 24" fill="currentColor"><path d="${iconPath}"></path></svg>${label}</span> <span>${val}</span>`;
+        container.appendChild(chip);
+    });
 }
 
-/* ── Use Hint ── */
-function useHint(type) {
-    if (!G.movie || G.busy || G.hints.has(type)) return;
+function spUseHint() {
+    if (!G.movie || G.busy || G.hints.size >= 3) return;
+
+    // Cycle hints: Year -> Genre -> Letter
+    let type = '';
+    if (!G.hints.has('year')) type = 'year';
+    else if (!G.hints.has('genre')) type = 'genre';
+    else if (!G.hints.has('letter')) type = 'letter';
+
+    if (!type) return;
+
     G.hints.add(type);
     const cost = CONFIG.HINT_COSTS[type];
-    G.pts = Math.max(50, G.pts - cost); updateUI();
-    const el = $({ year: 'hintYearEl', genre: 'hintGenreEl', letter: 'hintLetterEl', overview: 'hintOverviewEl' }[type]);
-    el?.classList.add('sp-hint--used');
-    if (type === 'year') { $('hintYearVal').textContent = $('hintYearEl').dataset.val; }
-    else if (type === 'genre') { $('hintGenreVal').textContent = $('hintGenreEl').dataset.val; }
-    else if (type === 'letter') {
+    G.pts = Math.max(50, G.pts - cost);
+    updateUI();
+
+    if (type === 'year' || type === 'genre') {
+        toast(`${type.charAt(0).toUpperCase() + type.slice(1)} hint used (−${cost} pts)`, 'warn');
+        renderHintChips();
+    } else if (type === 'letter') {
         const title = G.movie.title.toUpperCase();
-        // Find letters that are in the title but not yet guessed or pre-revealed
         const unguessedInTitle = [...new Set([...title].filter(c => /[A-Z0-9]/.test(c)))]
             .filter(c => !G.guessedLetters.has(c));
-        // Also exclude letters fully pre-revealed
         const pool = unguessedInTitle.filter(c => {
             return [...title].some((ch, i) => ch === c && !G.revealed.has(i));
         });
-        if (!pool.length) { toast('All letters already revealed!', 'info'); return; }
+        if (!pool.length) {
+            toast('All letters already revealed!', 'info');
+            G.hints.delete('letter'); // Refund or just don't count if impossible
+            return;
+        }
         const letter = pool[Math.floor(Math.random() * pool.length)];
         handleKey(letter);
-        // Override toast since handleKey already showed one
-    } else {
-        $('overviewPanel').classList.remove('panel--hidden');
-        $('overviewText').textContent = G.det?.overview || 'No overview available.';
     }
-    if (type !== 'letter') toast(`Hint used: −${cost} pts`, 'warn');
 }
 
 /* ── Game Over ── */
@@ -247,7 +264,7 @@ function startGame() {
     G.lang = document.querySelector('#setupOverlay .diff-btn[data-lang].diff-btn--active')?.dataset.lang || 'all';
     // Update difficulty badge text
     const diffLabel = CONFIG.DIFFICULTIES[G.diff].label;
-    $('diffBadgeText').textContent = diffLabel;
+    const db = $('diffBadgeText'); if (db) db.textContent = diffLabel;
     const spd = $('spDiffBadge'); if (spd) spd.textContent = diffLabel;
     $('setupOverlay').classList.add('overlay--hidden');
     // Update player name + avatar
@@ -286,10 +303,7 @@ $('skipBtn').addEventListener('click', () => {
     renderTiles(true); updateSession();
     toast('Movie skipped', 'warn'); setTimeout(loadMovie, 1600);
 });
-$('hintYearEl').addEventListener('click', () => useHint('year'));
-$('hintGenreEl').addEventListener('click', () => useHint('genre'));
-$('hintLetterEl').addEventListener('click', () => useHint('letter'));
-$('hintOverviewEl').addEventListener('click', () => useHint('overview'));
+$('spHintBtn').addEventListener('click', spUseHint);
 $('saveBtn').addEventListener('click', () => {
     const name = $('saveNameInput').value.trim() || G.name;
     GameStorage.addToLeaderboard({ name, score: G.total, difficulty: G.diff, streak: G.streak });
