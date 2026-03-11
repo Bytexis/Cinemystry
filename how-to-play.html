@@ -4,239 +4,225 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>How to Play Cinemystery – The Ultimate Guide</title>
+    <title>How to Play Cinemystry – Complete Guide</title>
     <meta name="description"
-        content="Learn how to play Cinemystery. Master the movie guessing game with our comprehensive guide on rules, hints, scoring, and streaks." />
+        content="Learn how to play Cinemystry. Master the movie guessing game with our guide on rules, hints, scoring, hearts and multiplayer." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
-    <style>
-        .tutorial {
-            padding: 120px 0 100px;
-            background: linear-gradient(180deg, #0f0f0f 0%, #131313 100%);
-            min-height: 100vh;
-        }
-
-        .tutorial__content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .tutorial__section {
-            margin-bottom: 64px;
-        }
-
-        .tutorial__title {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 900;
-            margin-bottom: 24px;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-            background: linear-gradient(180deg, #fff 40%, rgba(255, 255, 255, 0.6) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .tutorial__intro {
-            font-size: 1.1rem;
-            color: var(--clr-text-muted);
-            line-height: 1.8;
-            margin-bottom: 48px;
-        }
-
-        .guide-step {
-            display: flex;
-            gap: 32px;
-            margin-bottom: 48px;
-            align-items: flex-start;
-        }
-
-        .guide-step__icon {
-            flex-shrink: 0;
-            width: 56px;
-            height: 56px;
-            background: var(--clr-red-glow-sm);
-            border: 1px solid var(--clr-red);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--clr-red);
-            font-size: 1.5rem;
-            font-weight: 900;
-        }
-
-        .guide-step__text h3 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            color: #fff;
-        }
-
-        .guide-step__text p {
-            font-size: 1rem;
-            color: var(--clr-text-muted);
-            line-height: 1.7;
-        }
-
-        .tips-box {
-            background: var(--clr-surface);
-            border: 1px solid var(--clr-border);
-            border-radius: var(--radius);
-            padding: 40px;
-            margin-top: 64px;
-        }
-
-        .tips-box h3 {
-            margin-bottom: 24px;
-            color: var(--clr-red);
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 0.1em;
-        }
-
-        .tips-list {
-            list-style: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-
-        .tips-list li {
-            position: relative;
-            padding-left: 28px;
-            font-size: 0.95rem;
-            color: var(--clr-text-muted);
-            line-height: 1.6;
-        }
-
-        .tips-list li::before {
-            content: '🔥';
-            position: absolute;
-            left: 0;
-            top: 2px;
-        }
-
-        @media (max-width: 640px) {
-            .guide-step {
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .tips-list {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 </head>
 
-<body>
-    <nav class="navbar">
+<body class="tutorial-page">
+
+    <!-- ── Navbar (shared style.css) ── -->
+    <nav class="navbar" id="navbar">
         <div class="navbar__container">
-            <a href="index.html" class="navbar__logo">Cinemystery</a>
+            <a href="index.html" class="navbar__logo">Cinemystry</a>
             <ul class="navbar__links">
                 <li><a href="index.html" class="navbar__link">Home</a></li>
                 <li><a href="leaderboard.html" class="navbar__link">Leaderboard</a></li>
-                <li><a href="game.html" class="navbar__link navbar__link--cta">Play Solo</a></li>
+                <li><a href="game.html" class="navbar__link navbar__link--cta">Play Now</a></li>
             </ul>
+            <button class="navbar__burger" id="navBurger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <div class="navbar__mobile" id="navMobile">
+            <a href="index.html" class="navbar__mobile-link">Home</a>
+            <a href="leaderboard.html" class="navbar__mobile-link">Leaderboard</a>
+            <a href="game.html" class="navbar__mobile-link" style="color:var(--red);font-weight:700">▶ Play Now</a>
         </div>
     </nav>
 
-    <main class="tutorial">
+    <!-- ── Hero ── -->
+    <header class="tutorial-hero">
         <div class="container">
-            <div class="tutorial__content">
-                <section class="tutorial__section fade-in">
-                    <h1 class="tutorial__title">Master the Mystery</h1>
-                    <p class="tutorial__intro">Cinemystery is more than just a quiz—it's a race against time and your
-                        own movie memory. Whether you're playing alone or challenging a friend, here's everything you
-                        need to know to reach the top of the leaderboard.</p>
+            <div class="tutorial-hero__eyebrow">📖 Game Guide</div>
+            <h1 class="tutorial-hero__title">Master the Mystery</h1>
+            <p class="tutorial-hero__sub">
+                Cinemystry is more than a quiz — it's a race against time and your own movie memory.
+                Here's everything you need to reach the top of the leaderboard.
+            </p>
+        </div>
+    </header>
 
-                    <div class="guide-step">
-                        <div class="guide-step__icon">1</div>
-                        <div class="guide-step__text">
-                            <h3>The Objective</h3>
-                            <p>A movie title is hidden behind tiles. Your goal is to reveal the correct title by
-                                guessing letters. Every correct guess brings you closer to victory, while every wrong
-                                guess costs you a life.</p>
+    <!-- ── Body ── -->
+    <main class="tutorial-body">
+        <div class="container">
+            <div class="tutorial-content">
+
+                <!-- ── Rules ── -->
+                <p class="guide-section-title">The Rules</p>
+                <div class="guide-steps">
+
+                    <div class="guide-step fade-in-up">
+                        <div class="guide-step__num">1</div>
+                        <div class="guide-step__content">
+                            <h3 class="guide-step__title">A movie title is hidden</h3>
+                            <p class="guide-step__desc">Each round reveals a movie title as blank tiles. One or two
+                                letters are pre-filled to get you started. Your goal: expose the full title before
+                                losing all your hearts.</p>
                         </div>
                     </div>
 
-                    <div class="guide-step">
-                        <div class="guide-step__icon">2</div>
-                        <div class="guide-step__text">
-                            <h3>Scoring System</h3>
-                            <p>Points are awarded based on speed and difficulty. Each letter correctly guessed adds to
-                                your potential round score. Guessing the full title with fewer mistakes earns you a
-                                significant bonus.</p>
+                    <div class="guide-step fade-in-up" style="animation-delay:.07s">
+                        <div class="guide-step__num">2</div>
+                        <div class="guide-step__content">
+                            <h3 class="guide-step__title">Guess letters one by one</h3>
+                            <p class="guide-step__desc">Press a key on your physical keyboard or tap the on-screen
+                                keyboard. A correct letter reveals all matching tiles. A wrong letter costs you one ❤️ —
+                                you only have 3.</p>
                         </div>
                     </div>
 
-                    <div class="guide-step">
-                        <div class="guide-step__icon">3</div>
-                        <div class="guide-step__text">
-                            <h3>Using Hints</h3>
-                            <p>Stuck? You can use up to three hints per movie. You can reveal the <strong>Release
-                                    Year</strong>, the <strong>Genre</strong>, or <strong>Reveal a Random
-                                    Letter</strong>. Be careful—each hint permanently reduces your maximum potential
-                                score for that round.</p>
+                    <div class="guide-step fade-in-up" style="animation-delay:.14s">
+                        <div class="guide-step__num">3</div>
+                        <div class="guide-step__content">
+                            <h3 class="guide-step__title">Earn points and build streaks</h3>
+                            <p class="guide-step__desc">Successfully guess a movie and earn points. Win consecutive
+                                rounds to build a streak — streaks grant large bonus point dumps and track your skill. A
+                                wrong heart reset ends your streak.</p>
                         </div>
                     </div>
 
-                    <div class="guide-step">
-                        <div class="guide-step__icon">4</div>
-                        <div class="guide-step__text">
-                            <h3>Hearts & Lives</h3>
-                            <p>In single-player mode, you start with 3 hearts. A wrong letter guess consumes one heart.
-                                If you lose all hearts, the game is over and your current streak resets.</p>
+                    <div class="guide-step fade-in-up" style="animation-delay:.21s">
+                        <div class="guide-step__num">4</div>
+                        <div class="guide-step__content">
+                            <h3 class="guide-step__title">Use hints strategically</h3>
+                            <p class="guide-step__desc">Stuck? Use up to 3 hints per round — reveal the <strong>Release
+                                    Year</strong>, the <strong>Genre</strong>, or <strong>a random letter</strong>. Be
+                                careful: each hint permanently reduces the maximum points you can earn that round.</p>
                         </div>
                     </div>
 
-                    <div class="guide-step">
-                        <div class="guide-step__icon">5</div>
-                        <div class="guide-step__text">
-                            <h3>Multiplayer Battles</h3>
-                            <p>Challenge a friend locally! Players take turns guessing letters. If a player makes a
-                                mistake, the turn passes. If you guess the final letter, you "steal" the round points.
-                                Strategy is key!</p>
+                    <div class="guide-step fade-in-up" style="animation-delay:.28s">
+                        <div class="guide-step__num">5</div>
+                        <div class="guide-step__content">
+                            <h3 class="guide-step__title">Multiplayer: take turns to steal</h3>
+                            <p class="guide-step__desc">In local multiplayer, two players take turns guessing letters.
+                                If you guess wrong, the turn passes to your opponent. The player who correctly reveals
+                                the <em>last</em> letter wins that round's full point value — strategy is everything!
+                            </p>
                         </div>
                     </div>
 
-                    <div class="tips-box">
-                        <h3>Pro Tips for High Scores</h3>
-                        <ul class="tips-list">
-                            <li>Common vowels are a safe start, but consonants like 'S', 'T', and 'R' appear frequently
-                                in titles.</li>
-                            <li>The Release Year hint is often the most powerful way to narrow down your search.</li>
-                            <li>Building a streak (consecutive wins) provides a massive multiplier to your global rank.
-                            </li>
-                            <li>Don't rush! A wrong guess is more penalizing than taking an extra few seconds to think.
-                            </li>
-                        </ul>
-                    </div>
-                </section>
-
-                <div style="text-align: center; margin-top: 64px;">
-                    <a href="game.html" class="btn btn--primary">Start Your First Game</a>
                 </div>
+
+                <!-- ── Pro Tips ── -->
+                <div class="tips-box fade-in-up">
+                    <h3 class="tips-box__title">🔥 Pro Tips for High Scores</h3>
+                    <ul class="tips-list">
+                        <li>
+                            <span class="tips-list__dot"></span>
+                            Start with common consonants — S, T, R, N — they appear in almost every movie title.
+                        </li>
+                        <li>
+                            <span class="tips-list__dot"></span>
+                            The Release Year is the most powerful hint. It narrows down the era immediately.
+                        </li>
+                        <li>
+                            <span class="tips-list__dot"></span>
+                            Streaks matter more than single scores. 3 wins in a row often beats one perfect round.
+                        </li>
+                        <li>
+                            <span class="tips-list__dot"></span>
+                            Don't rush into a guess — one wrong letter is more penalizing than pausing to think.
+                        </li>
+                        <li>
+                            <span class="tips-list__dot"></span>
+                            In multiplayer, let your opponent go first on a tough movie — let them waste hints and
+                            hearts.
+                        </li>
+                        <li>
+                            <span class="tips-list__dot"></span>
+                            Shorter movie titles (3–5 letters) are often harder — fewer chances to guess before a wrong
+                            letter.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- ── Scoring Table ── -->
+                <p class="guide-section-title" style="margin-bottom:16px">Scoring System</p>
+                <div class="tips-box fade-in-up" style="padding:0;overflow:hidden">
+                    <table style="width:100%;border-collapse:collapse;font-size:0.85rem">
+                        <thead>
+                            <tr style="background:rgba(255,255,255,0.04);border-bottom:1px solid var(--border)">
+                                <th
+                                    style="padding:14px 20px;text-align:left;font-size:0.65rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted)">
+                                    Action</th>
+                                <th
+                                    style="padding:14px 20px;text-align:left;font-size:0.65rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted)">
+                                    Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
+                                <td style="padding:12px 20px;color:var(--text-2);font-weight:600">Correct letter guess
+                                </td>
+                                <td style="padding:12px 20px;color:#2ecc71;font-weight:800">+50 pts base</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
+                                <td style="padding:12px 20px;color:var(--text-2);font-weight:600">Full title solved (no
+                                    hints)</td>
+                                <td style="padding:12px 20px;color:#f5a623;font-weight:800">Bonus multiplier</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
+                                <td style="padding:12px 20px;color:var(--text-2);font-weight:600">Using a hint</td>
+                                <td style="padding:12px 20px;color:var(--red);font-weight:800">−25% max score</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
+                                <td style="padding:12px 20px;color:var(--text-2);font-weight:600">Wrong letter</td>
+                                <td style="padding:12px 20px;color:var(--red);font-weight:800">−1 ❤️</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:12px 20px;color:var(--text-2);font-weight:600">Streak bonus (3+ wins)
+                                </td>
+                                <td style="padding:12px 20px;color:#f5a623;font-weight:800">+streak × 50 pts</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ── CTA ── -->
+                <div class="tutorial-cta fade-in-up" style="margin-top:48px">
+                    <a href="game.html" class="btn btn--primary" style="margin:0 auto">
+                        <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                        Start Your First Game
+                    </a>
+                </div>
+
             </div>
         </div>
     </main>
 
-    <footer class="footer">
+    <!-- ── Footer ── -->
+    <footer class="footer" style="padding:32px 0">
         <div class="container">
             <div class="footer__bottom">
-                <p class="footer__copy">&copy; 2026 Cinemystery. All rights reserved.</p>
+                <p class="footer__copy">© 2026 Cinemystry. All rights reserved.</p>
+                <a href="index.html" class="footer__copy" style="color:var(--text-muted)">← Back to Home</a>
             </div>
         </div>
     </footer>
 
     <script>
+        /* Navbar burger */
+        const burger = document.getElementById('navBurger');
+        const mobileNav = document.getElementById('navMobile');
+        burger.addEventListener('click', () => {
+            mobileNav.classList.toggle('navbar__mobile--open');
+            burger.classList.toggle('navbar__burger--open');
+        });
+
+        /* Scroll animations */
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-        }, { threshold: 0.15 });
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
     </script>
 </body>
 

@@ -39,15 +39,26 @@ function mpTiles(all = false) {
 }
 
 /* ── Hearts ── */
-function mpHearts(c, att) {
-    if (!c) return;
-    c.innerHTML = '';
-    for (let i = 0; i < 3; i++) {
-        const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        s.setAttribute('viewBox', '0 0 24 24'); s.setAttribute('fill', 'currentColor');
-        s.classList.add('heart-icon'); if (i >= att) s.classList.add('heart-icon--empty');
-        s.innerHTML = '<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>';
-        c.appendChild(s);
+function mpHearts(c, att, miniId) {
+    // Big hearts box (desktop sidebar)
+    if (c) {
+        c.innerHTML = '';
+        for (let i = 0; i < 3; i++) {
+            const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            s.setAttribute('viewBox', '0 0 24 24'); s.setAttribute('fill', 'currentColor');
+            s.classList.add('heart-icon'); if (i >= att) s.classList.add('heart-icon--empty');
+            s.innerHTML = '<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>';
+            c.appendChild(s);
+        }
+    }
+    // Mini inline hearts (mobile name-row)
+    if (miniId) {
+        const mini = mpS(miniId);
+        if (mini) {
+            let h = '';
+            for (let i = 0; i < 3; i++) h += i < att ? '❤️' : '🖤';
+            mini.textContent = h;
+        }
     }
 }
 
@@ -87,9 +98,11 @@ function mpUI() {
     const ptsEl = mpS('mpPotentialPts');
     if (ptsEl) ptsEl.textContent = Math.round(MP.roundScore);
 
-    // Render lives for both players
-    mpHearts(mpS('mpHeartsBox'), t === 0 ? MP.att : 3);
-    mpHearts(mpS('mpHeartsBox2'), t === 1 ? MP.att : 3);
+    // Render lives for both players (pass miniId to also update inline mini hearts)
+    const p1Hearts = t === 0 ? MP.att : 3;
+    const p2Hearts = t === 1 ? MP.att : 3;
+    mpHearts(mpS('mpHeartsBox'), p1Hearts, 'mpP1HeartsMini');
+    mpHearts(mpS('mpHeartsBox2'), p2Hearts, 'mpP2HeartsMini');
     mpHearts(mpS('mpHeartsMob'), MP.att); // Mobile HUD shows active player's hearts
     mpUpdateSession();
 }
@@ -186,7 +199,7 @@ async function mpLoad() {
     try {
         MP.movie = await API.fetchRandomMovie(MP.diff || 'medium', MP.lang);
         MP.det = await API.fetchMovieDetails(MP.movie.id);
-        
+
         // Reveal 20% of letters for multiplayer (medium difficulty)
         const letterIndices = [...MP.movie.title].map((c, i) => [c, i])
             .filter(([c]) => /[A-Z0-9]/.test(c))
@@ -261,10 +274,10 @@ function mpHandleKey(letter) {
             const mult = CONFIG.DIFFICULTIES[MP.diff || 'medium'].multiplier;
             const perfectBonus = MP.hasUsedHint ? 0 : CONFIG.SCORING.PERFECT_GUESS_BONUS;
             const finalRoundPts = Math.round((MP.roundScore + speedBonus) * mult) + perfectBonus;
-            
+
             MP.p[MP.turn].score += finalRoundPts;
             MP.p[MP.turn].streak++;
-            
+
             MP.recent.push({ t: MP.movie.title, w: true, p: finalRoundPts });
 
             mpToast(`✓ ${MP.p[MP.turn].name} got it! +${finalRoundPts} pts`, 'success');
@@ -417,4 +430,20 @@ mpS('mpPlayAgain').addEventListener('click', () => {
     openBtn.addEventListener('click', open);
     closeBtn?.addEventListener('click', close);
     backdrop?.addEventListener('click', close);
+    // P2's stats button also opens the same drawer
+    mpS('mpStatsToggleBtn2')?.addEventListener('click', open);
+})();
+
+/* ── Mobile Recent Drawer (P1 + P2 buttons) ── */
+(function () {
+    const drawer = mpS('mpRecentDrawer'), openBtn = mpS('mpRecentToggleBtn'),
+        closeBtn = mpS('mpRecentCloseBtn'), backdrop = mpS('mpRecentBackdrop');
+    if (!drawer) return;
+    const open = () => drawer.classList.add('drawer--open');
+    const close = () => drawer.classList.remove('drawer--open');
+    openBtn?.addEventListener('click', open);
+    closeBtn?.addEventListener('click', close);
+    backdrop?.addEventListener('click', close);
+    // P2's recent button also opens the same drawer
+    mpS('mpRecentToggleBtn2')?.addEventListener('click', open);
 })();

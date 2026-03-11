@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cinemystery – The Ultimate Movie Guessing Game</title>
+    <title>Cinemystry – The Ultimate Movie Guessing Game</title>
     <meta name="description"
-        content="Cinemystery is a free online movie guessing game where players guess movie titles using hints, hidden letters, and real-time TMDB movie data. Think you know movies? Prove it." />
+        content="Cinemystry is a free online movie guessing game. Guess movie titles from hidden letters, use hints, build streaks and compete with friends worldwide." />
+    <meta property="og:title" content="Cinemystry – The Ultimate Movie Guessing Game" />
+    <meta property="og:description"
+        content="Think you know movies? Prove it. Guess titles, build streaks, challenge friends." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
@@ -16,278 +19,394 @@
 
 <body>
 
-    <!-- ═══════════════════════════════ NAVBAR ═══════════════════════════════ -->
+    <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
     <nav class="navbar" id="navbar">
         <div class="navbar__container">
-            <a href="#" class="navbar__logo">Cinemystery</a>
+            <a href="index.html" class="navbar__logo">Cinemystry</a>
             <ul class="navbar__links">
-                <li><a href="leaderboard.html" class="navbar__link">Leaderboard</a></li>
                 <li><a href="how-to-play.html" class="navbar__link">How To Play</a></li>
-                <li><a href="#" class="navbar__link navbar__link--cta">Sign In</a></li>
+                <li><a href="leaderboard.html" class="navbar__link">Leaderboard</a></li>
+                <li><a href="multiplayer.html" class="navbar__link">Multiplayer</a></li>
+                <li><a href="game.html" class="navbar__link navbar__link--cta">Play Now</a></li>
             </ul>
             <button class="navbar__burger" id="navBurger" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
             </button>
         </div>
         <div class="navbar__mobile" id="navMobile">
-            <a href="#" class="navbar__mobile-link">Leaderboard</a>
             <a href="how-to-play.html" class="navbar__mobile-link">How To Play</a>
-            <a href="#" class="navbar__mobile-link">Sign In</a>
+            <a href="leaderboard.html" class="navbar__mobile-link">Leaderboard</a>
+            <a href="multiplayer.html" class="navbar__mobile-link">Multiplayer</a>
+            <a href="game.html" class="navbar__mobile-link" style="color:var(--red);font-weight:700">▶ Play Now</a>
         </div>
     </nav>
 
-    <!-- ═══════════════════════════════ HERO ════════════════════════════════ -->
+    <!-- ═══════════════════════ HERO ═════════════════════════ -->
     <section class="hero" id="hero">
         <div class="hero__bg-glow hero__bg-glow--left"></div>
         <div class="hero__bg-glow hero__bg-glow--right"></div>
+
+        <!-- Film-strip decoration -->
+        <div class="hero__film-strip" aria-hidden="true">
+            <div class="hero__film-track" id="filmTrack">
+                <!-- 40 frames, duplicated for seamless loop -->
+            </div>
+        </div>
+
         <div class="hero__content fade-in">
-            <span class="hero__badge">
-                <span class="hero__badge-dot"></span>
-                Season 3 Now Live – New Movies Added Weekly
-            </span>
-            <h1 class="hero__title">Cinemystery</h1>
+            <div class="hero__eyebrow">
+                <span class="hero__eyebrow-dot"></span>
+                Now with Timer Mode &amp; Number Tiles
+            </div>
+
+            <h1 class="hero__title">Cinemystry</h1>
             <p class="hero__subtitle">Think You Know Movies? Prove It.</p>
             <p class="hero__description">
-                Test your knowledge with Cinemystery, a fast-paced movie guessing game powered by real-time TMDB data.
-                Guess movie titles from hidden letters, build streaks, use hints strategically, and compete with friends
-                or players worldwide.
+                A fast-paced movie guessing game powered by real movie data. Reveal letters,
+                use strategic hints, build streaks, and compete with friends — all in your browser.
             </p>
-            <div class="hero__features">
-                <span class="hero__feature">🎬 Thousands of movies</span>
-                <span class="hero__feature">🎯 Multiple difficulty levels</span>
-                <span class="hero__feature">🏆 Global leaderboard rankings</span>
+
+            <div class="hero__tags">
+                <span class="hero__tag">🎬 Thousands of movies</span>
+                <span class="hero__tag">🎯 4 difficulty levels</span>
+                <span class="hero__tag">🏆 Global leaderboard</span>
+                <span class="hero__tag">⚡ Hindi &amp; English</span>
             </div>
-            <p class="hero__cta-note">Play solo or challenge friends.</p>
+
             <div class="hero__actions">
-                <a href="game.html" class="btn btn--primary">
+                <a href="game.html" class="btn btn--primary" id="heroPlayBtn">
                     <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M8 5v14l11-7z" />
                     </svg>
-                    Single Player
+                    Play Solo
                 </a>
-                <a href="multiplayer.html" class="btn btn--outline">
+                <a href="multiplayer.html" class="btn btn--outline" id="heroMultiBtn">
                     <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor">
                         <path
                             d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
                     </svg>
-                    Multiplayer (Local)
+                    Vs Friend
                 </a>
+            </div>
+        </div>
+
+        <div class="hero__scroll-cue" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+            </svg>
+            Scroll
+        </div>
+    </section>
+
+    <!-- ═══════════════════════ STATS STRIP ══════════════════ -->
+    <section class="stats-strip" aria-label="Game statistics">
+        <div class="container">
+            <div class="stats-strip__grid">
+                <div class="stats-strip__item fade-in-up">
+                    <span class="stats-strip__value stat-counter" data-target="1200000" data-suffix="+">1.2M+</span>
+                    <span class="stats-strip__label">Games Played</span>
+                </div>
+                <div class="stats-strip__item fade-in-up" style="animation-delay:.08s">
+                    <span class="stats-strip__value stats-strip__value--red stat-counter"
+                        data-target="14500">14,500</span>
+                    <span class="stats-strip__label">Highest Score</span>
+                </div>
+                <div class="stats-strip__item fade-in-up" style="animation-delay:.16s">
+                    <span class="stats-strip__value stats-strip__value--gold stat-counter" data-target="42">42</span>
+                    <span class="stats-strip__label">Top Streak Record</span>
+                </div>
+                <div class="stats-strip__item fade-in-up" style="animation-delay:.24s">
+                    <span class="stats-strip__value stat-counter" data-target="4">4</span>
+                    <span class="stats-strip__label">Difficulty Levels</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════════════════ GAME MODE CARDS ══════════════════════════ -->
-    <section class="cards-section" id="modes">
+    <!-- ═══════════════════════ HOW IT WORKS ═════════════════ -->
+    <section class="how-section" aria-labelledby="howTitle">
         <div class="container">
+            <div class="section-header fade-in-up">
+                <span class="section-eyebrow">The Rules</span>
+                <h2 class="section-title" id="howTitle">How It Works</h2>
+                <p class="section-desc">Three simple steps to become a Cinemystry champion.</p>
+            </div>
+            <div class="how-steps">
+                <div class="how-step fade-in-up">
+                    <div class="how-step__num">🎬</div>
+                    <div>
+                        <h3 class="how-step__title">A movie title is hidden</h3>
+                        <p class="how-step__desc">Each round shows a movie title as blank tiles. Some letters are
+                            revealed to get you started.</p>
+                    </div>
+                </div>
+                <div class="how-step fade-in-up" style="animation-delay:.1s">
+                    <div class="how-step__num">🔤</div>
+                    <div>
+                        <h3 class="how-step__title">Guess letters one by one</h3>
+                        <p class="how-step__desc">Press a key or tap the on-screen keyboard. Wrong letters cost you a
+                            life — you only have 3.</p>
+                    </div>
+                </div>
+                <div class="how-step fade-in-up" style="animation-delay:.2s">
+                    <div class="how-step__num">🏆</div>
+                    <div>
+                        <h3 class="how-step__title">Score, streak &amp; win</h3>
+                        <p class="how-step__desc">Guess faster and without hints for maximum points. Build streaks for
+                            bonus multipliers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════ MODE CARDS ═══════════════════ -->
+    <section class="cards-section" id="modes" aria-labelledby="modesTitle">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <span class="section-eyebrow">Game Modes</span>
+                <h2 class="section-title" id="modesTitle">Choose Your Challenge</h2>
+            </div>
             <div class="cards-grid">
 
-                <article class="card fade-in-up">
-                    <div class="card__icon-wrap">
-                        <svg class="card__icon" viewBox="0 0 24 24" fill="currentColor">
+                <article class="card card--featured fade-in-up" id="cardSingle">
+                    <div class="card__badge">⭐ Most Popular</div>
+                    <div class="card__icon-wrap card__icon-wrap--featured">
+                        <svg class="card__icon card__icon--featured" viewBox="0 0 24 24" fill="currentColor">
                             <path
                                 d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                         </svg>
                     </div>
-                    <h2 class="card__title">Single Player Mode</h2>
-                    <p class="card__desc">Challenge yourself with thousands of movies from different genres and eras.
-                        Build streaks, earn points, and climb the global leaderboard.</p>
-                    <ul class="card__features">
-                        <li>✔ Unlimited movie challenges</li>
-                        <li>✔ Strategic hint system</li>
-                        <li>✔ Score multipliers and streak bonuses</li>
-                    </ul>
-                    <a href="game.html" class="card__btn">Play Now →</a>
+                    <h2 class="card__title">Single Player</h2>
+                    <p class="card__desc">Challenge yourself across 10 rounds. Pick your difficulty and language, then
+                        race the clock to guess movie titles before your lives run out.</p>
+                    <div class="card__features">
+                        <span class="card__feature"><span class="card__feature-dot"></span>Easy · Medium · Hard ·
+                            Extreme</span>
+                        <span class="card__feature"><span class="card__feature-dot"></span>Hindi &amp; English
+                            movies</span>
+                        <span class="card__feature"><span class="card__feature-dot"></span>Speed bonuses &amp; streak
+                            rewards</span>
+                    </div>
+                    <a href="game.html" class="card__btn card__btn--red" id="cardSingleBtn">
+                        Play Now
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </a>
                 </article>
 
-                <article class="card fade-in-up" style="animation-delay:.12s">
-                    <div class="card__icon-wrap card__icon-wrap--active">
+                <article class="card fade-in-up" id="cardMulti" style="animation-delay:.1s">
+                    <div class="card__icon-wrap">
                         <svg class="card__icon" viewBox="0 0 24 24" fill="currentColor">
                             <path
                                 d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
                         </svg>
                     </div>
-                    <h2 class="card__title">Multiplayer Mode (Local)</h2>
-                    <p class="card__desc">Play with a friend on the same device and compete turn by turn.</p>
-                    <ul class="card__features">
-                        <li>✔ Take turns guessing titles</li>
-                        <li>✔ Steal points if opponent fails</li>
-                        <li>✔ Perfect for game nights</li>
-                    </ul>
-                    <a href="multiplayer.html" class="card__btn">Start Match →</a>
+                    <h2 class="card__title">Multiplayer (Local)</h2>
+                    <p class="card__desc">Play against a friend on the same device. Take turns guessing letters — the
+                        player who reveals the last letter wins that round's points.</p>
+                    <div class="card__features">
+                        <span class="card__feature"><span class="card__feature-dot"></span>Turn-based 2-player
+                            battles</span>
+                        <span class="card__feature"><span class="card__feature-dot"></span>10 rounds per match</span>
+                        <span class="card__feature"><span class="card__feature-dot"></span>Perfect for game night</span>
+                    </div>
+                    <a href="multiplayer.html" class="card__btn" id="cardMultiBtn">
+                        Start Match
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px">
+                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+                        </svg>
+                    </a>
                 </article>
 
-                <article class="card fade-in-up" style="animation-delay:.24s">
+                <article class="card fade-in-up" id="cardLB" style="animation-delay:.2s">
                     <div class="card__icon-wrap">
                         <svg class="card__icon" viewBox="0 0 24 24" fill="currentColor">
                             <path
                                 d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z" />
                         </svg>
                     </div>
-                    <h2 class="card__title">Global Leaderboard</h2>
-                    <p class="card__desc">See where you rank among movie lovers around the world.</p>
-                    <ul class="card__features">
-                        <li>🏆 Top players</li>
-                        <li>🔥 Longest streaks</li>
-                        <li>⚡ Fastest guesses</li>
-                    </ul>
-                    <a href="leaderboard.html" class="card__btn">View Rankings →</a>
+                    <h2 class="card__title">Leaderboard</h2>
+                    <p class="card__desc">See local high scores, compare difficulty levels, and track your personal
+                        records. Can you reach the top?</p>
+                    <div class="card__features">
+                        <span class="card__feature"><span class="card__feature-dot"></span>🥇 Top players by
+                            score</span>
+                        <span class="card__feature"><span class="card__feature-dot"></span>🔥 Longest streaks</span>
+                        <span class="card__feature"><span class="card__feature-dot"></span>🎚️ Filter by
+                            difficulty</span>
+                    </div>
+                    <a href="leaderboard.html" class="card__btn" id="cardLBBtn">
+                        View Rankings
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px">
+                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+                        </svg>
+                    </a>
                 </article>
 
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════════════════════ STATS ════════════════════════════════ -->
-    <section class="stats-section" id="stats">
+    <!-- ═══════════════════════ FEATURES ════════════════════ -->
+    <section class="features-section" id="features" aria-labelledby="featTitle">
         <div class="container">
             <div class="section-header fade-in-up">
-                <h2 class="section-title">Cinemystery by the Numbers</h2>
-            </div>
-            <div class="stats-grid">
-                <div class="stat fade-in-up">
-                    <span class="stat__value">1.2M+</span>
-                    <span class="stat__label">Games Played</span>
-                </div>
-                <div class="stat fade-in-up" style="animation-delay:.1s">
-                    <span class="stat__value stat__value--accent">14,500</span>
-                    <span class="stat__label">Highest Score</span>
-                </div>
-                <div class="stat fade-in-up" style="animation-delay:.2s">
-                    <span class="stat__value stat__value--accent">42</span>
-                    <span class="stat__label">Current Top Streak</span>
-                </div>
-                <div class="stat fade-in-up" style="animation-delay:.3s">
-                    <span class="stat__value">4</span>
-                    <span class="stat__label">Difficulty Levels</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════ FEATURES ═════════════════════════════ -->
-    <section class="features-section" id="features">
-        <div class="container">
-            <div class="section-header fade-in-up">
-                <h2 class="section-title">Why Cinemystery Is Different</h2>
-                <p class="section-desc">Every feature is built to deliver a premium, fast-paced movie trivia experience.
-                </p>
+                <span class="section-eyebrow">Features</span>
+                <h2 class="section-title" id="featTitle">Why Cinemystry?</h2>
+                <p class="section-desc">Every detail is designed to make guessing movies ridiculously fun.</p>
             </div>
             <div class="features-grid">
+                <article class="feature fade-in-up" id="feat1">
+                    <div class="feature__icon-wrap">
+                        <svg class="feature__icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18 3v2h-2V3H8v2H6V3H4v18h2v-2h2v2h8v-2h2v2h2V3h-2z" />
+                        </svg>
+                    </div>
+                    <h3 class="feature__title">Real Movie Data</h3>
+                    <p class="feature__desc">Thousands of movies from English and Hindi cinema, curated for a
+                        challenging but fair experience.</p>
+                </article>
 
-                <article class="feature fade-in-up">
+                <article class="feature fade-in-up" id="feat2" style="animation-delay:.06s">
                     <div class="feature__icon-wrap">
                         <svg class="feature__icon" viewBox="0 0 24 24" fill="currentColor">
                             <path
-                                d="M18 3v2h-2V3H8v2H6V3H4v18h2v-2h2v2h8v-2h2v2h2V3h-2zM8 17H6v-2h2v2zm0-4H6v-2h2v2zm0-4H6V7h2v2zm10 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z" />
+                                d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" />
                         </svg>
                     </div>
-                    <h3 class="feature__title">Live TMDB Data</h3>
-                    <p class="feature__desc">Pulls straight from the world's largest movie database ensuring endless,
-                        up-to-date content.</p>
+                    <h3 class="feature__title">Dynamic Scoring</h3>
+                    <p class="feature__desc">Points decay with time and mistakes. Go fast, stay perfect, and unlock
+                        speed bonuses for massive scores.</p>
                 </article>
 
-                <article class="feature fade-in-up" style="animation-delay:.08s">
-                    <div class="feature__icon-wrap">
-                        <svg class="feature__icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" />
-                        </svg>
-                    </div>
-                    <h3 class="feature__title">Dynamic Difficulty System</h3>
-                    <p class="feature__desc">Choose your challenge level from casual movie fan to hardcore cinephile.
-                    </p>
-                </article>
-
-                <article class="feature fade-in-up" style="animation-delay:.16s">
+                <article class="feature fade-in-up" id="feat3" style="animation-delay:.12s">
                     <div class="feature__icon-wrap">
                         <svg class="feature__icon" viewBox="0 0 24 24" fill="currentColor">
                             <path
                                 d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z" />
                         </svg>
                     </div>
-                    <h3 class="feature__title">Strategic Hint System</h3>
-                    <p class="feature__desc">Need help? Reveal a letter, the release year, or the genre—but every hint
-                        reduces your potential score.</p>
+                    <h3 class="feature__title">Strategic Hints</h3>
+                    <p class="feature__desc">Reveal Year, Genre, or a random Letter. But every hint chips away at your
+                        potential score — choose wisely.</p>
                 </article>
 
-                <article class="feature fade-in-up" style="animation-delay:.24s">
+                <article class="feature fade-in-up" id="feat4" style="animation-delay:.18s">
+                    <div class="feature__icon-wrap">
+                        <svg class="feature__icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M13 2.05V4.05C17.39 4.59 20.5 8.58 19.96 12.97C19.5 16.61 16.64 19.5 13 19.93V21.93C18.5 21.38 22.5 16.5 21.95 11C21.5 6.25 17.73 2.5 13 2.05M11 2.06C9.05 2.25 7.19 3 5.67 4.26L7.1 5.74C8.22 4.84 9.57 4.26 11 4.06M4.26 5.67C3 7.19 2.25 9.04 2.05 11H4.05C4.24 9.58 4.8 8.23 5.69 7.1M2.06 13C2.26 14.96 3.03 16.81 4.27 18.33L5.69 16.9C4.81 15.77 4.24 14.42 4.06 13M7.1 18.37L5.67 19.74C7.18 21 9.04 21.79 11 22V20C9.58 19.82 8.23 19.25 7.1 18.37M12 8L12 13L16 15.4L15.01 17.09L10 14L10 8Z" />
+                        </svg>
+                    </div>
+                    <h3 class="feature__title">Countdown Timer</h3>
+                    <p class="feature__desc">Optional timer mode adds pressure. The faster you guess, the higher the
+                        speed bonus you unlock.</p>
+                </article>
+
+                <article class="feature fade-in-up" id="feat5" style="animation-delay:.24s">
                     <div class="feature__icon-wrap">
                         <svg class="feature__icon" viewBox="0 0 24 24" fill="currentColor">
                             <path
                                 d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4l5 2.18V11c0 3.5-2.33 6.79-5 7.93-2.67-1.14-5-4.43-5-7.93V7.18L12 5z" />
                         </svg>
                     </div>
-                    <h3 class="feature__title">Risk-Reward Scoring</h3>
-                    <p class="feature__desc">Guess early for maximum points. Skip hints and watch your potential reward
-                        skyrocket.</p>
+                    <h3 class="feature__title">Streak Multipliers</h3>
+                    <p class="feature__desc">Win consecutive rounds to build streaks. Chain 3+ wins for auto bonus point
+                        dumps on top of your score.</p>
                 </article>
 
-                <article class="feature fade-in-up" style="animation-delay:.32s">
+                <article class="feature fade-in-up" id="feat6" style="animation-delay:.30s">
                     <div class="feature__icon-wrap">
                         <svg class="feature__icon" viewBox="0 0 24 24" fill="currentColor">
                             <path
-                                d="M11 18h2v-6h-2v6zm0-8h2V8h-2v2zm1-8C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+                                d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" />
                         </svg>
                     </div>
-                    <h3 class="feature__title">Multiplayer Battles</h3>
-                    <p class="feature__desc">Compete with friends in turn-based matches and prove who knows movies best.
-                        Perfect for game nights.</p>
+                    <h3 class="feature__title">Local Leaderboard</h3>
+                    <p class="feature__desc">Every game you play is saved locally. Track your progress, beat your
+                        personal best, and compare difficulties.</p>
                 </article>
-
-                <article class="feature fade-in-up" style="animation-delay:.40s">
-                    <div class="feature__icon-wrap">
-                        <svg class="feature__icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z" />
-                        </svg>
-                    </div>
-                    <h3 class="feature__title">Global Leaderboards</h3>
-                    <p class="feature__desc">Compete with top players, track high streaks, and fight for the number one
-                        spot on the global rankings.</p>
-                </article>
-
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════════════════════ FOOTER ════════════════════════════════ -->
-    <footer class="footer" id="footer">
+    <!-- ═══════════════════════ CTA ══════════════════════════ -->
+    <section class="cta-section" aria-labelledby="ctaTitle">
+        <div class="container">
+            <div class="fade-in-up">
+                <h2 class="cta-section__title" id="ctaTitle">Ready to Start Guessing?</h2>
+                <p class="cta-section__sub">10 rounds. Timer on. No excuses.</p>
+                <div class="cta-section__actions">
+                    <a href="game.html" class="btn btn--primary" id="ctaPlayBtn">
+                        <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                        Play Solo
+                    </a>
+                    <a href="how-to-play.html" class="btn btn--outline" id="ctaHowBtn">
+                        <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z" />
+                        </svg>
+                        How To Play
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════ FOOTER ══════════════════════ -->
+    <footer class="footer">
         <div class="container">
             <div class="footer__grid">
                 <div class="footer__brand">
-                    <span class="footer__logo">Cinemystery</span>
-                    <p class="footer__tagline">The ultimate movie guessing game for film lovers.<br>Trust your
-                        instincts. Guess the movie. Conquer the leaderboard.</p>
+                    <span class="footer__logo">Cinemystry</span>
+                    <p class="footer__tagline">The ultimate movie guessing game for film lovers. Trust your instincts.
+                        Guess the movie. Conquer the leaderboard.</p>
                 </div>
-                <nav class="footer__nav">
+                <nav class="footer__nav" aria-label="Footer navigation">
                     <div class="footer__nav-col">
-                        <h4 class="footer__nav-heading">Game</h4>
+                        <h4 class="footer__nav-heading">Play</h4>
                         <a href="game.html" class="footer__nav-link">Single Player</a>
                         <a href="multiplayer.html" class="footer__nav-link">Multiplayer</a>
                         <a href="leaderboard.html" class="footer__nav-link">Leaderboard</a>
                         <a href="how-to-play.html" class="footer__nav-link">How to Play</a>
                     </div>
                     <div class="footer__nav-col">
-                        <h4 class="footer__nav-heading">Community</h4>
-                        <a href="#" class="footer__nav-link">Discord</a>
-                        <a href="#" class="footer__nav-link">Twitter</a>
-                        <a href="#" class="footer__nav-link">Suggest a Movie</a>
+                        <h4 class="footer__nav-heading">Difficulty</h4>
+                        <span class="footer__nav-link" style="cursor:default">🟢 Easy</span>
+                        <span class="footer__nav-link" style="cursor:default">🟡 Medium</span>
+                        <span class="footer__nav-link" style="cursor:default">🔴 Hard</span>
+                        <span class="footer__nav-link" style="cursor:default">💀 Extreme</span>
                     </div>
                     <div class="footer__nav-col">
                         <h4 class="footer__nav-heading">Legal</h4>
                         <a href="#" class="footer__nav-link">Privacy Policy</a>
                         <a href="#" class="footer__nav-link">Terms of Service</a>
-                        <a href="#" class="footer__nav-link">TMDB API Attribution</a>
+                        <a href="#" class="footer__nav-link">TMDB Attribution</a>
                     </div>
                 </nav>
             </div>
             <div class="footer__bottom">
-                <p class="footer__copy">&copy; 2026 Cinemystery. All rights reserved.</p>
+                <p class="footer__copy">© 2026 Cinemystry. All rights reserved.</p>
+                <div class="footer__badge">
+                    <span class="footer__badge-dot"></span>
+                    Live — powered by real movie data
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
+        /* ── Navbar scroll effect ── */
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('navbar--scrolled', window.scrollY > 40);
+        }, { passive: true });
+
+        /* ── Burger toggle ── */
         const burger = document.getElementById('navBurger');
         const mobileNav = document.getElementById('navMobile');
         burger.addEventListener('click', () => {
@@ -295,10 +414,26 @@
             burger.classList.toggle('navbar__burger--open');
         });
 
+        /* ── Close mobile nav on link click ── */
+        mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            mobileNav.classList.remove('navbar__mobile--open');
+            burger.classList.remove('navbar__burger--open');
+        }));
+
+        /* ── Film strip generation ── */
+        const track = document.getElementById('filmTrack');
+        if (track) {
+            const frameCount = 60;
+            let html = '';
+            for (let i = 0; i < frameCount * 2; i++) html += '<div class="hero__film-frame"></div>';
+            track.innerHTML = html;
+        }
+
+        /* ── Intersection Observer (scroll animations) ── */
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-        }, { threshold: 0.15 });
-        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.fade-in, .fade-in-up').forEach(el => observer.observe(el));
     </script>
 </body>
 
