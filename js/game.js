@@ -259,12 +259,11 @@ async function loadMovie() {
 
     resetKeyboard(); renderHintChips(); updateUI();
     try {
-        if (CONFIG.API_KEY === 'YOUR_TMDB_API_KEY_HERE') throw new Error('nokey');
         // Build set of already-seen movie IDs to avoid repeats
         const seenIds = new Set(G.recent.map(e => e.id).filter(Boolean));
         let movie = await API.fetchRandomMovie(G.diff, G.lang, seenIds);
         if (!movie) {
-            // Pool exhausted for this language — reset seen list and retry
+            // Pool exhausted — reset seen list and retry
             G.recent = G.recent.map(e => ({ ...e, id: undefined }));
             movie = await API.fetchRandomMovie(G.diff, G.lang, new Set());
         }
@@ -289,17 +288,10 @@ async function loadMovie() {
 
         renderTiles(); updateUI(); renderHintChips(); G.busy = false;
     } catch (e) {
-        if (e.message === 'nokey') { toast('⚠ Add your TMDB API key in js/config.js', 'warn'); loadDemo(); }
-        else { toast('Error loading movie – retrying…', 'error'); G.busy = false; setTimeout(loadMovie, 2000); }
+        toast('Error loading local movie data – retrying…', 'error');
+        G.busy = false;
+        setTimeout(loadMovie, 2000);
     }
-}
-
-const DEMOS = ['Inception', 'The Godfather', 'Pulp Fiction', 'Interstellar', 'The Matrix', 'Parasite', 'Titanic', 'Goodfellas', 'The Dark Knight', 'Forrest Gump'];
-function loadDemo() {
-    G.movie = { id: 0, title: DEMOS[Math.floor(Math.random() * DEMOS.length)] };
-    G.det = { release_date: '2010-07-16', genres: [{ name: 'Sci-Fi' }, { name: 'Action' }], overview: 'A legendary cinematic masterpiece that changed the world.' };
-    renderTiles(); updateUI(); renderHintChips(); G.busy = false;
-    toast('Demo mode – replace API key in js/config.js for live movies', 'warn');
 }
 
 /* ── Hints ── */

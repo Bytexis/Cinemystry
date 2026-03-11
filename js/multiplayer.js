@@ -89,8 +89,6 @@ function mpUI() {
 }
 
 /* ── Load Movie ── */
-const MP_DEMOS = ['Inception', 'The Godfather', 'Pulp Fiction', 'Interstellar', 'The Matrix', 'Parasite', 'Titanic', 'Avatar', 'Goodfellas', 'The Dark Knight'];
-
 async function mpLoad() {
     if (MP.round >= 10) { clearInterval(MP.timer); mpOver(); return; }
     MP.round++; MP.busy = true;
@@ -136,7 +134,6 @@ async function mpLoad() {
 
     mpResetKeyboard(); mpUI();
     try {
-        if (CONFIG.API_KEY === 'YOUR_TMDB_API_KEY_HERE') throw new Error('nokey');
         MP.movie = await API.fetchRandomMovie(MP.diff || 'medium', MP.lang);
         MP.det = await API.fetchMovieDetails(MP.movie.id);
         
@@ -159,12 +156,9 @@ async function mpLoad() {
 
         mpTiles(); mpUI(); MP.busy = false;
     } catch (e) {
-        if (e.message === 'nokey') {
-            MP.movie = { id: 0, title: MP_DEMOS[Math.floor(Math.random() * MP_DEMOS.length)] };
-            MP.det = { release_date: '2012-01-01', genres: [{ name: 'Action' }], overview: 'A legendary film.' };
-            mpTiles(); mpUI(); MP.busy = false;
-            mpToast('⚠ Demo mode – add API key in js/config.js', 'warn');
-        } else { mpToast('Load error – retrying…', 'error'); MP.busy = false; setTimeout(mpLoad, 2000); }
+        mpToast('Load error in local movie data – retrying…', 'error');
+        MP.busy = false;
+        setTimeout(mpLoad, 2000);
     }
 }
 
@@ -273,12 +267,12 @@ function mpUseHint() {
 
     if (type === 'year') {
         const yr = MP.det?.release_date?.split('-')[0] || '????';
-        mpToast(`Year hint used (−${cost} pts)`, 'warn');
+        mpToast(`Year hint used (−${penalty} pts)`, 'warn');
         addPersistentHint('Year', yr);
     }
     else if (type === 'genre') {
         const gn = MP.det?.genres?.[0]?.name || '????';
-        mpToast(`Genre hint used (−${cost} pts)`, 'warn');
+        mpToast(`Genre hint used (−${penalty} pts)`, 'warn');
         addPersistentHint('Genre', gn);
     }
     else {

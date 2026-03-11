@@ -1,0 +1,458 @@
+id,title,year,genre,description,difficulty,language
+1,Aankhen,2002,Heist,A bank manager recruits three blind men to rob his own bank.,easy,english
+2,Khakee,2004,Action,A police team escorting a terrorist from a small town to Mumbai.,easy,english
+3,Dhol,2007,Comedy,Four lazy friends try to woo a rich girl but get mixed up in a plot.,easy,english
+4,Aamir,2008,Thriller,A man returning from London is forced to carry out a terrorist task.,easy,english
+5,Bypass Road,2019,Thriller,A fashion designer becomes a murder suspect after a paralyzing accident.,easy,english
+6,Panga,2020,Sports,A former kabaddi player makes a comeback after starting a family.,easy,english
+7,Mimi,2021,Drama,A young woman in Rajasthan decides to be a surrogate for a foreign couple.,easy,english
+8,Tribhanga,2021,Family,A dysfunctional family of three generations of women deals with their past.,easy,english
+9,Pagglait,2021,Comedy,A young widow struggles to feel grief after her husband's sudden death.,easy,english
+10,Haseen Dillruba,2021,Mystery,A woman is suspected of murdering her husband while his secrets emerge.,easy,english
+11,A Thursday,2022,Thriller,A playschool teacher takes children hostage and makes a set of demands.,easy,english
+12,"Monica, O My Darling",2022,Neo-Noir,A robotics expert joins a murderous plot after an affair goes wrong.,easy,english
+13,Freddy,2022,Thriller,A shy dentist becomes obsessed with a woman and turns into a dark stalker.,easy,english
+14,Chhatriwali,2023,Social,A chemistry genius promotes sex education in a small town.,easy,english
+15,Zwigato,2023,Social,A man loses his job and becomes a food delivery rider to survive.,easy,english
+16,Lust Stories 2,2023,Romance,Four short stories exploring modern relationships and human desires.,easy,english
+17,Jaane Jaan,2023,Mystery,"A single mother is involved in a crime, and a neighbor helps cover it.",easy,english
+18,Khufiya,2023,Spy,An Indian agent is tasked with finding a mole within the agency.,easy,english
+19,Kill,2024,Action,Two soldiers face off against a massive gang of bandits on a train.,easy,english
+20,Auron Mein Kahan Dum Tha,2024,Romance,"An epic love story spanning two decades, focusing on sacrifice.",easy,english
+21,Ulajh,2024,Spy,A young diplomat is embroiled in a conspiracy at a foreign embassy.,easy,english
+22,Khel Khel Mein,2024,Comedy,Friends at a dinner party play a game where they reveal phone secrets.,easy,english
+23,The Heist,2025,Action,A group of specialists plans a robbery of a high-security diamond vault.,easy,english
+24,Red Carpet,2025,Mystery,A movie star's life is ruined after a scandal at a film festival.,easy,english
+25,The Last Stand,2026,War,A group of soldiers defends an outpost against an overwhelming force.,easy,english
+26,Hidden Path,2026,Fantasy,A young man finds a portal to a world where ancient myths are real.,easy,english
+27,The Strategist,2025,Political,A brilliant advisor manipulates an election for a high-profile client.,easy,english
+28,Cyber Hunt,2026,Sci-Fi,A hacker is hired by the government to stop a global cyber-terrorist.,easy,english
+29,The Lost City,2025,Adventure,An archaeologist discovers the ruins of a city not found on any maps.,easy,english
+30,Shadow Boxer,2026,Sports,A boxer from the slums fights his way to a national championship.,easy,english
+31,The Deal,2025,Thriller,"A drug deal goes wrong, leading to a cat-and-mouse game with police.",easy,english
+32,Wild Trails,2026,Adventure,A wildlife photographer gets lost in the jungle and must survive.,easy,english
+33,Black Out,2024,Thriller,"A city faces a total power outage, and strangers must survive the chaos.",easy,english
+34,The Architect,2025,Drama,A man dreams of building a structure that will change the skyline.,easy,english
+35,Code Name: Fire,2026,Spy,An agent goes undercover to stop a weapon of mass destruction.,easy,english
+36,The Investigator,2025,Mystery,A detective is called to solve a murder in a secluded forest mansion.,easy,english
+37,Deep Waters,2026,Adventure,A salvage team discovers a sunken ship with a mysterious ancient cargo.,easy,english
+38,The Candidate,2025,Political,An honest man decides to run for office to clean up a corrupt system.,easy,english
+39,Neon Nights,2026,Sci-Fi,A story of love and loss in a future city run by advanced technology.,easy,english
+40,The Outcast,2025,Drama,A man returns home after years in prison and seeks local acceptance.,easy,english
+41,Velocity,2026,Sports,A street racer is recruited for a high-stakes illegal underground race.,easy,english
+42,The Inheritance,2025,Mystery,"A family gathers for a will reading, but dark secrets start to emerge.",easy,english
+43,Echoes of the Past,2026,Mystery,A woman discovers a letter that reveals a truth about her family history.,easy,english
+44,The Healer,2025,Fantasy,A man discovers he has the power to heal people with his touch.,easy,english
+45,Urban Jungle,2026,Crime,A cop takes on a powerful gang that controls a section of the city.,easy,english
+46,The Script,2025,Comedy,A writer's script accidentally gets into the hands of a superstar.,easy,english
+47,Undercurrent,2026,Thriller,A group on a boat trip realizes one of their friends is a killer.,easy,english
+48,The Collector,2025,Horror,An antique collector finds an ancient object that is cursed.,easy,english
+49,Final Call,2026,Thriller,A pilot must land a plane after the entire crew is incapacitated.,easy,english
+50,The Guardian,2025,Action,A bodyguard is assigned to protect a child who is heir to a fortune.,easy,english
+51,Titanic,1997,Romance/Drama,A rich girl and a poor artist fall in love on a doomed luxury ship.,easy,english
+52,Jurassic Park,1993,Sci-Fi/Adventure,Scientists visit a theme park where cloned dinosaurs have escaped.,easy,english
+53,The Lion King,1994,Animation/Family,A young lion prince must reclaim his throne from his evil uncle.,easy,english
+54,Avatar,2009,Sci-Fi/Action,A paraplegic Marine joins an alien race to protect their home planet.,easy,english
+55,Spider-Man,2002,Action/Superhero,A teenager gets superpowers from a spider bite and fights crime.,easy,english
+56,Jaws,1975,Thriller/Horror,A giant great white shark begins attacking people at a beach resort.,easy,english
+57,Harry Potter,2001,Fantasy/Adventure,An orphaned boy discovers he is a famous wizard and goes to a magic school.,easy,english
+58,Star Wars,1977,Sci-Fi/Fantasy,A farm boy joins a rebellion to stop a galactic empire and a dark lord.,easy,english
+59,Home Alone,1990,Comedy/Family,An 8-year-old boy is accidentally left home and must fight off burglars.,easy,english
+60,Frozen,2013,Animation/Musical,A princess goes on a journey to find her sister who has ice powers.,easy,english
+61,The Dark Knight,2008,Action/Superhero,Batman faces his greatest challenge against the chaotic Joker.,easy,english
+62,Toy Story,1995,Animation/Family,A group of toys comes to life when their owner isn't looking.,easy,english
+63,Ghostbusters,1984,Comedy/Sci-Fi,Three men start a business catching ghosts in New York City.,easy,english
+64,The Avengers,2012,Action/Superhero,A group of the world's greatest heroes team up to save Earth.,easy,english
+65,Shrek,2001,Animation/Comedy,A grumpy ogre goes on a quest to rescue a princess to get his land back.,easy,english
+66,Batman,1989,Action/Superhero,A billionaire dresses as a bat to fight the criminals of Gotham City.,easy,english
+67,Iron Man,2008,Action/Superhero,A wealthy inventor builds a high-tech suit of armor to fight evil.,easy,english
+68,Finding Nemo,2003,Animation/Family,A clownfish journeys across the ocean to find his missing son.,easy,english
+69,The Matrix,1999,Sci-Fi/Action,A hacker discovers that humanity is living in a computer simulation.,easy,english
+70,Pirates of the Caribbean,2003,Action/Adventure,A quirky pirate tries to reclaim his ship from his cursed former crew.,easy,english
+71,Forrest Gump,1994,Drama/Romance,A simple man witnesses and influences major historical events in the US.,easy,english
+72,Superman,1978,Action/Superhero,An alien from a dying planet grows up to be Earth's greatest hero.,easy,english
+73,Men in Black,1997,Sci-Fi/Comedy,Two secret agents monitor and police alien activity on Earth.,easy,english
+74,Gladiator,2000,Action/Drama,A Roman general is betrayed and becomes a gladiator to seek revenge.,easy,english
+75,Braveheart,1995,History/Action,A Scottish warrior leads a rebellion against an oppressive English King.,easy,english
+76,King Kong,2005,Adventure/Fantasy,A giant ape is captured from a mysterious island and brought to NYC.,easy,english
+77,Godzilla,2014,Action/Sci-Fi,A giant prehistoric monster rises from the sea to fight other monsters.,easy,english
+78,Despicable Me,2010,Animation/Comedy,A supervillain tries to steal the moon but is softened by three orphan girls.,easy,english
+79,Minions,2015,Animation/Comedy,"Small, yellow creatures search for the most evil master to serve.",easy,english
+80,The Incredibles,2004,Animation/Superhero,A family of undercover superheroes is forced back into action to save the world.,easy,english
+81,The Godfather,1972,Crime/Drama,The aging patriarch of a mafia family transfers power to his youngest son.,easy,english
+82,Back to the Future,1985,Sci-Fi/Comedy,A teenager is sent back to 1955 in a time-traveling car built by a scientist.,easy,english
+83,E.T. the Extra-Terrestrial,1982,Sci-Fi/Family,A lonely boy befriends an alien who is stranded on Earth.,easy,english
+84,The Terminator,1984,Sci-Fi/Action,A cyborg assassin is sent from the future to kill a woman.,easy,english
+85,Indiana Jones,1981,Adventure/Action,An archaeologist searches for ancient artifacts while fighting villains.,easy,english
+86,Terminator 2,1991,Sci-Fi/Action,A reprogrammed cyborg is sent to protect a young boy from a new threat.,easy,english
+87,Mission: Impossible,1996,Action/Spy,A secret agent must clear his name after being framed for a crime.,easy,english
+88,Fast & Furious,2001,Action/Crime,An undercover cop infiltrates a street racing gang to solve a heist.,easy,english
+89,Wonder Woman,2017,Action/Superhero,An Amazonian princess leaves her island to stop a global war.,easy,english
+90,Black Panther,2018,Action/Superhero,"A new king must defend his hidden, high-tech nation from a rival.",easy,english
+91,Deadpool,2016,Action/Comedy,A mercenary with healing powers hunts down the man who disfigured him.,easy,english
+92,John Wick,2014,Action/Thriller,A retired hitman comes out of retirement to find the men who stole his car.,easy,english
+93,The Hunger Games,2012,Sci-Fi/Thriller,Teenagers are forced to fight to the death in a televised survival game.,easy,english
+94,Joker,2019,Crime/Drama,A failed comedian spirals into madness and becomes a symbol of chaos.,easy,english
+95,Interstellar,2014,Sci-Fi/Drama,Astronauts travel through a wormhole to find a new home for humanity.,easy,english
+96,Inception,2010,Sci-Fi/Action,A thief who enters people's dreams is hired to plant an idea in a mind.,easy,english
+97,Avatar: The Way of Water,2022,Sci-Fi/Action,Jake Sully and his family seek refuge with an ocean-dwelling tribe.,easy,english
+98,Inside Out,2015,Animation/Family,The personified emotions of a young girl try to help her navigate a move.,easy,english
+99,Zootopia,2016,Animation/Comedy,A bunny cop and a con-artist fox team up to solve a missing mammal case.,easy,english
+100,Coco,2017,Animation/Family,A young boy travels to the Land of the Dead to find his musician ancestor.,easy,english
+101,Moana,2016,Animation/Adventure,A brave girl sails across the ocean to save her island with a demigod.,easy,english
+102,Up,2009,Animation/Adventure,An elderly man flies his house to South America using thousands of balloons.,easy,english
+103,Ratatouille,2007,Animation/Comedy,A rat who loves to cook becomes a secret chef in a famous French restaurant.,easy,english
+104,Cars,2006,Animation/Comedy,A hotshot racing car gets stranded in a small town and learns about life.,easy,english
+105,Madagascar,2005,Animation/Comedy,Zoo animals are shipwrecked on an island and must learn to live in the wild.,easy,english
+106,Kung Fu Panda,2008,Animation/Action,"A clumsy panda is chosen as the ""Dragon Warrior"" to save his valley.",easy,english
+107,How to Train Your Dragon,2010,Animation/Adventure,A young Viking befriends a dragon instead of hunting it.,easy,english
+108,Ice Age,2002,Animation/Comedy,"A mammoth, a sloth, and a saber-tooth tiger try to return a human baby.",easy,english
+109,Cinderella,1950,Animation/Romance,A girl mistreated by her stepfamily attends a royal ball with magic.,easy,english
+110,Aladdin,1992,Animation/Fantasy,A street urchin finds a magic lamp with a genie who grants three wishes.,easy,english
+111,Beauty and the Beast,1991,Animation/Romance,A bright girl is taken prisoner by a beast in his enchanted castle.,easy,english
+112,Mulan,1998,Animation/Action,A girl disguises herself as a man to join the army in her father's place.,easy,english
+113,The Little Mermaid,1989,Animation/Romance,A mermaid princess makes a deal with a sea witch to become human.,easy,english
+114,Peter Pan,1953,Animation/Fantasy,A boy who can fly takes children to a magical world where they never grow up.,easy,english
+115,Tarzan,1999,Animation/Adventure,A man raised by apes in the jungle discovers his human heritage.,easy,english
+116,Hercules,1997,Animation/Fantasy,A demigod must prove he is a true hero to regain his immortality.,easy,english
+117,Lilo & Stitch,2002,Animation/Comedy,"A lonely girl adopts a destructive alien ""dog"" and teaches him about family.",easy,english
+118,Tangeld,2010,Animation/Musical,A princess with long magical hair escapes her tower with a charming thief.,easy,english
+119,Enchanted,2007,Comedy/Fantasy,A fairytale princess is sent to modern-day New York City by an evil queen.,easy,english
+120,Mary Poppins,1964,Family/Fantasy,A magical nanny arrives to help a strict father and his two children.,easy,english
+121,The Sound of Music,1965,Musical/Drama,A nun becomes a governess for seven children and teaches them to sing.,easy,english
+122,The Wizard of Oz,1939,Fantasy/Adventure,A girl is swept away to a magical land and seeks the help of a wizard.,easy,english
+123,Singin' in the Rain,1952,Musical/Comedy,A silent film star falls in love during Hollywood's transition to talking movies.,easy,english
+124,Grease,1978,Musical/Romance,Two teenagers have a summer romance and reunite at the same high school.,easy,english
+125,Rocky,1976,Sports/Drama,A small-time boxer gets a once-in-a-lifetime shot at the heavyweight title.,easy,english
+126,Top Gun,1986,Action/Drama,A hotshot pilot is sent to an elite flight school to sharpen his skills.,easy,english
+127,Top Gun: Maverick,2022,Action/Drama,A veteran pilot returns to train a group of young pilots for a mission.,easy,english
+128,Die Hard,1988,Action/Thriller,A cop must save his wife and others taken hostage in a skyscraper.,easy,english
+129,Lethal Weapon,1987,Action/Crime,Two polar-opposite detectives are paired up to solve a murder case.,easy,english
+130,Rambo,1982,Action/Thriller,A former soldier uses his survival skills to fight a small-town police force.,easy,english
+131,Aliens,1986,Sci-Fi/Action,A survivor of an alien attack returns to the planet with a group of soldiers.,easy,english
+132,Predator,1987,Action/Sci-Fi,A team of commandos is hunted by an invisible alien in the jungle.,easy,english
+133,RoboCop,1987,Action/Sci-Fi,A murdered cop is brought back to life as a powerful cyborg to fight crime.,easy,english
+134,Ghost,1990,Romance/Fantasy,A murdered man's spirit stays behind to protect his girlfriend from danger.,easy,english
+135,Pretty Woman,1990,Romance/Comedy,A wealthy businessman hires an escort to attend social events with him.,easy,english
+136,Dirty Dancing,1987,Romance/Drama,A girl falls in love with her dance instructor at a summer resort.,easy,english
+137,The Mask,1994,Comedy/Fantasy,"A shy man finds a magical mask that turns him into a wild, cartoonish hero.",easy,english
+138,Ace Ventura,1994,Comedy,A quirky detective specializes in finding missing animals and pets.,easy,english
+139,Dumb and Dumber,1994,Comedy,Two dim-witted friends travel cross-country to return a briefcase.,easy,english
+140,Mrs. Doubtfire,1993,Comedy/Drama,A divorced father disguises himself as an elderly nanny to see his kids.,easy,english
+141,Space Jam,1996,Animation/Sports,A basketball legend teams up with cartoon characters for a game.,easy,english
+142,Twister,1996,Action/Adventure,Storm chasers risk their lives to track and study massive tornadoes.,easy,english
+143,Independence Day,1996,Sci-Fi/Action,The world unites to fight an alien invasion on July 4th.,easy,english
+144,Scream,1996,Horror/Mystery,A masked killer begins terrorizing a group of high school students.,easy,english
+145,The Sixth Sense,1999,Mystery/Thriller,A boy who can see dead people is helped by a child psychologist.,easy,english
+146,Fight Club,1999,Drama/Thriller,An insomniac and a soap salesman form an underground fighting club.,easy,english
+147,Ocean's Eleven,2001,Crime/Heist,A group of specialists plans a massive robbery of three casinos.,easy,english
+148,The Lord of the Rings,2001,Fantasy/Adventure,"A small hobbit journeys to destroy a powerful, evil ring.",easy,english
+149,The Chronicles of Narnia,2005,Fantasy/Adventure,Siblings discover a magical world inside a wardrobe and help a lion.,easy,english
+150,Willy Wonka,1971,Fantasy/Family,Five children win a tour of a mysterious and magical chocolate factory.,easy,english
+151,The Super Mario Bros. Movie,2023,Animation/Adventure,Two Brooklyn plumbers are transported to a magical world to save a princess.,easy,english
+152,Barbie,2023,Comedy/Fantasy,A doll living in a perfect world has a crisis and travels to the real world.,easy,english
+153,Oppenheimer,2023,Biography/Drama,The story of the scientist who led the development of the atomic bomb.,easy,english
+154,Dune,2021,Sci-Fi/Adventure,A young noble is thrust into a war for a desert planet and its precious spice.,easy,english
+155,Inside Out 2,2024,Animation/Comedy,"Riley enters her teenage years, introducing new emotions like Anxiety.",easy,english
+156,Despicable Me 4,2024,Animation/Comedy,Gru and his family go on the run from a new villain while raising a baby.,easy,english
+157,Deadpool & Wolverine,2024,Action/Comedy,"The two iconic heroes team up for a chaotic, fourth-wall-breaking adventure.",easy,english
+158,Sonic the Hedgehog,2020,Action/Adventure,A speedy blue hedgehog teams up with a sheriff to stop an evil doctor.,easy,english
+159,Puss in Boots: The Last Wish,2022,Animation/Adventure,A legendary cat goes on a journey to find a star that can grant him more lives.,easy,english
+160,The Batman,2022,Action/Crime,A younger Bruce Wayne investigates a series of murders in a dark Gotham City.,easy,english
+161,Wonka,2023,Musical/Fantasy,The origin story of the world's most famous and eccentric chocolatier.,easy,english
+162,Jungle Cruise,2021,Adventure/Comedy,A riverboat captain takes a scientist on a quest to find an ancient healing tree.,easy,english
+163,Free Guy,2021,Action/Comedy,A bank teller discovers he is a background character in an open-world video game.,easy,english
+164,Mortal Kombat,2021,Action/Fantasy,Fighters from Earth compete in a high-stakes tournament against the Outworld.,easy,english
+165,Black Widow,2021,Action/Superhero,Natasha Romanoff confronts her past and a conspiracy before joining the Avengers.,easy,english
+166,Shang-Chi,2021,Action/Fantasy,A master of martial arts must confront his father and his secret organization.,easy,english
+167,Cruella,2021,Comedy/Crime,The origin story of the fashionable and rebellious villain from 101 Dalmatians.,easy,english
+168,Guardians of the Galaxy,2014,Sci-Fi/Action,A group of space outlaws forms an unlikely team to save the universe.,easy,english
+169,The Karate Kid,1984,Sports/Drama,A bullied teenager learns martial arts and life lessons from a wise mentor.,easy,english
+170,Charlie and the Chocolate Factory,2005,Fantasy/Family,A poor boy wins a tour of a mysterious and magical candy factory.,easy,english
+171,Alice in Wonderland,2010,Fantasy/Adventure,A girl returns to a whimsical world to stop an evil queen's reign.,easy,english
+172,Maleficent,2014,Fantasy/Adventure,The untold story of the villain from Sleeping Beauty and her protective side.,easy,english
+173,Sing,2016,Animation/Musical,A theater owner hosts a singing competition to save his business.,easy,english
+174,The Secret Life of Pets,2016,Animation/Comedy,Pets go on an adventure through New York while their owners are away.,easy,english
+175,Trolls,2016,Animation/Musical,"Happy, singing creatures must escape from giants who want to eat them.",easy,english
+176,WALL-E,2008,Animation/Sci-Fi,A small robot on a deserted Earth falls in love and goes on a space mission.,easy,english
+177,Brave,2012,Animation/Adventure,A skilled archer princess must undo a beastly curse she accidentally caused.,easy,english
+178,Wreck-It Ralph,2012,Animation/Comedy,A video game villain wants to be a hero and travels to other games.,easy,english
+179,The Lego Movie,2014,Animation/Comedy,An ordinary Lego figure is mistaken for a hero who can save the world.,easy,english
+180,Paddington,2014,Comedy/Family,A polite bear from Peru travels to London and finds a new home.,easy,english
+181,Ted,2012,Comedy/Fantasy,A man's childhood teddy bear comes to life and becomes his best friend.,easy,english
+182,The Hangover,2009,Comedy,Friends wake up after a bachelor party in Vegas with no memory of the night.,easy,english
+183,Pitch Perfect,2012,Musical/Comedy,A college girl joins an all-female a cappella group and revamps their style.,easy,english
+184,Mamma Mia!,2008,Musical/Romance,A bride-to-be invites three of her mother's past lovers to her wedding.,easy,english
+185,The Devil Wears Prada,2006,Comedy/Drama,A recent graduate gets a job as an assistant to a ruthless fashion editor.,easy,english
+186,Mean Girls,2004,Comedy,A new student navigates the social hierarchy of an American high school.,easy,english
+187,Clueless,1995,Comedy/Romance,A rich and popular high school girl tries to play matchmaker for others.,easy,english
+188,Legally Blonde,2001,Comedy,A fashionable girl goes to Harvard Law School to win back her boyfriend.,easy,english
+189,13 Going on 30,2004,Comedy/Romance,A 13-year-old girl wakes up as a 30-year-old woman after making a wish.,easy,english
+190,Freaky Friday,2003,Comedy/Family,A mother and daughter swap bodies and must live each other's lives.,easy,english
+191,The Parent Trap,1998,Comedy/Family,Twin sisters separated at birth meet at camp and plan to reunite their parents.,easy,english
+192,Princess Diaries,2001,Comedy/Family,A shy teenager discovers she is the heir to the throne of a European kingdom.,easy,english
+193,High School Musical,2006,Musical/Romance,Two students from different social groups audition for the school play.,easy,english
+194,Camp Rock,2008,Musical/Romance,A talented girl attends a prestigious music camp and finds her voice.,easy,english
+195,Descendants,2015,Fantasy/Musical,The children of Disney's famous villains are given a chance to be good.,easy,english
+196,Hocus Pocus,1993,Fantasy/Comedy,Three witches are accidentally resurrected on Halloween night in Salem.,easy,english
+197,The Nightmare Before Christmas,1993,Animation/Fantasy,The king of Halloween Town tries to take over Christmas with spooky results.,easy,english
+198,Coraline,2009,Animation/Fantasy,A girl finds a door to a parallel world that looks perfect but is dangerous.,easy,english
+199,The Grinch,2000,Comedy/Family,A grumpy creature living on a mountain plans to steal Christmas from a town.,easy,english
+200,Elf,2003,Comedy/Family,A man raised as an elf at the North Pole travels to NYC to find his father.,easy,english
+201,The Polar Express,2004,Animation/Adventure,A boy takes a magical train ride to the North Pole on Christmas Eve.,easy,english
+202,Home Alone 2,1992,Comedy/Family,A boy is lost in New York City and must face the same burglars again.,easy,english
+203,A Christmas Carol,2009,Animation/Drama,A miserable old man is visited by three ghosts to learn the meaning of life.,easy,english
+204,Night at the Museum,2006,Comedy/Fantasy,A museum security guard discovers that the exhibits come to life at night.,easy,english
+205,The Mummy,1999,Action/Adventure,Explorers accidentally awaken a cursed ancient priest in an Egyptian tomb.,easy,english
+206,Men in Black 2,2002,Sci-Fi/Comedy,Agents return to stop a shapeshifting alien from finding a powerful light.,easy,english
+207,Pirates of the Caribbean 2,2006,Action/Adventure,Jack Sparrow must settle a blood debt with the legendary Davy Jones.,easy,english
+208,Transformers,2007,Action/Sci-Fi,Giant alien robots that can turn into vehicles fight a war on Earth.,easy,english
+209,Iron Man 2,2010,Action/Superhero,Tony Stark faces a rival inventor and the government while his health fades.,easy,english
+210,Thor,2011,Action/Superhero,A powerful god is banished to Earth and must prove he is worthy of his hammer.,easy,english
+211,Captain America,2011,Action/Superhero,A weak soldier is transformed into a super-soldier to fight in World War II.,easy,english
+212,The Amazing Spider-Man,2012,Action/Superhero,A new retelling of the hero's origin as he fights a giant lizard creature.,easy,english
+213,Man of Steel,2013,Action/Superhero,A powerful alien living on Earth must defend the planet from his own people.,easy,english
+214,Ant-Man,2015,Action/Superhero,A thief is given a suit that allows him to shrink in size and gain strength.,easy,english
+215,Doctor Strange,2016,Action/Superhero,A surgeon learns the mystic arts after a tragic accident ruins his hands.,easy,english
+216,Aquaman,2018,Action/Superhero,A man who can talk to fish must claim his throne in the underwater city.,easy,english
+217,Shazam!,2019,Action/Comedy,A teenage boy can transform into an adult superhero by saying one word.,easy,english
+218,The Flash,2023,Action/Superhero,A hero travels back in time to save his mother but accidentally changes reality.,easy,english
+219,The Truman Show,1998,Drama/Sci-Fi,An insurance salesman discovers his whole life is a 24-hour reality TV show.,medium,english
+220,The Social Network,2010,Biography/Drama,The story of how Mark Zuckerberg created Facebook and the legal battles that followed.,medium,english
+221,Slumdog Millionaire,2008,Drama/Romance,A Mumbai teen reflects on his life after being accused of cheating on a game show.,medium,english
+222,The Wolf of Wall Street,2013,Biography/Crime,A stockbroker's rise to enormous wealth and his eventual fall due to corruption.,medium,english
+223,Eternal Sunshine of the Spotless Mind,2004,Romance/Sci-Fi,A couple undergoes a procedure to erase each other from their memories.,medium,english
+224,The Grand Budapest Hotel,2014,Comedy/Adventure,A legendary concierge teams up with a lobby boy to prove his innocence in a murder.,medium,english
+225,La La Land,2016,Musical/Romance,A jazz pianist and an aspiring actress fall in love while chasing their dreams in L.A.,medium,english
+226,Parasite,2019,Thriller/Drama,A poor family scams their way into working for a wealthy household with dark results.,medium,english
+227,Knives Out,2019,Mystery/Comedy,A detective investigates the death of a wealthy patriarch at a family gathering.,medium,english
+228,Whiplash,2014,Drama/Music,"A young drummer is pushed to his limits by an abusive, perfectionist instructor.",medium,english
+229,Gone Girl,2014,Mystery/Thriller,A man becomes the prime suspect after his wife suddenly disappears on their anniversary.,medium,english
+230,Birdman,2014,Drama/Comedy,A washed-up actor tries to revive his career by staging a Broadway play.,medium,english
+231,The Martian,2015,Sci-Fi/Adventure,An astronaut is stranded on Mars and must use his ingenuity to survive until rescue.,medium,english
+232,Arrival,2016,Sci-Fi/Drama,A linguist is hired by the military to communicate with aliens who have landed on Earth.,medium,english
+233,Get Out,2017,Horror/Thriller,A young man uncovers a disturbing secret when he visits his girlfriend's parents.,medium,english
+234,A Quiet Place,2018,Horror/Sci-Fi,A family must live in silence to avoid being hunted by creatures with ultra-sensitive hearing.,medium,english
+235,The Revenant,2015,Adventure/Drama,A frontiersman fights for survival in the wilderness after being left for dead.,medium,english
+236,Black Swan,2010,Thriller/Drama,A ballerina's obsession with perfection leads her into a dark psychological spiral.,medium,english
+237,Spotlight,2015,Biography/Drama,Journalists investigate a massive cover-up of child abuse within the Catholic Church.,medium,english
+238,12 Years a Slave,2013,Biography/History,A free Black man is kidnapped and sold into slavery in the pre-Civil War South.,medium,english
+239,The Big Short,2015,Comedy/Drama,A group of investors bets against the US housing market before the 2008 crash.,medium,english
+240,The King's Speech,2010,Biography/Drama,King George VI works to overcome his stammer with the help of a speech therapist.,medium,english
+241,Argo,2012,Thriller/History,A CIA agent poses as a filmmaker to rescue Americans during the Iran Hostage Crisis.,medium,english
+242,Bird Box,2018,Horror/Sci-Fi,A mother and her children must travel blindfolded to avoid seeing a deadly entity.,medium,english
+243,The Irishman,2019,Crime/Drama,A truck driver becomes a hitman and gets involved with a powerful union leader.,medium,english
+244,Django Unchained,2012,Western/Action,A freed slave teams up with a bounty hunter to rescue his wife from a plantation.,medium,english
+245,The Hateful Eight,2015,Mystery/Western,Strangers seek shelter in a stagecoach stop during a blizzard and realize no one is safe.,medium,english
+246,No Country for Old Men,2007,Crime/Thriller,"A hunter finds a briefcase full of money, triggering a chase by a relentless killer.",medium,english
+247,There Will Be Blood,2007,Drama,A ruthless oilman's pursuit of wealth leads to his moral and physical decline.,medium,english
+248,Inglourious Basterds,2009,War/Action,Jewish-American soldiers plan to assassinate Nazi leaders in occupied France.,medium,english
+249,The Departed,2006,Crime/Thriller,An undercover cop and a mole in the police try to identify each other within a gang.,medium,english
+250,American Psycho,2000,Thriller/Comedy,A wealthy investment banker hides his nocturnal bloodlust from his social circle.,medium,english
+251,Memento,2000,Mystery/Thriller,A man with short-term memory loss uses tattoos and notes to find his wife's killer.,medium,english
+252,Donnie Darko,2001,Sci-Fi/Drama,A troubled teenager is manipulated by a giant rabbit to commit a series of crimes.,medium,english
+253,The Prestige,2006,Mystery/Drama,Two rival magicians in 19th-century London engage in a dangerous game of one-upmanship.,medium,english
+254,Shutter Island,2010,Mystery/Thriller,A US Marshal investigates the disappearance of a patient from a remote mental asylum.,medium,english
+255,Life of Pi,2012,Adventure/Drama,A young man survives a shipwreck and shares a lifeboat with a Bengal tiger.,medium,english
+256,The Great Gatsby,2013,Romance/Drama,"A writer is drawn into the lavish world of his mysterious, wealthy neighbor.",medium,english
+257,Les Misérables,2012,Musical/Drama,An ex-convict seeks redemption while being hunted by a ruthless police inspector.,medium,english
+258,The Theory of Everything,2014,Biography/Drama,The life and relationship of physicist Stephen Hawking and his wife Jane.,medium,english
+259,The Imitation Game,2014,Biography/Thriller,A mathematician leads a team to crack the Nazi Enigma code during World War II.,medium,english
+260,Ford v Ferrari,2019,Sports/Drama,American car designers build a revolutionary race car to challenge Ferrari at Le Mans.,medium,english
+261,Little Miss Sunshine,2006,Comedy/Drama,A dysfunctional family travels in a van to a child beauty pageant in California.,medium,english
+262,Juno,2007,Comedy/Drama,A pregnant teenager decides to give her baby up for adoption to a wealthy couple.,medium,english
+263,Lady Bird,2017,Comedy/Drama,A strong-willed high school student navigates a turbulent relationship with her mother.,medium,english
+264,Moonlight,2016,Drama,A young Black man grows up in Miami while struggling with his identity and sexuality.,medium,english
+265,Call Me by Your Name,2017,Romance/Drama,A 17-year-old boy falls in love with his father's research assistant in Italy.,medium,english
+266,The Shape of Water,2017,Fantasy/Romance,A mute janitor at a secret laboratory falls in love with an amphibious creature.,medium,english
+267,Everything Everywhere All at Once,2022,Sci-Fi/Comedy,A woman is swept into a multiverse adventure to save reality using her alternate selves.,medium,english
+268,Banshees of Inisherin,2022,Comedy/Drama,Two lifelong friends find themselves at an impasse when one abruptly ends their bond.,medium,english
+269,Promising Young Woman,2020,Thriller/Crime,A woman traumatized by her past seeks revenge against those who cross her path.,medium,english
+270,CODA,2021,Drama/Music,"As a hearing child in a deaf family, a girl must choose between her family and music.",medium,english
+271,The Power of the Dog,2021,Western/Drama,"A charismatic, cruel rancher torments his brother's new wife and her son.",medium,english
+272,Tár,2022,Drama/Music,The downfall of a world-renowned conductor as her past behavior catches up with her.,medium,english
+273,Poor Things,2023,Sci-Fi/Comedy,A young woman is brought back to life by a scientist and goes on a journey of discovery.,medium,english
+274,Babylon,2022,Drama/History,A tale of outsized ambition and excess in the early days of Hollywood.,medium,english
+275,Challengers,2024,Sports/Romance,A tennis pro turned coach finds herself in the middle of a rivalry between two former friends.,medium,english
+276,Civil War,2024,Action/Thriller,A group of journalists travels across a dystopian America during a second civil war.,medium,english
+277,A Complete Unknown,2024,Biography/Music,The story of Bob Dylan’s rise in the 1960s folk music scene in New York.,medium,english
+278,The Bikeriders,2024,Crime/Drama,The rise and fall of a Midwestern motorcycle club in the 1960s.,medium,english
+279,Longlegs,2024,Horror/Crime,An FBI agent hunts a serial killer while discovering a personal connection to him.,medium,english
+280,Alien: Romulus,2024,Sci-Fi/Horror,Young space colonizers scavenge a derelict station and encounter the galaxy's deadliest lifeform.,medium,english
+281,Anora,2024,Comedy/Drama,"A young sex worker from Brooklyn marries the son of a Russian oligarch, sparking chaos.",medium,english
+282,Nosferatu,2024,Horror/Fantasy,A Gothic tale of obsession between a haunted young woman and a terrifying vampire.,medium,english
+283,Conclave,2024,Thriller,A cardinal must manage the secret-filled election of a new Pope after a sudden death.,medium,english
+284,The Piano Lesson,2024,Drama,A family in 1930s Pittsburgh argues over the fate of a prized heirloom piano.,medium,english
+285,A Real Pain,2024,Comedy/Drama,Two cousins travel to Poland to honor their grandmother and end up clashing.,medium,english
+286,Presence,2025,Horror/Thriller,A family moves into a suburban house and realizes they are not alone.,medium,english
+287,Black Bag,2025,Spy/Thriller,A high-stakes spy thriller involving elite operatives and a global conspiracy.,medium,english
+288,Michael,2025,Biography/Music,"The comprehensive life story of the King of Pop, Michael Jackson.",medium,english
+289,Mickey 17,2025,Sci-Fi/Adventure,"An ""expendable"" employee on an ice world colony refuses to let his replacement take over.",medium,english
+290,Sinners,2025,Horror/Action,"Two brothers return home to start fresh, only to find a greater evil waiting.",medium,english
+291,The Battle of Baktan Cross,2025,Crime/Drama,A complex story of power and law in a town divided by secrets.,medium,english
+292,Edrington,2026,Period/Drama,A grand historical drama about the rise of a powerful merchant family.,medium,english
+293,Project Hail Mary,2026,Sci-Fi,An astronaut wakes up with no memory and must use science to save Earth from a threat.,medium,english
+294,Weapon,2026,Action/Thriller,A high-octane thriller about a man who becomes a target after discovering a secret.,medium,english
+295,Street Justice,2026,Action/Crime,A former cop takes the law into his own hands to clean up his neighborhood.,medium,english
+296,The Last Voyage,2026,Adventure/Drama,A crew on a sailing vessel faces a supernatural storm in the middle of the Atlantic.,medium,english
+297,Superbad,2007,Comedy,Two high school seniors plan a wild night to lose their virginity before graduating.,medium,english
+298,Step Brothers,2008,Comedy,Two middle-aged men living at home are forced to become roommates when their parents marry.,medium,english
+299,Bridesmaids,2011,Comedy,A woman's life unravels as she serves as the maid of honor for her best friend.,medium,english
+300,Zombieland,2009,Comedy/Horror,A shy student joins a group of survivors on a road trip through a zombie-infested US.,medium,english
+301,Pineapple Express,2008,Comedy/Action,A process server and his dealer go on the run from a hitman and a corrupt cop.,medium,english
+302,Horrible Bosses,2011,Comedy/Crime,Three friends plot to murder their abusive employers with disastrous results.,medium,english
+303,21 Jump Street,2012,Comedy/Action,Two underachieving cops go undercover as high school students to bust a drug ring.,medium,english
+304,Magic Mike,2012,Comedy/Drama,A veteran male stripper takes a young performer under his wing.,medium,english
+305,Silver Linings Playbook,2012,Romance/Drama,A man with bipolar disorder tries to win back his wife and meets a mysterious girl.,medium,english
+306,The Perks of Being a Wallflower,2012,Romance/Drama,An introverted freshman is taken under the wings of two seniors who show him the world.,medium,english
+307,The Fault in Our Stars,2014,Romance/Drama,Two teenage cancer patients fall in love after meeting in a support group.,medium,english
+308,Me Before You,2016,Romance/Drama,"A girl becomes a caregiver for a wealthy, paralyzed man and changes his life.",medium,english
+309,Crazy Rich Asians,2018,Romance/Comedy,A woman travels to Singapore to meet her boyfriend's family and realizes they are ultra-wealthy.,medium,english
+310,Marriage Story,2019,Drama/Romance,"A stage director and his actor wife navigate a grueling, coast-to-coast divorce.",medium,english
+311,A Star Is Born,2018,Musical/Romance,A seasoned musician discovers and falls in love with a struggling artist.,medium,english
+312,Bohemian Rhapsody,2018,Biography/Music,The story of the legendary rock band Queen and their lead singer Freddie Mercury.,medium,english
+313,Rocketman,2019,Biography/Musical,A musical fantasy about the breakthrough years of rock legend Elton John.,medium,english
+314,Elvis,2022,Biography/Musical,The life and career of Elvis Presley from his childhood to becoming a superstar.,medium,english
+315,Blade Runner 2049,2017,Sci-Fi/Drama,A young blade runner uncovers a long-buried secret that leads him to find Rick Deckard.,medium,english
+316,Glass Onion,2022,Mystery/Comedy,Tech billionaire Miles Bron invites his friends for a getaway on his private Greek island.,medium,english
+317,Dunkirk,2017,War/Action,"Allied soldiers from Belgium, Britain, and France are surrounded by the German army.",medium,english
+318,1917,2019,War/Drama,Two soldiers are given a mission to deliver a message deep in enemy territory.,medium,english
+319,Kingsman: The Secret Service,2014,Action/Spy,A street kid is recruited into a secret spy organization to stop a global threat.,medium,english
+320,JoJo Rabbit,2019,Comedy/War,A young boy in Nazi Germany finds out his mother is hiding a Jewish girl in their attic.,medium,english
+321,Little Women,2019,Drama/Romance,The lives of four sisters in 19th-century Massachusetts as they navigate womanhood.,medium,english
+322,Ex Machina,2014,Sci-Fi/Thriller,A programmer is invited to test the human qualities of a highly advanced humanoid AI.,medium,english
+323,Killers of the Flower Moon,2023,Crime/Drama,Members of the Osage tribe are murdered under mysterious circumstances in the 1920s.,medium,english
+324,Past Lives,2023,Romance/Drama,Two childhood friends are reunited in New York after decades apart.,medium,english
+325,Anatomy of a Fall,2023,Mystery/Thriller,A woman is suspected of murder after her husband's death in the snow.,medium,english
+326,The Zone of Interest,2023,War/Drama,The commandant of Auschwitz and his wife build a dream life for their family next to the camp.,medium,english
+327,Society of the Snow,2023,Survival/Drama,The true story of the Uruguayan rugby team's survival after their plane crashed in the Andes.,medium,english
+328,Kinds of Kindness,2024,Comedy/Drama,"An anthology film exploring power, faith, and control in modern relationships.",medium,english
+329,Twisters,2024,Action/Adventure,A new generation of storm chasers risks their lives to test an experimental weather system.,medium,english
+330,Beetlejuice Beetlejuice,2024,Fantasy/Comedy,The ghost with the most returns when three generations of the Deetz family come home.,medium,english
+331,The Wild Robot,2024,Animation/Adventure,A robot is shipwrecked on a deserted island and must learn to survive with the animals.,medium,english
+332,Gladiator II,2024,Action/Drama,"Lucius, the nephew of Commodus, is forced to enter the Colosseum to fight for Rome.",medium,english
+333,A Minecraft Movie,2025,Adventure/Fantasy,A group of misfits is pulled through a portal into the blocky world of the Overworld.,medium,english
+334,The President's Cake,2025,Drama/Social,A 9-year-old girl is selected to prepare a cake for the President in 1990s Iraq.,medium,english
+335,All That's Left of You,2025,Drama/History,A Palestinian teenager is swept into a protest that changes his family's life forever.,medium,english
+336,Jurassic World Rebirth,2025,Action/Sci-Fi,A team of experts uncovers a discovery that could change the fate of the planet.,medium,english
+337,Avatar: Fire and Ash,2025,Sci-Fi/Action,"Jake and Neytiri encounter a new, aggressive volcanic tribe of Na'vi.",medium,english
+338,Thunderbolts*,2025,Action/Superhero,A group of reformed villains is sent on a mission for the government.,medium,english
+339,The Fantastic Four,2025,Action/Superhero,Marvel's first family must protect Earth from the planet-eating Galactus.,medium,english
+340,Blade,2025,Action/Horror,"A half-human, half-vampire hunts the undead while protecting humanity.",medium,english
+341,28 Years Later,2025,Horror/Sci-Fi,The long-awaited sequel set decades after the original viral outbreak in London.,medium,english
+342,Five Nights at Freddy's 2,2025,Horror/Thriller,New animatronics and secrets await at the cursed pizzeria in this sequel.,medium,english
+343,Iron Lung,2026,Horror/Sci-Fi,A convict is sent to explore a blood ocean on a distant moon in a rusting submarine.,medium,english
+344,Whalefall,2026,Thriller/Survival,A scuba diver is swallowed whole by a whale and must escape before his air runs out.,medium,english
+345,Mother Mary,2026,Thriller/Drama,A psychosexual thriller focusing on a pop star and her fashion designer confidante.,medium,english
+346,Ready or Not 2,2026,Horror/Comedy,Grace is kidnapped by a high-council family and must survive their dangerous games.,medium,english
+347,Send Help,2026,Thriller/Survival,Two people who can't stand each other are stranded on an island after a plane crash.,medium,english
+348,How to Make a Killing,2026,Crime/Drama,A man decides to eliminate seven relatives who stand between him and his inheritance.,medium,english
+349,The Muppet Show,2026,Comedy/Musical,Kermit and the gang return for a brand-new special event filled with music and guests.,medium,english
+350,Zootopia 2,2025,Animation/Comedy,Judy Hopps and Nick Wilde investigate a new case involving a mysterious reptile.,medium,english
+351,The Passion of the Christ: Resurrection,2025,Drama/History,The spiritual and physical journey of the Resurrection following the Crucifixion.,medium,english
+352,F1,2025,Sports/Action,A former driver returns to Formula One to mentor a young and talented teammate.,medium,english
+353,Now You See Me 3,2025,Mystery/Crime,"The Four Horsemen return for a new, mind-bending series of high-stakes illusions.",medium,english
+354,The Black Phone 2,2025,Horror/Thriller,The terrifying Grabber returns in a new chapter of the supernatural thriller.,medium,english
+355,Insidious: Thread,2025,Horror/Mystery,A family uses a spell to travel back in time to prevent their daughter's death.,medium,english
+356,Wolf Man,2025,Horror/Thriller,A family is terrorized by a lethal predator while staying at a remote farmhouse.,medium,english
+357,Companion,2025,Sci-Fi/Thriller,A futuristic story exploring a new kind of love story from the producers of Barbarian.,medium,english
+358,Den of Thieves 2: Pantera,2025,Action/Crime,"Big Nick is back on the hunt in Europe, tracking down a diamond thief.",medium,english
+359,Better Man,2024,Musical/Drama,"A unique musical biopic of Robbie Williams, portrayed as a chimpanzee.",medium,english
+360,The Apprentice,2024,Biography/Drama,A look at the early career of Donald Trump and his relationship with Roy Cohn.,medium,english
+361,Emilia Pérez,2024,Musical/Crime,A lawyer is hired by a cartel leader to help them undergo gender reassignment surgery.,medium,english
+362,Lee,2024,Biography/War,"The story of Lee Miller, a fashion model who became a war correspondent.",medium,english
+363,The Outrun,2024,Drama,A woman returns to her home in the Orkney Islands to cope with her past.,medium,english
+364,Small Things Like These,2024,Drama,A coal merchant discovers disturbing secrets kept by the local convent.,medium,english
+365,Nightbitch,2024,Comedy/Horror,A woman pauses her career to be a stay-at-home mom and starts to turn into a dog.,medium,english
+366,Maria,2024,Biography/Drama,"The life story of Maria Callas, the world's greatest opera singer.",medium,english
+367,Queer,2024,Drama/Romance,A man living in Mexico City becomes obsessed with a young student.,medium,english
+368,The Brutalist,2024,Drama/History,An architect migrates to America and works on a project that defines his legacy.,medium,english
+369,Blitz,2024,War/Drama,A group of Londoners tries to survive the aerial bombings of World War II.,medium,english
+370,Unstoppable,2024,Sports/Biography,"The true story of Anthony Robles, who became a champion wrestler with one leg.",medium,english
+371,The Last Showgirl,2024,Drama,A seasoned showgirl must plan her future when her show closes after 30 years.,medium,english
+372,Hard Truths,2024,Drama/Comedy,An intimate look at the lives of people living in modern-day London.,medium,english
+373,The Seed of the Sacred Fig,2024,Thriller/Drama,An investigating judge in Tehran deals with paranoia during political unrest.,medium,english
+374,All We Imagine as Light,2024,Drama,Two nurses in Mumbai seek a place to find their desires and freedom.,medium,english
+375,Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb,1964,Satire,An insane general triggers a path to nuclear apocalypse while politicians argue.,hard,english
+376,The Unbearable Weight of Massive Talent,2022,Action/Comedy,Nicolas Cage plays a fictionalized version of himself caught in a drug lord's plot.,hard,english
+377,The Assassination of Jesse James by the Coward Robert Ford,2007,Western,A slow-burn exploration of the relationship between a legendary outlaw and his killer.,hard,english
+378,"Synecdoche, New York",2008,Drama/Surreal,A theatre director creates a life-sized replica of New York City inside a warehouse.,hard,english
+379,The Killing of a Sacred Deer,2017,Psychological Horror,A surgeon is forced to make an unthinkable sacrifice after befriending a sinister teen.,hard,english
+380,A Pigeon Sat on a Branch Reflecting on Existence,2014,Comedy/Drama,"A series of surreal, absurd sketches exploring the banality and tragedy of human life.",hard,english
+381,Night of the Day of the Dawn of the Son of the Bride of the Return of the Revenge of the Terror,1991,Parody,"A horror spoof with one of the longest, most nonsensical titles in cinema history.",hard,english
+382,The Man Who Killed Don Quixote,2018,Adventure/Fantasy,An advertising executive travels through time and gets pulled into a deluded man's world.,hard,english
+383,The Discreet Charm of the Bourgeoisie,1972,Surrealist,A group of upper-class friends repeatedly tries to have dinner but is interrupted.,hard,english
+384,Rosencrantz & Guildenstern Are Dead,1990,Comedy/Drama,Two minor characters from Hamlet wander through the play unaware of their fate.,hard,english
+385,Requiem for a Dream,2000,Drama,A harrowing look at four people whose lives spiral out of control due to drug addiction.,hard,english
+386,"The Cook, the Thief, His Wife & Her Lover",1989,Crime/Drama,A restaurant setting becomes the site of a gruesome affair and a husband's revenge.,hard,english
+387,Fear and Loathing in Las Vegas,1998,Adventure/Comedy,A journalist and his lawyer travel to Vegas under heavy drug influence to cover a race.,hard,english
+388,8½,1963,Avant-garde,A film director struggles with creative block and retreats into memories and fantasies.,hard,english
+389,Beau Is Afraid,2023,Surrealist/Horror,"A paranoid man embarks on an epic, nightmare-inducing odyssey to visit his mother.",hard,english
+390,The Lobster,2015,Sci-Fi/Romance,"In a dystopian future, single people must find a partner in 45 days or be turned into animals.",hard,english
+391,Cloud Atlas,2012,Sci-Fi/Drama,Multiple stories across different time periods show how souls are interconnected.,hard,english
+392,Magnolia,1999,Drama,A mosaic of interrelated characters in search of love and forgiveness in California.,hard,english
+393,Tumbbad,2018,Folk Horror,(Hindi/Intl) A family’s greed leads them to a cursed treasure protected by a fallen god.,hard,english
+394,Mulholland Drive,2001,Neo-Noir/Mystery,An aspiring actress befriends an amnesiac woman following a car crash in L.A.,hard,english
+395,Enter the Void,2009,Experimental,A drug dealer’s soul hovers over the neon streets of Tokyo after his death.,hard,english
+396,Swiss Army Man,2016,Comedy/Drama,A man stranded on an island befriends a flatulent corpse to help him get home.,hard,english
+397,The Banshees of Inisherin,2022,Black Comedy,Two lifelong friends find themselves at an impasse when one abruptly ends their bond.,hard,english
+398,Pan's Labyrinth,2006,Dark Fantasy,A young girl in 1944 Spain escapes into a terrifying but beautiful fantasy world.,hard,english
+399,Do the Right Thing,1989,Drama,Tensions rise in a Brooklyn neighborhood on the hottest day of the summer.,hard,english
+400,"Three Billboards Outside Ebbing, Missouri",2017,Crime/Drama,A mother challenges local authorities to solve her daughter's murder using billboards.,hard,english
+401,The Lighthouse,2019,Psychological Horror,Two lighthouse keepers descend into madness while stranded on a remote island.,hard,english
+402,Everything is Illuminated,2005,Comedy/Drama,A young man travels to Ukraine to find the woman who saved his grandfather in WWII.,hard,english
+403,Me and You and Everyone We Know,2005,Comedy/Drama,Interconnected stories about people searching for connection in the digital age.,hard,english
+404,The Grandmaster,2013,Martial Arts/Drama,"A stylized biography of Ip Man, the legendary teacher of Bruce Lee.",hard,english
+405,Amores Perros,2000,Crime/Thriller,A horrific car accident in Mexico City links three stories involving dogs and humans.,hard,english
+406,Oldboy,2003,Action/Thriller,"A man is kidnapped and imprisoned for 15 years, then released to find his captor.",hard,english
+407,Portrait of a Lady on Fire,2019,Romance/Drama,A female painter falls in love with the woman she is commissioned to paint in secret.,hard,english
+408,Drive My Car,2021,Drama,A widowed actor finds solace in his young female driver during a theatre residency.,hard,english
+409,In the Mood for Love,2000,Romance/Drama,Two neighbors form a bond after discovering their spouses are having an affair.,hard,english
+410,Rashomon,1950,Crime/Mystery,"A murder is described from four different, conflicting perspectives by witnesses.",hard,english
+411,I'm Thinking of Ending Things,2020,Psychological Thriller,"A woman travels with her new boyfriend to his parents' farm, but reality begins to shift.",hard,english
+412,The Elephant Man,1980,Biography/Drama,A Victorian surgeon rescues a heavily disfigured man from a freak show.,hard,english
+413,The Last Year at Marienbad,1961,Experimental,A man tries to convince a woman that they met and fell in love a year ago.,hard,english
+414,Bicycle Thieves,1948,Drama,"In post-war Rome, a man and his son search for his stolen bicycle vital for his job.",hard,english
+415,Metropolis,1927,Sci-Fi,"In a futuristic city, the son of a wealthy planner falls for a working-class prophet.",hard,english
+416,Seven Samurai,1954,Action/Drama,A village hires seven masterless samurai to protect them from invading bandits.,hard,english
+417,Blade Runner,1982,Sci-Fi/Noir,"A cop is tasked with hunting down and ""retiring"" rogue bioengineered humans.",hard,english
+418,The Seventh Seal,1957,Fantasy/Drama,A knight plays a game of chess with Death to delay his fate during the Plague.,hard,english
+419,Gone with the Wind,1939,Romance/History,A manipulative woman and a roguish man navigate the American Civil War.,hard,english
+420,Citizen Kane,1941,Drama/Mystery,Reporters struggle to uncover the meaning of a publishing tycoon's final word.,hard,english
+421,Casablanca,1942,Romance/War,An American expatriate must choose between his love and helping her husband escape.,hard,english
+422,12 Angry Men,1957,Courtroom Drama,A jury of twelve men must decide the fate of a youth accused of murder.,hard,english
+423,Psycho,1960,Horror/Thriller,A woman on the run stays at a remote motel run by a man under his mother's thumb.,hard,english
+424,2001: A Space Odyssey,1968,Sci-Fi,Humanity discovers a mysterious monolith that triggers an evolutionary journey.,hard,english
+425,The Exorcist,1973,Horror,A mother seeks help from two priests to save her daughter from a demonic possession.,hard,english
+426,Alien,1979,Sci-Fi/Horror,The crew of a space vessel encounters a deadly extraterrestrial life form.,hard,english
+427,The Shining,1980,Psychological Horror,A family stays at an isolated hotel where a sinister presence drives the father mad.,hard,english
+428,Blue Velvet,1986,Neo-Noir,"A college student discovers a severed ear, leading him into a dark criminal world.",hard,english
+429,Full Metal Jacket,1987,War/Drama,A pragmatic U.S. Marine observes the dehumanizing effects of the Vietnam War.,hard,english
+430,Nomadland,2020,Drama,A woman in her sixties embarks on a journey through the American West as a nomad.,hard,english
+431,Minari,2020,Drama,A Korean-American family moves to an Arkansas farm in search of their own American Dream.,hard,english
+432,Belfast,2021,Biography/Drama,A young boy and his working-class family navigate the turmoil of 1960s Northern Ireland.,hard,english
+433,The Whale,2022,Drama,"A reclusive, morbidly obese English teacher tries to reconnect with his teenage daughter.",hard,english
+434,All Quiet on the Western Front,2022,War/Drama,A young German soldier's terrifying experiences on the front lines during WWI.,hard,english
+435,The Fabelmans,2022,Biography/Drama,A young boy discovers a shattering family secret through his love of filmmaking.,hard,english
+436,The Curious Case of Benjamin Button,2008,Fantasy/Drama,The story of a man who is born old and ages backward through the decades.,hard,english
+437,The Englishman Who Went Up a Hill But Came Down a Mountain,1995,Comedy/Drama,Cartographers visit a village and declare their local mountain is only a hill.,hard,english
+438,"To Wong Foo, Thanks for Everything! Julie Newmar",1995,Comedy,Three drag queens travel cross-country until their car breaks down in a small town.,hard,english
+439,"Alexander and the Terrible, Horrible, No Good, Very Bad Day",2014,Family/Comedy,A young boy experiences the most disastrous day of his life with his family.,hard,english
+440,The Hunger Games: Sunrise on the Reaping,2026,Sci-Fi/Thriller,A prequel focusing on Haymitch Abernathy during the 50th Hunger Games.,hard,english
+441,"Jeanne Dielman, 23, quai du Commerce, 1080 Bruxelles",1975,Art/Drama,A meticulously slow film about the daily routine of a widowed housewife.,hard,english
+442,Birdman or (The Unexpected Virtue of Ignorance),2014,Comedy/Drama,A washed-up superhero actor tries to revive his career with a Broadway play.,hard,english
+443,Who Is Harry Kellerman and Why Is He Saying Those Terrible Things About Me?,1971,Comedy/Drama,A successful songwriter struggles with his identity and a mysterious slanderer.,hard,english
+444,Don't Be a Menace to South Central While Drinking Your Juice in the Hood,1996,Parody/Comedy,"A spoof of 1990s ""urban"" dramas and hood films.",hard,english
+445,The Chronicles of Narnia: The Voyage of the Dawn Treader,2010,Fantasy,Two siblings return to Narnia to help a prince find lost lords at sea.,hard,english
+446,Borat: Cultural Learnings of America for Make Benefit Glorious Nation of Kazakhstan,2006,Mockumentary,A Kazakh journalist travels through the USA to learn about its culture.,hard,english
+447,Sherlock Holmes: A Game of Shadows,2011,Mystery/Action,Holmes and Watson travel across Europe to stop Professor Moriarty's plot.,hard,english
+448,The Lord of the Rings: The Fellowship of the Ring,2001,Fantasy,A small hobbit begins a journey to destroy a powerful and evil ring.,hard,english
+449,The Last Voyage of the Demeter,2023,Horror/Thriller,A ship's crew is picked off by a hidden creature while sailing from Europe to London.,hard,english
+450,Fried Green Tomatoes at the Whistle Stop Cafe,1991,Drama,A housewife befriends an elderly woman who tells stories of life in the 1920s.,hard,english
+451,One Flew Over the Cuckoo's Nest,1975,Drama,A criminal fakes insanity to enter a mental institution and rebels against the nurse.,hard,english
+452,The Taking of Pelham One Two Three,1974,Crime/Thriller,Armed men hijack a New York City subway train and demand a ransom.,hard,english
+453,The Hudsucker Proxy,1994,Comedy/Fantasy,A naive mailroom clerk is promoted to CEO as part of a stock-market scam.,hard,english
+454,"O Brother, Where Art Thou?",2000,Comedy/Adventure,Three escaped convicts search for hidden treasure during the Great Depression.,hard,english
+455,Beasts of the Southern Wild,2012,Fantasy/Drama,A young girl lives in a sinking bayou community and faces a prehistoric threat.,hard,english
+456,A Clockwork Orange,1971,Sci-Fi/Crime,A violent delinquent undergoes experimental therapy to cure his criminal urges.,hard,english
+457,The Life Aquatic with Steve Zissou,2004,Comedy/Adventure,"An oceanographer hunts down a ""Jaguar Shark"" that ate his partner.",hard,english

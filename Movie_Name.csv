@@ -1,0 +1,461 @@
+id,title,year,genre,description,difficulty
+1,Sholay,1975,Action/Drama,Two ex-convicts are hired by a retired cop to capture a ruthless bandit.,easy
+2,Dangal,2016,Sports/Drama,A former wrestler trains his daughters to become world-class wrestlers.,easy
+3,Pushpa: The Rise,2021,Action/Crime,A laborer rises through the ranks of a red sandalwood smuggling syndicate.,medium
+4,Baahubali,2015,Fantasy/Action,A brave man learns about his royal heritage and seeks to reclaim his kingdom.,easy
+5,3 Idiots,2009,Comedy/Drama,Two friends search for their long-lost companion while recalling college days.,easy
+6,Lagaan,2001,Sports/Drama,Villagers bet their future on a game of cricket against British officers.,easy
+7,PK,2014,Sci-Fi/Comedy,An alien stranded on Earth asks innocent questions that challenge religion.,easy
+8,KGF: Chapter 1,2018,Action/Crime,A high-profile assassin goes undercover as a slave in a gold mine.,medium
+9,Kabir Singh,2019,Romance/Drama,A brilliant surgeon spirals into self-destruction after losing his love.,easy
+10,Queen,2013,Comedy/Drama,A girl goes on her honeymoon alone after her fiancé cancels the wedding.,easy
+11,Drishyam,2015,Thriller,A common man uses his knowledge of films to protect his family from a crime.,easy
+12,Andhadhun,2018,Thriller/Comedy,A piano player pretending to be blind gets caught in a murder mystery.,easy
+13,Bajrangi Bhaijaan,2015,Drama/Action,A man tries to reunite a mute Pakistani girl with her family across the border.,medium
+14,Stree,2018,Horror/Comedy,A town lives in fear of a spirit that kidnaps men at night during a festival.,easy
+15,Dilwale Dulhania Le Jayenge,1995,Romance,A young man tries to win over the conservative father of the girl he loves.,hard
+16,Jawan,2023,Action,A man sets out to rectify the wrongs in society with a team of women.,easy
+17,Pathaan,2023,Action/Spy,An exiled RAW agent comes back to stop a private terror group.,easy
+18,Animal,2023,Action/Crime,A son's obsessive love for his father leads to a violent underworld war.,easy
+19,Lage Raho Munna Bhai,2006,Comedy/Drama,"A local goon starts seeing Mahatma Gandhi and uses ""Gandhigiri"" to solve problems.",medium
+20,Chak De! India,2007,Sports,A disgraced hockey player coaches the Indian women's team to victory.,medium
+21,Gadar: Ek Prem Katha,2001,Action/Drama,A truck driver falls in love with a Muslim girl during the partition of India.,medium
+22,Bhool Bhulaiyaa,2007,Horror/Comedy,"A psychologist is called to a palace to solve a mystery involving a ""ghost.""",medium
+23,Zindagi Na Milegi Dobara,2011,Drama/Adventure,Three friends go on a road trip in Spain and face their deepest fears.,hard
+24,Barfi!,2012,Romance/Comedy,The story of a mute man and his relationship with two beautiful women.,easy
+25,Kantara,2022,Action/Thriller,A forest officer and a local rebel clash over land and ancient tradition.,easy
+26,Dhurandhar,2025,Action,A high-octane revenge saga that broke box office records in late 2025.,easy
+27,RRR,2022,Action/Drama,Two revolutionaries join forces to fight British colonialists in the 1920s.,easy
+28,Leo,2023,Action/Thriller,A mild-mannered cafe owner is targeted by a gang who thinks he's a former hitman.,easy
+29,Singham,2011,Action,An honest police officer takes on a corrupt politician in a small town.,easy
+30,Dhoom,2004,Action/Thriller,A cop and a mechanic team up to catch a high-speed gang of bikers.,easy
+31,Ra.One,2011,Sci-Fi/Action,A game developer’s virtual villain enters the real world to find his creator’s son.,easy
+32,Koi... Mil Gaya,2003,Sci-Fi/Drama,A developmentally disabled man befriends an alien who gives him superpowers.,medium
+33,Makhhi,2012,Fantasy/Action,A man is murdered and reincarnated as a housefly to seek revenge on his killer.,easy
+34,Robot (Enthiran),2010,Sci-Fi/Action,A scientist builds a humanoid robot that eventually falls in love with his girlfriend.,medium
+35,Sita Ramam,2022,Romance/Drama,An orphan soldier's life changes when he receives a letter from a girl named Sita.,easy
+36,Jailer,2023,Action/Crime,A retired prison warden goes on a mission to rescue his son from a gang.,easy
+37,Fighter,2024,Action,Top IAF pilots unite to face imminent danger while battling internal demons.,easy
+38,Kalki 2898 AD,2024,Sci-Fi/Epic,A modern avatar of Vishnu descends to Earth to protect the world from evil.,medium
+39,Stree 2,2024,Horror/Comedy,The residents of Chanderi face a new headless ghost; sequel to the 2018 hit.,easy
+40,Munna Bhai M.B.B.S.,2003,Comedy,A gangster pretends to be a doctor to fulfill his father's dream.,medium
+41,Gadar 2,2023,Action/Drama,Tara Singh ventures back into Pakistan to rescue his imprisoned son.,easy
+42,Bhool Bhulaiyaa 3,2024,Horror/Comedy,Rooh Afza returns to a haunted mansion to deal with a new supernatural threat.,medium
+43,Singham Again,2024,Action,Bajirao Singham returns with a massive cop universe team to take down a cult.,medium
+44,Jab We Met,2007,Romance/Comedy,A depressed businessman's life changes after meeting a bubbly girl on a train.,medium
+45,Chhichhore,2019,Drama/Comedy,"Friends reunite in a hospital and recall their ""loser"" college days to help a kid.",easy
+46,Salar: Part 1,2023,Action,A gang leader tries to keep a promise to his dying friend by taking on criminal gangs.,medium
+47,Vikram,2022,Action/Thriller,"A high-octane chase involving a special agent, a drug lord, and a mysterious masked man.",easy
+48,Master,2021,Action,"An alcoholic professor is sent to a juvenile school, where he clashes with a ruthless gangster.",easy
+49,KGF: Chapter 2,2022,Action/Crime,"Rocky, now the king of Kolar Gold Fields, must defend his empire against adversaries and the government.",medium
+50,Border 2,2026,War/Action,"A modern sequel to the 1997 classic, focusing on a new generation of soldiers at the border.",easy
+51,Drishyam 3,2026,Thriller,The continuation of the Salgaonkar family's saga as past secrets resurface to haunt them.,easy
+52,Ramayana,2026,Mythological,A grand cinematic retelling of the ancient Indian epic featuring high-end visual effects.,easy
+53,Happy Patel,2026,Comedy/Spy,A quirky detective finds himself in the middle of a high-stakes international conspiracy.,easy
+54,King,2026,Action/Drama,Shah Rukh Khan stars in a high-octane father-daughter survival story.,easy
+55,Brahmāstra: Part 2,2026,Fantasy/Action,"The Astraverse expands as the powerful ""Dev"" rises to challenge Shiva.",medium
+56,Welcome To The Jungle,2026,Comedy/Action,"A massive ensemble cast gets stranded in a hilarious, dangerous jungle.",hard
+57,Kick 2,2026,Action/Comedy,"Salman Khan’s ""Devil"" returns for another high-speed adrenaline rush.",easy
+58,No Entry 2,2026,Comedy,The sequel to the cult hit involving mistaken identities and chaotic wives.,medium
+59,Dhoom 4,2026,Action/Crime,A new thief and a familiar cop engage in a high-tech international chase.,easy
+60,Sarkar Raj,2008,Crime/Drama,A powerful political family deals with internal betrayal and corporate greed.,easy
+61,Main Hoon Na,2004,Action/Masala,An army officer goes undercover as a student to protect a general's daughter.,medium
+62,Krrish,2006,Sci-Fi/Superhero,A young man with inherited powers travels to Singapore to rescue his father.,easy
+63,Dhoom 2,2006,Action/Heist,A master of disguise steals rare artifacts while being chased by a super-cop.,easy
+64,Race,2008,Thriller/Action,"Two brothers compete in a high-stakes game of betrayal, murder, and fast cars.",easy
+65,Bhooth Bangla,2026,Horror/Comedy,Akshay Kumar returns to the horror-comedy genre in a haunted mansion.,medium
+66,Toxic,2026,Action/Thriller,A high-stakes action saga starring Yash (from KGF fame).,easy
+67,Hera Pheri 3,2026,Comedy,"The legendary trio of Raju, Shyam, and Baburao return for a new scam.",medium
+68,Mardaani 3,2026,Crime/Action,Shivani Shivaji Roy takes on her most dangerous case yet.,easy
+69,Sivaji: The Boss,2007,Action/Drama,A software engineer returns to India to help society but faces corruption.,medium
+70,I (Ai),2015,Romance/Thriller,A disfigured former bodybuilder seeks revenge on those who ruined his life.,easy
+71,Magadheera,2009,Fantasy/Action,A stunt biker recalls his past life as a warrior protecting a princess.,easy
+72,Don,1978/2006,Action/Thriller,A lookalike is sent undercover to infiltrate a powerful criminal empire.,easy
+73,Karan Arjun,1995,Action/Drama,Two brothers are reincarnated to take revenge on their greedy uncle.,easy
+74,Mohabbatein,2000,Romance/Drama,A music teacher challenges a strict principal's anti-romance policies.,easy
+75,Kal Ho Naa Ho,2003,Romance/Drama,A man with a fatal secret tries to set up the girl he loves with his best friend.,medium
+76,Om Shanti Om,2007,Fantasy/Masala,A junior artist is reincarnated as a superstar to avenge his past lover's death.,medium
+77,Bodyguard,2011,Action/Romance,A bodyguard falls in love with the girl he is protecting over secret phone calls.,easy
+78,Ghajini,2008,Action/Thriller,A man with short-term memory loss uses tattoos and notes to hunt a killer.,easy
+79,Dabangg,2010,Action/Comedy,A fearless but corrupt police officer deals with family and a local politician.,easy
+80,Kick,2014,Action/Heist,"A man who lives for ""kicks"" becomes a masked thief to help sick children.",easy
+81,Sultan,2016,Sports/Drama,A middle-aged wrestler tries to make a comeback to win back his wife’s respect.,easy
+82,War,2019,Action/Spy,An Indian agent goes rogue and his student is tasked with hunting him down.,easy
+83,Brahmāstra,2022,Fantasy/Action,A DJ discovers he has a connection to fire and a secret society of protectors.,easy
+84,Baazigar,1993,Thriller,A cold-blooded man seduces the daughters of the businessman who ruined his family.,easy
+85,Border,1997,War/Drama,A small battalion of Indian soldiers defends their post against a massive army.,easy
+86,Darr,1993,Psychological Thriller,An obsessed man stalks a woman who is engaged to a naval officer.,easy
+87,Padmaavat,2018,Period Drama,A tyrant sultan leads a war to capture a beautiful queen from her kingdom.,easy
+88,Tanhaji,2020,Action/History,A Maratha warrior leads a daring mission to recapture a strategic fort.,easy
+89,Sanju,2018,Biography/Drama,The controversial and chaotic life of Bollywood superstar Sanjay Dutt.,easy
+90,Super 30,2019,Biography/Drama,A brilliant mathematician starts a program to coach underprivileged students.,easy
+91,Agneepath,2012,Action/Crime,A young man seeks revenge against the man who lynched his father years ago.,easy
+92,Krrish 3,2013,Superhero/Action,Krishna must save the world from a man-made virus and a team of mutants.,easy
+93,Bang Bang!,2014,Action/Adventure,A bank receptionist gets caught up in a globe-trotting chase with a thief.,easy
+94,Ek Tha Tiger,2012,Spy/Action,An Indian spy falls in love with a Pakistani agent during a mission in Dublin.,medium
+95,Rustom,2016,Crime/Drama,A naval officer is put on trial for murdering his wife’s lover.,easy
+96,Mission Mangal,2019,Drama/Sci-Fi,A team of scientists works against the odds to launch India's Mars mission.,medium
+97,Good Newwz,2019,Comedy/Drama,"Two couples with the same last name undergo IVF, resulting in a sperm mix-up.",easy
+98,Baby,2015,Action/Spy,An elite counter-intelligence unit hunts down terrorists planning an attack.,easy
+99,Holiday,2014,Action/Thriller,An army officer on vacation uncovers a network of sleeper cells in Mumbai.,easy
+100,Singham Returns,2014,Action/Crime,Singham fights black money and corruption within the political system.,medium
+101,Baaghi,2016,Action,A martial arts student fights a powerful gangster to rescue his girlfriend.,easy
+102,Badri Ki Dulhania,2017,Romance/Comedy,A boy from a traditional family falls for an ambitious girl who wants to work.,medium
+103,Ae Dil Hai Mushkil,2016,Romance/Drama,A story about unrequited love and the complexities of friendship.,medium
+104,Hichki,2018,Drama,A teacher with Tourette syndrome tries to turn a group of rebels into winners.,easy
+105,Secret Superstar,2017,Musical/Drama,A talented girl dreams of being a singer but must hide her identity.,medium
+106,Toilet: Ek Prem Katha,2017,Social/Romance,A man fights for proper sanitation in his village to keep his wife from leaving.,medium
+107,Raazi,2018,Spy/Thriller,An Indian girl is married into a Pakistani military family to act as a spy.,easy
+108,Uri: The Surgical Strike,2019,War/Action,Indian special forces carry out a retaliatory strike against terrorist camps.,hard
+109,Dream Girl,2019,Comedy,A man gets a job at a female friendship call center using a woman's voice.,easy
+110,Bala,2019,Comedy/Satire,A young man suffers from premature balding and tries every possible cure.,easy
+111,OMG: Oh My God!,2012,Satire/Comedy,An atheist sues God after his shop is destroyed in an earthquake.,medium
+112,Drishyam 2,2022,Thriller,"Six years later, the investigation into the missing boy is reopened.",easy
+113,Vikram Vedha,2022,Action/Crime,A tough cop tracks down a gangster who tells him stories that change his view.,medium
+114,Tu Jhoothi Main Makkaar,2023,Romance/Comedy,"A ""break-up consultant"" falls for a girl but realizes she is his next client.",hard
+115,Rocky Aur Rani,2023,Romance/Family,Two polar opposites live with each other’s families before getting married.,medium
+116,Sam Bahadur,2023,Biography/War,"The life and career of Sam Manekshaw, India's first Field Marshal.",easy
+117,Dunki,2023,Drama/Comedy,Four friends use an illegal backdoor entry to immigrate to London.,easy
+118,Merry Christmas,2024,Mystery,"Two strangers meet on Christmas Eve, but the night turns into a nightmare.",medium
+119,Article 370,2024,Political/Thriller,A field agent is sent on a secret mission after the special status is revoked.,easy
+120,Crew,2024,Comedy/Heist,Three air hostesses get caught in a web of lies and a gold smuggling plot.,easy
+121,Shaitaan,2024,Horror/Thriller,A family is held hostage in their home by a man using black magic.,easy
+122,Munjya,2024,Horror/Comedy,A young man is haunted by a spirit that wants him to get it married.,easy
+123,Bad Newz,2024,Comedy,A rare medical case leads to a woman carrying twins from two different fathers.,easy
+124,Vicky Vidya Ka Woh Wala Video,2024,Comedy,A couple in the 90s loses a private CD and goes on a wild hunt to find it.,hard
+125,Housefull 5,2025,Comedy,The confusion continues on a cruise ship with a massive ensemble cast.,easy
+126,War 2,2025,Action/Spy,Two elite agents from different countries are forced into a deadly game.,easy
+127,Alpha,2025,Action/Spy,The first female-led film in the YRF Spy Universe.,easy
+128,Baghban,2003,Drama/Family,An elderly couple is separated by their children and must find their own way.,easy
+129,Partner,2007,Comedy/Romance,"A ""Love Guru"" helps a shy man win the heart of a wealthy businesswoman.",easy
+130,Race 2,2013,Thriller/Action,A man plans an elaborate heist to avenge the death of his girlfriend.,easy
+131,Tiger Zinda Hai,2017,Spy/Action,Two secret agents team up to rescue a group of nurses held hostage by terrorists.,medium
+132,Bajirao Mastani,2015,Romance/History,The epic tale of the romance between a Maratha General and a warrior princess.,medium
+133,Chennai Express,2013,Comedy/Action,A man traveling to Rameshwaram gets caught up with a local don's daughter.,medium
+134,Rowdy Rathore,2012,Action/Comedy,A small-time crook discovers he has a police officer lookalike.,medium
+135,Dabangg 2,2012,Action/Comedy,Chulbul Pandey moves to a new city and faces off against a corrupt politician.,easy
+136,Wanted,2009,Action/Crime,A lethal hitman is caught between two warring gangs and the police.,easy
+137,Ready,2011,Comedy/Romance,A man helps a girl escape from her greedy uncles who want her inheritance.,easy
+138,Housefull 2,2012,Comedy,Four fathers-in-law and four sons-in-law create a web of lies and confusion.,easy
+139,Singam,2011,Action/Crime,A small-town cop is transferred to the city and takes on a powerful gangster.,easy
+140,Bol Bachchan,2012,Comedy/Action,A man lies about his identity to a powerful village head to get a job.,medium
+141,Son of Sardaar,2012,Comedy/Action,A man returns to his ancestral village and gets caught in a long-standing feud.,medium
+142,Student of the Year,2012,Romance/Drama,Competitive students at a high school battle for a prestigious trophy.,medium
+143,Yeh Jawaani Hai Deewani,2013,Romance/Drama,Two former classmates find love while on a trekking trip in Manali.,hard
+144,Aashiqui 2,2013,Musical/Romance,A famous singer helps a talented girl find fame while he spirals into alcoholism.,easy
+145,Bhaag Milkha Bhaag,2013,Sports/Biography,"The true story of the ""Flying Sikh"" and his journey to become a champion.",medium
+146,Holiday: A Soldier Is Never Off Duty,2014,Action/Thriller,An army officer on vacation uncovers a network of sleeper cells in Mumbai.,hard
+147,Gabbar Is Back,2015,Action/Crime,A man forms his own vigilante group to systematically eliminate corrupt officials.,medium
+148,ABCD 2,2015,Dance/Drama,A dance troupe travels to Las Vegas to compete in a world championship.,easy
+149,Prem Ratan Dhan Payo,2015,Family/Drama,A lookalike replaces a prince days before his coronation to protect him.,medium
+150,Dilwale,2015,Action/Romance,Two sets of siblings fall in love despite their families' violent pasts.,easy
+151,Airlift,2016,History/Drama,A businessman leads the evacuation of Indians stranded in Kuwait during the war.,easy
+152,M.S. Dhoni: The Untold Story,2016,Sports/Biography,The life journey of India's most successful cricket captain.,hard
+153,Jolly LLB 2,2017,Comedy/Law,A small-time lawyer takes on a powerful attorney in a high-profile murder case.,medium
+154,Raees,2017,Action/Crime,A bootlegger in Gujarat builds an empire while being chased by a stubborn cop.,easy
+155,Badrinath Ki Dulhania,2017,Romance/Comedy,A boy from a traditional family tries to win over an independent-minded girl.,medium
+156,Hindi Medium,2017,Comedy/Drama,Parents go to extreme lengths to get their daughter into a top private school.,medium
+157,Golmaal Again,2017,Horror/Comedy,Five orphan friends return to their old neighborhood and encounter a ghost.,medium
+158,Padman,2018,Social/Biography,A man creates a low-cost sanitary pad machine to help women in his village.,easy
+159,Badhaai Ho,2018,Comedy/Drama,A middle-aged couple faces social stigma when the mother gets pregnant.,easy
+160,Gully Boy,2019,Musical/Drama,An aspiring rapper from the slums of Mumbai fights to find his voice.,easy
+161,Kesari,2019,War/History,"21 Sikh soldiers defend their post against 10,000 Afghan invaders.",easy
+162,Housefull 4,2019,Comedy/Fantasy,Three brothers discover they are reincarnated and must find their true lovers.,easy
+163,Tanhaji: The Unsung Warrior,2020,History/Action,A Maratha warrior leads a daring mission to capture the Kondhana fort.,hard
+164,Sooryavanshi,2021,Action/Crime,Anti-Terrorism Squad chief works to prevent a massive attack on Mumbai.,easy
+165,83,2021,Sports/Biography,The story of India's incredible victory at the 1983 Cricket World Cup.,easy
+166,The Kashmir Files,2022,History/Drama,A student discovers the dark truth about his family's exodus from Kashmir.,medium
+167,Bhool Bhulaiyaa 2,2022,Horror/Comedy,A man pretends to be a psychic to help a girl but encounters a real ghost.,medium
+168,Jugjugg Jeeyo,2022,Family/Comedy,A father and son both plan to divorce their wives during a family wedding.,medium
+169,Brahmāstra: Part One – Shiva,2022,Fantasy/Action,A DJ discovers he has the power to control fire and must protect the world.,hard
+170,Bhediya,2022,Horror/Comedy,A man transforms into a werewolf after being bitten by a mystical wolf in Arunachal.,easy
+171,Zara Hatke Zara Bachke,2023,Romance/Comedy,A couple fakes a divorce to get a flat under a government scheme.,hard
+172,Dream Girl 2,2023,Comedy,A man pretends to be a woman named Pooja to earn money for his wedding.,medium
+173,Tiger 3,2023,Spy/Action,Tiger and Zoya are framed as traitors and must go on a mission to clear their names.,easy
+174,Teri Baaton Mein Aisa Uljha Jiya,2024,Sci-Fi/Romance,"A man falls in love with a woman, only to realize she is a highly advanced robot.",hard
+175,Laapataa Ladies,2024,Comedy/Drama,Two young brides get accidentally swapped during a train journey.,medium
+176,Maidaan,2024,Sports/Biography,"The story of Syed Abdul Rahim, the architect of modern Indian football.",easy
+177,Srikanth,2024,Biography/Drama,The life of visually impaired entrepreneur Srikanth Bolla.,easy
+178,The Buckingham Murders,2024,Mystery/Thriller,A grieving detective investigates the murder of a child in a small UK town.,hard
+179,Jigra,2024,Action/Drama,A sister goes on a dangerous mission to rescue her brother from a foreign prison.,easy
+180,Baby John,2024,Action/Thriller,A former cop goes into hiding but must come back to protect his daughter.,easy
+181,Fateh,2025,Action/Thriller,A high-tech thriller about an agent fighting cybercrime on a global scale.,easy
+182,The Raja Saab,2025,Horror/Comedy,A man discovers a supernatural presence in his ancestral palace.,medium
+183,Sikandar,2025,Action/Drama,A man with a mysterious past takes on a powerful criminal organization.,easy
+184,Kantāra,2022,Action/Thriller,A conflict between humans and nature involving local folklore and deities.,easy
+185,Bareilly Ki Barfi,2017,Romance/Comedy,A girl looks for the author of a book she loves and finds a complex love triangle.,medium
+186,Newton,2017,Drama/Comedy,A government clerk tries to conduct free elections in a conflict-prone jungle.,easy
+187,Vicky Donor,2012,Comedy/Romance,A young man becomes a sperm donor to earn money but faces marriage issues.,easy
+188,Hera Pheri,2000,Comedy,Three roommates get a wrong phone call and decide to use it for a ransom.,easy
+189,Article 15,2019,Crime/Drama,A police officer investigates the disappearance of three girls in rural India.,easy
+190,Masaan,2015,Drama,Two parallel stories in Varanasi exploring social stigma and loss.,easy
+191,Udaan,2010,Drama,A teenager returns to his oppressive father after being expelled from school.,easy
+192,Tumbbad,2018,Horror/Fantasy,A family's greed leads them to a cursed treasure protected by a fallen god.,easy
+193,Ajab Prem Ki Ghazab Kahani,2009,Romance/Comedy,A happy-go-lucky boy falls in love with a girl who loves someone else.,hard
+194,Kabhi Khushi Kabhie Gham,2001,Family/Drama,A wealthy family is torn apart when the eldest son marries a middle-class girl.,hard
+195,Main Prem Ki Diewani Hoon,2003,Romance/Comedy,"A girl is mistaken about which ""Prem"" her parents have chosen for her.",hard
+196,Detective Byomkesh Bakshy!,2015,Mystery,A fresh graduate investigates a disappearance in 1940s war-torn Calcutta.,hard
+197,Pyaar Ka Punchnama,2011,Comedy/Romance,Three roommates find their lives turning into a nightmare after falling in love.,medium
+198,Mere Dad Ki Maruti,2013,Comedy,A boy loses his father's brand new car right before his sister's wedding.,medium
+199,Gangs of Wasseypur,2012,Crime/Action,A multi-generational saga of a coal mafia power struggle in Dhanbad.,medium
+200,Haseena Maan Jaayegi,1999,Comedy,Two brothers play pranks on their father to win over their girlfriends' dad.,medium
+201,Once Upon a Time in Mumbaai,2010,Crime/Drama,The rise of a smuggler in the 70s and his clash with a rising young protégé.,hard
+202,Aamdani Atthanni Kharcha Rupaiya,2001,Comedy/Social,Three housewives struggle to make ends meet while their husbands waste money.,hard
+203,Kahaani,2012,Thriller,A pregnant woman searches for her missing husband in Kolkata during Durga Puja.,easy
+204,Ratsasan,2018,Crime/Thriller,An aspiring filmmaker turned cop tracks a serial killer who targets schoolgirls.,easy
+205,Khosla Ka Ghosla,2006,Comedy/Drama,A middle-class family tries to reclaim their land from a corrupt property dealer.,medium
+206,Bheja Fry,2007,Comedy,A tax inspector who loves to talk ruins the life of a music producer in one night.,easy
+207,Special 26,2013,Heist/Thriller,A team of con artists poses as CBI officers to conduct fake income tax raids.,easy
+208,Aparichit (Anniyan),2005,Action/Thriller,A lawyer with multiple personality disorder punishes corrupt people based on Garuda Purana.,medium
+209,Haider,2014,Crime/Drama,A young man returns to Kashmir to seek answers about his father's disappearance.,easy
+210,Ponniyin Selvan: I,2022,Historical/Epic,A power struggle ensues within the Chola Empire in the 10th century.,medium
+211,The Sabarmati Report,2024,Drama/Thriller,A journalist uncovers the truth behind a tragic historical event.,medium
+212,Rocky Aur Rani Kii Prem Kahaani,2023,Romance/Family,Two polar opposite people live with each other's families before getting married.,hard
+213,"Monica, O My Darling",2022,Neo-Noir/Comedy,A clever robotics expert joins a murderous plot after a lustful affair.,medium
+214,Badla,2019,Mystery/Thriller,A young businesswoman and her lawyer try to figure out how she ended up in a locked room with a dead body.,easy
+215,Pati Patni Aur Woh 2,2026,Comedy,"A sequel exploring the hilarious complications of a man caught between his wife and a ""new"" interest.",hard
+216,Vvan: Force of the Forrest,2026,Action/Thriller,A story focused on the survival and battle of a group against forces within a dense forest.,hard
+217,Awarapan 2,2026,Drama/Action,"A spiritual successor to the original, focusing on themes of redemption and tragic love.",easy
+218,Dhurandhar: The Revenge,2026,Crime/Spy,A high-stakes spy thriller involving a massive undercover operation and betrayal.,hard
+219,Chand Mera Dil,2026,Romance,A deep romantic drama exploring the sacrifices made in the name of love in modern times.,medium
+220,Khandani Shafakhana,2019,Comedy/Social,A girl inherits a sex clinic in a small town and tries to break social taboos.,medium
+221,Stanley Ka Dabba,2011,Drama,A schoolboy who doesn't bring his own lunchbox faces trouble from a greedy teacher.,medium
+222,36 China Town,2006,Mystery/Comedy,A group of strangers becomes suspects when a wealthy casino owner is found dead.,medium
+223,Love & War,2026,Period/Drama,Sanjay Leela Bhansali's epic tale of romance set against a backdrop of war.,medium
+224,Mirzapur: The Film,2026,Crime/Thriller,The hit web series moves to the big screen for a final battle for the throne.,medium
+225,Bhediya 2,2026,Horror/Comedy,The werewolf saga continues as Bhaskar faces a new supernatural predator.,easy
+226,Luv Shuv Tey Chicken Khurana,2012,Comedy/Food,A man searches for his grandfather's secret recipe to save the family dhaba.,hard
+227,Phas Gaye Re Obama,2010,Satire/Comedy,"A victim of the US recession gets kidnapped by a gang of ""recessed"" Indian goons.",medium
+228,Kissa Court Kachehari Ka,2026,Drama,A realistic and satirical look at the Indian legal system.,hard
+229,Bhavesh Joshi Superhero,2018,Action,A young man becomes a vigilante to fight local corruption in Mumbai.,hard
+230,Aam dani Atthanni Kharcha Rupaiya,2001,Comedy,Three families struggle with their low income and high expenses.,hard
+231,Sanam Teri Kasam,2016,Romance/Drama,A musical romantic tale about a girl who is disowned by her family.,medium
+232,No Entry,2005,Comedy,Three men get into trouble when they try to hide their extra-marital affairs.,easy
+233,De Dana Dan,2009,Comedy,Two broke friends plan a kidnapping to get rich but end up in a chaotic hotel.,medium
+234,Table No. 21,2013,Thriller,A couple enters a live game show on their anniversary that turns deadly.,medium
+235,Lootera,2013,Romance/Drama,An aristocrat's daughter falls for a visiting archaeologist with a secret identity.,easy
+236,D-Day,2013,Action/Thriller,A team of Indian agents is sent to Pakistan to bring back a high-profile criminal.,easy
+237,Madras Cafe,2013,War/Spy,An Indian intelligence agent is caught in the middle of a civil war in Sri Lanka.,easy
+238,NH10,2015,Thriller/Action,A couple's road trip turns into a nightmare when they witness an honor killing.,easy
+239,Piku,2015,Comedy/Drama,"A daughter takes her eccentric, aging father on a road trip from Delhi to Kolkata.",easy
+240,Dum Laga Ke Haisha,2015,Romance/Drama,"A shy man is forced into an arranged marriage with an educated, overweight girl.",medium
+241,Talaash,2012,Mystery/Thriller,A grieving cop investigates a mysterious car accident involving a movie star.,easy
+242,Gupt: The Hidden Truth,1997,Mystery/Thriller,A man is framed for his father's murder and must find the real killer while on the run.,hard
+243,Dil Se..,1998,Romance/Thriller,"A radio broadcaster falls for a mysterious woman with a hidden, dangerous past.",easy
+244,Sarfarosh,1999,Action/Drama,A medical student joins the police force to stop cross-border terrorism.,easy
+245,Company,2002,Crime/Drama,A young man joins an underworld gang and rises quickly through the ranks.,easy
+246,Yuva,2004,Drama/Action,Three young men from different social backgrounds meet during a political incident.,easy
+247,Black,2005,Drama,A teacher helps a deaf-blind girl explore her world and gain an education.,easy
+248,Bunty Aur Babli,2005,Comedy/Crime,Two small-town dreamers team up to become a legendary con-artist duo.,medium
+249,Guru,2007,Drama/Biography,A simple villager travels to Mumbai and builds one of India's largest empires.,easy
+250,Shootout at Lokhandwala,2007,Action/Crime,A real-life encounter between the Mumbai police and a gang of ruthless criminals.,hard
+251,Taare Zameen Par,2007,Drama/Family,An art teacher helps a dyslexic boy find his confidence and hidden talents.,medium
+252,A Wednesday!,2008,Thriller,A common man threatens to blow up Mumbai unless his demands are met.,easy
+253,Fashion,2008,Drama,A small-town girl faces the dark reality and struggles of the modeling world.,easy
+254,Rock On!!,2008,Musical/Drama,Four friends reunite years later to revive their failed college rock band.,easy
+255,Dev.D,2009,Drama/Romance,A modern-day retelling of Devdas set in the world of drug abuse and neon lights.,easy
+256,Wake Up Sid,2009,Comedy/Drama,"A lazy, rich college student learns about responsibility from an aspiring writer.",medium
+257,Paa,2009,Drama,A 12-year-old boy with a rare genetic disorder seeks to find his father.,easy
+258,Karthik Calling Karthik,2010,Thriller/Mystery,"An introvert starts receiving phone calls from his own ""other self.""",hard
+259,Raajneeti,2010,Political/Drama,A modern adaptation of the Mahabharata set in the world of Indian politics.,easy
+260,Band Baaja Baaraat,2010,Romance/Comedy,Two ambitious college graduates start a successful wedding planning business.,medium
+261,No One Killed Jessica,2011,Crime/Drama,A journalist and a sister fight for justice in a high-profile murder case.,hard
+262,Dhobi Ghat,2010,Drama,The lives of four different people in Mumbai intersect in unexpected ways.,easy
+263,Shor in the City,2011,Crime/Drama,Multiple stories of crime and life unfold during the chaotic Ganesh Chaturthi.,medium
+264,Delhi Belly,2011,Comedy/Crime,Three roommates get mixed up with a dangerous diamond smuggling gang.,easy
+265,The Dirty Picture,2011,Biography/Drama,The rise and fall of a Southern actress known for her bold roles.,medium
+266,Paan Singh Tomar,2012,Biography/Crime,An athlete becomes a dacoit after being betrayed by the system.,medium
+267,Shanghai,2012,Political/Thriller,An investigation into the death of an activist reveals a deep political conspiracy.,easy
+268,English Vinglish,2012,Comedy/Drama,A housewife joins an English-speaking class to gain respect from her family.,medium
+269,Kai Po Che!,2013,Drama/Sports,Three friends struggle to keep their bond alive during social and political unrest.,medium
+270,Ship of Theseus,2012,Drama,Three different individuals explore the philosophical nature of identity and life.,medium
+271,Shahid,2012,Biography/Law,The life of an activist lawyer who fought for the rights of the wrongly accused.,easy
+272,October,2018,Drama/Romance,A hotel management intern's life changes when a colleague meets with an accident.,easy
+273,Manmarziyaan,2018,Romance/Drama,"A complex love triangle involving a DJ, a local girl, and a businessman.",easy
+274,Kedarnath,2018,Romance/Drama,A Muslim porter and a Hindu girl fall in love amidst the 2013 Uttarakhand floods.,easy
+275,Sonchiriya,2019,Action/Crime,A group of dacoits in Chambal searches for a way to find redemption.,easy
+276,Mard Ko Dard Nahi Hota,2018,Action/Comedy,A young man with a rare condition that prevents him from feeling pain learns martial arts.,hard
+277,Section 375,2019,Law/Drama,A high-stakes courtroom drama focusing on a rape case and the law's interpretation.,easy
+278,The Sky Is Pink,2019,Biography/Drama,A couple tells the story of their marriage through the lens of their daughter's illness.,medium
+279,Saand Ki Aankh,2019,Biography/Sports,Two elderly sisters-in-law become world-class sharpshooters later in life.,medium
+280,Thappad,2020,Drama,A woman's life is turned upside down when her husband slaps her at a party.,easy
+281,Gunjan Saxena,2020,Biography/Drama,The journey of India's first female combat pilot during the Kargil War.,medium
+282,Ludo,2020,Comedy/Crime,Four different stories of people in a city collide in a game of fate.,easy
+283,Sherni,2021,Thriller/Drama,A forest officer leads a team to capture a man-eating tigress in a rural village.,easy
+284,Shershaah,2021,Biography/War,The heroic story of Captain Vikram Batra during the 1999 Kargil War.,easy
+285,Sardar Udham,2021,Biography/History,A revolutionary travels to London to avenge the Jallianwala Bagh massacre.,medium
+286,Minnal Murali,2021,Superhero/Action,A local tailor gets superpowers after being struck by lightning in a small town.,medium
+287,Joji,2021,Crime/Drama,A modern-day interpretation of Macbeth set in a wealthy family in Kerala.,easy
+288,Gehraiyaan,2022,Drama/Romance,"A complex look at modern relationships, infidelity, and childhood trauma.",easy
+289,Jalsa,2022,Thriller/Drama,A hit-and-run incident links the lives of a famous journalist and her cook.,easy
+290,Gangubai Kathiawadi,2022,Crime/Biography,A young girl is sold into prostitution but rises to become a powerful matriarch.,medium
+291,Dasvi,2022,Comedy/Social,A corrupt politician decides to appear for his 10th-grade exams while in prison.,easy
+292,Jersey,2022,Sports/Drama,A former cricketer returns to the field in his late 30s for his son's sake.,easy
+293,Rocketry,2022,Biography/Sci-Fi,"The life and struggle of Nambi Narayanan, a brilliant aerospace engineer.",easy
+294,Darlings,2022,Comedy/Thriller,A woman and her mother take revenge on an abusive husband in a quirky way.,easy
+295,Chup,2022,Thriller/Mystery,A serial killer targets film critics who give biased reviews to movies.,easy
+296,Qala,2022,Musical/Drama,A young singer struggles with fame and the pressure of her mother's expectations.,easy
+297,An Action Hero,2022,Action/Comedy,A movie star is forced into a real-life chase after an accidental death.,medium
+298,Mrs. Chatterjee vs Norway,2023,Drama/Biography,An Indian mother fights for the custody of her children against the Norwegian government.,hard
+299,Bheed,2023,Social/Drama,A look at the struggles of migrant workers during the 2020 lockdown in India.,easy
+300,Afwaah,2023,Thriller,"A rumor on social media spirals out of control, endangering the lives of two strangers.",easy
+301,Kathal,2023,Comedy/Mystery,A policewoman investigates the mysterious theft of two valuable jackfruits.,easy
+302,Sirf Ek Bandaa Kaafi Hai,2023,Law/Drama,A common lawyer takes on a powerful godman accused of sexually assaulting a minor.,hard
+303,Goldfish,2023,Drama,A daughter returns to care for her mother who is suffering from dementia.,easy
+304,Mastaney,2023,History/Action,Five common men are hired to play the role of Sikh warriors during Nader Shah's invasion.,easy
+305,Amar Singh Chamkila,2024,Biography/Musical,The life and tragic death of Punjab's highest record-selling artist.,medium
+306,Sector 36,2024,Crime/Thriller,A police officer hunts a serial killer responsible for the disappearance of children.,easy
+307,The Goat Life,2024,Survival/Drama,An Indian immigrant is forced into slavery as a goat herder in the Saudi desert.,medium
+308,** CTRL**,2024,Thriller/Sci-Fi,A woman seeks help from an AI app to erase her ex-boyfriend from her life.,easy
+309,Mera Naam Joker,1970,Drama,A circus clown recounts his life and the three women he loved and lost.,medium
+310,Abhimaan,1973,Drama/Musical,A popular singer marries a talented girl but becomes jealous of her rising fame.,easy
+311,Chhoti Si Baat,1976,Romance/Comedy,A shy man seeks help from an expert to win the heart of the girl he loves.,medium
+312,Shatranj Ke Khilari,1977,History/Drama,Two noblemen are obsessed with chess while their kingdom is annexed by the British.,medium
+313,Gol Maal,1979,Comedy,A man creates a fake twin brother to save his job with a traditional boss.,easy
+314,Sparsh,1980,Drama,A blind principal falls in love with a widow who volunteers at his school.,easy
+315,Umrao Jaan,1981,Period Drama,The life of a famous courtesan and poetess in 19th-century Lucknow.,easy
+316,Masoom,1983,Family/Drama,A happy family's life is disrupted when the husband's illegitimate son arrives.,easy
+317,Jaane Bhi Do Yaaro,1983,Comedy/Satire,Two photographers accidentally witness a murder and expose corruption.,medium
+318,Saaransh,1984,Drama,An elderly couple struggles to cope with the loss of their only son.,easy
+319,Mirch Masala,1987,Drama,A village woman stands up against a powerful and oppressive tax collector.,medium
+320,Parinda,1989,Crime/Drama,Two brothers find themselves on opposite sides of the underworld.,easy
+321,Jo Jeeta Wohi Sikandar,1992,Sports/Romance,A carefree boy takes up his brother's place in a prestigious cycling race.,hard
+322,Damini,1993,Law/Drama,A woman fights for justice for a domestic help who was raped by her brother-in-law.,easy
+323,1942: A Love Story,1994,Romance/History,A love story set against the backdrop of the Indian independence movement.,medium
+324,Rangeela,1995,Romance/Drama,A local street-smart boy is in love with an aspiring actress who meets a superstar.,easy
+325,Maachis,1996,History/Crime,A young man turns into a militant after being targeted by the system in Punjab.,easy
+326,Satya,1998,Crime/Drama,An immigrant in Mumbai joins a gang and experiences the grim reality of crime.,easy
+327,The Legend of Bhagat Singh,2002,Biography/History,The life and sacrifice of one of India's most famous freedom fighters.,hard
+328,Ab Tak Chhappan,2004,Crime/Thriller,The life of an encounter specialist in the Mumbai police force.,medium
+329,Swades,2004,Drama,A NASA scientist returns to his village in India and works to bring electricity.,easy
+330,Hazaaron Khwaishein Aisi,2003,Drama/History,Three friends find their ideals challenged by the political turmoil of the 70s.,hard
+331,Iqbal,2005,Sports/Drama,A deaf and mute boy dreams of playing cricket for the Indian national team.,easy
+332,Omkara,2006,Crime/Drama,A modern adaptation of Othello set in the hinterlands of Uttar Pradesh.,easy
+333,Life in a... Metro,2007,Drama,Nine different people living in Mumbai face various relationship issues.,medium
+334,Manorama Six Feet Under,2007,Mystery/Noir,A government official is hired to find proof of an extra-marital affair.,hard
+335,Johnny Gaddaar,2007,Neo-Noir/Thriller,A young member of a criminal gang decides to double-cross his partners.,medium
+336,Gulaal,2009,Political/Drama,A law student gets caught up in the violent and dirty world of student politics.,easy
+337,Ishqiya,2010,Romance/Crime,Two criminals on the run fall in love with the same mysterious widow.,easy
+338,Go Goa Gone,2013,Horror/Comedy,A group of friends goes to a rave party in Goa and encounters a zombie outbreak.,medium
+339,Finding Fanny,2014,Comedy/Adventure,Five oddballs set out on a road trip to find a man's long-lost childhood love.,medium
+340,Ugly,2013,Thriller/Mystery,The disappearance of a young girl triggers a chain of events revealing dark secrets.,easy
+341,Waiting,2015,Drama,Two strangers meet in a hospital while waiting for their spouses to recover.,easy
+342,Aligarh,2015,Biography/Drama,A journalist uncovers the story of a professor suspended for his sexual orientation.,easy
+343,Nil Battey Sannata,2015,Drama,A single mother joins her daughter's school to motivate her to study.,medium
+344,A Death in the Gunj,2016,Drama/Mystery,A family vacation in a quiet town takes a dark turn during a game of planchette.,hard
+345,Lipstick Under My Burkha,2016,Drama,Four women in a small town secretively pursue their desires and freedoms.,hard
+346,Trapped,2016,Thriller/Survival,A man accidentally gets locked inside his apartment in an empty high-rise building.,easy
+347,Kadvi Hawa,2017,Drama,An elderly blind man and a young bank clerk cope with the effects of climate change.,easy
+348,Death on the Nile,2025,Mystery/Crime,A Hindi-dubbed detective thriller set on a luxury cruise where a murder occurs.,medium
+349,Game of Cards,2026,Thriller/Spy,A modern spy drama involving an undercover operation in a foreign nation.,medium
+350,The Mirror,2026,Horror/Mystery,A psychological horror film about a haunted mirror that reveals dark truths.,easy
+351,City of Lights,2025,Drama,A family migrates to a big city only to face the harsh realities of urban life.,medium
+352,Double Cross,2025,Action/Thriller,A heist movie where the team members turn on each other for the loot.,medium
+353,Blue Moon,2026,Romance/Sci-Fi,A futuristic love story where people can live in their virtual memories.,easy
+354,The Silent Valley,2026,Adventure/Mystery,A group of explorers discovers a hidden valley with an ancient secret.,medium
+355,Iron Fist,2025,Action,A street fighter enters a tournament to avenge his master's death.,easy
+356,Aankhen,2002,Heist/Thriller,A disgruntled bank manager recruits three blind men to rob his own bank.,easy
+357,Khakee,2004,Action/Thriller,A police team is tasked with escorting a terrorist from a small town to Mumbai.,easy
+358,Dhol,2007,Comedy/Mystery,Four lazy friends try to woo a rich girl but get mixed up in a criminal plot.,easy
+359,Aamir,2008,Thriller,A man returning from London is forced to carry out a terrorist task.,easy
+360,Bypass Road,2019,Thriller,A fashion designer is left paraplegic after an accident and becomes a murder suspect.,easy
+361,Panga,2020,Sports/Drama,A former kabaddi player decides to make a comeback after having a family.,easy
+362,Mimi,2021,Comedy/Drama,A young woman in Rajasthan decides to be a surrogate for a foreign couple.,easy
+363,Tribhanga,2021,Family/Drama,A dysfunctional family of three generations of women deals with their past.,easy
+364,Pagglait,2021,Comedy/Drama,A young widow struggles to feel grief after the sudden death of her husband.,easy
+365,Haseen Dillruba,2021,Mystery/Thriller,A woman is suspected of murdering her husband while his past secrets come out.,medium
+366,A Thursday,2022,Thriller,A playschool teacher takes 16 children hostage and makes a set of demands.,easy
+367,Freddy,2022,Thriller,A shy dentist becomes obsessed with a woman and turns into a dark stalker.,easy
+368,Chhatriwali,2023,Comedy/Social,A chemistry genius uses her skills to promote sex education in a small town.,easy
+369,Zwigato,2023,Drama,A man loses his job as a factory manager and becomes a food delivery rider.,easy
+370,Lust Stories 2,2023,Drama/Romance,Four short stories exploring modern relationships and human desires.,medium
+371,Jaane Jaan,2023,Mystery/Thriller,"A single mother and her daughter are involved in a crime, and a neighbor helps.",easy
+372,Khufiya,2023,Spy/Thriller,An Indian agent is tasked with finding a mole within the intelligence agency.,easy
+373,Kill,2024,Action/Thriller,Two soldiers face off against a gang of bandits on a moving train.,easy
+374,Auron Mein Kahan Dum Tha,2024,Romance/Drama,"An epic love story spanning two decades, focusing on sacrifice and fate.",hard
+375,Ulajh,2024,Spy/Thriller,A young diplomat is embroiled in a dangerous conspiracy at a foreign embassy.,easy
+376,Khel Khel Mein,2024,Comedy/Drama,Friends at a dinner party play a game where they reveal their phone secrets.,medium
+377,The Heist,2025,Crime/Action,A group of specialists plans a robbery of a high-security diamond vault.,easy
+378,Red Carpet,2025,Drama/Mystery,A movie star's life is ruined after a scandal breaks during a film festival.,easy
+379,The Last Stand,2026,War/Action,A group of soldiers defends an outpost against an overwhelming enemy force.,medium
+380,Hidden Path,2026,Adventure/Fantasy,A young man finds a portal to a world where myths are real.,easy
+381,The Strategist,2025,Political/Thriller,A brilliant political advisor manipulates an election for his client.,medium
+382,Cyber Hunt,2026,Sci-Fi/Action,A hacker is hired by the government to stop a global cyber-terrorist.,easy
+383,The Lost City,2025,Adventure,An archaeologist discovers the ruins of a city that was never on the maps.,medium
+384,Shadow Boxer,2026,Sports/Drama,A boxer from the slums fights his way to the national championship.,medium
+385,The Deal,2025,Crime/Thriller,"A drug deal goes wrong, leading to a deadly cat-and-mouse game with the police.",easy
+386,Wild Trails,2026,Adventure,A wildlife photographer gets lost in the jungle and must survive the wild.,easy
+387,Black Out,2024,Thriller,"A city faces a total power outage, and a group of strangers must survive the chaos.",easy
+388,The Architect,2025,Drama,A man dreams of building a structure that will change the city's skyline.,medium
+389,Code Name: Fire,2026,Spy/Action,An agent goes undercover to stop a weapon of mass destruction.,medium
+390,The Investigator,2025,Mystery/Crime,A detective is called to solve a murder in a secluded mansion.,medium
+391,Deep Waters,2026,Thriller/Adventure,A salvage team discovers a sunken ship with a mysterious cargo.,easy
+392,The Candidate,2025,Political/Drama,An honest man decides to run for office to clean up the system.,medium
+393,Neon Nights,2026,Sci-Fi/Drama,A story of love and loss in a future city run by technology.,easy
+394,The Outcast,2025,Drama,A man returns to his village after years in prison and seeks acceptance.,easy
+395,Velocity,2026,Action/Sports,A street racer is recruited for a high-stakes illegal race.,easy
+396,The Inheritance,2025,Mystery/Family,"A family gathers for the reading of a will, but secrets start to emerge.",medium
+397,Echoes of the Past,2026,Drama/Mystery,A woman discovers a letter that leads her to a truth about her family history.,medium
+398,The Healer,2025,Fantasy/Drama,A man discovers he has the power to heal people with his touch.,easy
+399,Urban Jungle,2026,Action/Crime,A cop takes on a powerful gang that controls a section of the city.,medium
+400,The Script,2025,Comedy/Drama,A struggling writer's script accidentally gets into the hands of a superstar.,easy
+401,Undercurrent,2026,Thriller,A group of friends on a boat trip realizes one of them is a killer.,easy
+402,The Collector,2025,Horror/Mystery,An antique collector finds an object that is cursed.,medium
+403,Final Call,2026,Action/Thriller,A pilot must land a plane after the crew is incapacitated.,easy
+404,The Guardian,2025,Action,A bodyguard is assigned to protect a child who is the heir to a fortune.,medium
+405,Matru Ki Bijlee Ka Mandola,2013,Satire/Comedy,A man struggles with alcoholism and a plan to sell his village lands.,hard
+406,Andheri Raat Mein Diya Tere Haath Mein,1986,Comedy/Mystery,A cult-favorite title for charades; involves a comical chase in the dark.,hard
+407,Allah Meharban To Gadha Pehalwan,1997,Comedy,A quirky story about luck turning a simpleton into a powerful man.,hard
+408,Jajantaram Mamantaram,2003,Fantasy,An Indian adaptation of Gulliver's Travels where a man ends up in a tiny world.,hard
+409,Sasti Dulhan Mahenga Dulha,1986,Comedy/Drama,A satirical take on the dowry system and wedding expenses in middle class.,hard
+410,Sonu Ke Titu Ki Sweety,2018,Comedy/Romance,A man tries to protect his best friend from a woman he thinks is too perfect.,hard
+411,Arvind Desai Ki Ajeeb Dastaan,1978,Drama,A man from a wealthy family struggles with his conscience and identity.,hard
+412,Murde Ki Jaan Khatre Mein,1985,Comedy/Crime,"A hilarious title where a ""dead man"" keeps getting into more trouble.",hard
+413,Thodasa Roomani Ho Jayen,1990,Drama/Romance,A magical stranger changes the lives of the people in a small rainy town.,hard
+414,Jal Bin Machhli Nritya Bin Bijli,1971,Musical/Drama,A girl leaves her wealthy home to follow her passion for classical dancing.,hard
+415,Tu Bal Bramhachari Main Hoon Kanya Kunwari,1996,Comedy,A man sworn to celibacy is pursued by a woman who wants to marry him.,hard
+416,Sasta Dulhan Mahenga Dulha,1986,Satire/Comedy,"A hilarious take on the dowry system and the ""cost"" of getting married.",hard
+417,Badhti Ka Naam Dadhi,1974,Comedy,A man's inheritance depends on him growing the longest beard in town.,hard
+418,Dhoti Lota Aur Chowpatty,1975,Comedy,A quirky look at the lives of different people living in Mumbai's slums.,hard
+419,Paap Ko Jalaakar Raakh Kar Doonga,1988,Action,A police officer goes on a rampage to destroy a criminal empire.,hard
+420,Miss Tanakpur Haazir Ho,2015,Satire,A political satire about a man accused of raping a buffalo in a village.,hard
+421,Ghar Mein Ram Gali Mein Shyam,1988,Drama,A classic tale of a man who is a saint at home but a rogue in the streets.,hard
+422,Albert Pinto Ko Gussa Kyun Aata Hai?,1980,Drama,A mechanic becomes angry at the social and political state of the country.,hard
+423,Salim Langde Pe Mat Ro,1989,Drama/Crime,A small-time thief in Mumbai dreams of a better life while facing social bias.,hard
+424,Kuku Mathur Ki Jhand Ho Gayi,2014,Comedy,A young man finds himself in a series of embarrassing situations in Delhi.,hard
+425,Shin Shinaki Boobla Boo,1952,Adventure/Comedy,A classic film with a nonsensical title that is a nightmare for guessing games.,hard
+426,Udhar Ka Sindur,1976,Drama,A man is adopted by a rich family but faces tragedy when his past is revealed.,hard
+427,Main Madhuri Dixit Banna Chahti Hoon,2003,Comedy/Drama,A small-town girl travels to Mumbai with dreams of becoming a superstar.,hard
+428,Ek Chalis Ki Last Local,2007,Crime/Comedy,Two strangers miss the last train and end up in a series of bizarre events.,hard
+429,Dulhe Raja,1998,Comedy,A dhaba owner clashes with a wealthy hotelier whose daughter he loves.,hard
+430,Sankranthiki Vasthunam,2025,Action/Drama,A massive family-oriented action drama released for the festival season.,hard
+431,Mehandi Ban Gayi Khoon,1991,Action/Drama,A woman takes up arms to avenge the murder of her family on her wedding day.,hard
+432,Bande Haath,1973,Thriller,A thief tries to reform himself but is haunted by his lookalike who is a murderer.,hard
+433,Guru Suleman Chela Pahelwan,1981,Comedy,"A rhyming, obscure title involving a teacher and a wrestler.",hard
+434,Dilruba Tangewali,1987,Drama,Combines a romantic term with a very specific profession (horse-cart driver).,hard
+435,Raja Ranee Ko Chahiye Paseena,1978,Comedy,"One of the most absurd titles in Bollywood history, making it a ""Hard"" mode legend.",hard
+436,Do Ladke Dono Kadke,1979,Comedy,A title about two broke boys that is often confused with other similar-sounding movies.,hard
+437,Bhediyon Ka Samooh,1991,Crime/Action,"A dark police procedural involving a ""pack of wolves"" (corrupt officials).",hard
+438,Dr. Kotnis Ki Amar Kahani,1946,Biography,An old-school classic about an Indian doctor in China.,hard
+439,Raja Ko Rani Se Pyaar Ho Gaya,2000,Romance,A common song lyric that is surprisingly hard to guess as a movie.,hard
+440,Hello! Hum Lallan Bol Rahe Hain,2010,Comedy,A title that sounds like a phone conversation; great for confusing opponents.,hard
+441,Zulm Ko Jalaakar Raakh Kar Doonga,1988,Action,A vengeful man decides to systematically burn down a criminal empire.,hard
+442,Sone Pe Suhaaga,1988,Action,Three brothers separated by a villain reunite to take him down.,hard
+443,Peepli Live,2010,Satire,A farmer's threat to commit suicide becomes a media circus and political tool.,hard
+444,Filmistaan,2012,Comedy/Drama,An aspiring actor is kidnapped by terrorists and bonds with his guard over cinema.,hard
+445,Sona Spa,2013,Sci-Fi/Drama,A specialized spa allows wealthy clients to buy the sleep of others.,hard
+446,Das Kapital: Gulami Ki Zanjeerein,2025,Drama,A modern retelling of labor struggles set in an industrial wasteland.,hard
+447,The Quantum Shadow,2026,Sci-Fi/Thriller,A physicist discovers his experiments are erasing his own past.,hard
+448,Kissa Kursi Ka,1977,Satire,A political satire so controversial it was originally banned during the Emergency.,hard
+449,Om-Dar-B-Dar,1988,Surrealist,A cult classic known for its non-linear and dreamlike storytelling.,hard
+450,Mohan Joshi Hazir Ho!,1984,Satire,An elderly couple sues their landlord in a case that lasts for decades.,hard
+451,Suraj Ka Satvan Ghoda,1992,Drama,A storyteller narrates three interconnected stories about love and morality.,hard
+452,Ek Doctor Ki Maut,1990,Drama,A scientist's discovery of a vaccine is ignored and suppressed by the system.,hard
+453,Uski Roti,1970,Art,"A minimal, slow-paced film about a wife waiting for her bus-driver husband.",hard
+454,Party,1984,Drama,A social gathering of elites exposes the hypocrisy of the artistic community.,hard
+455,Garm Hava,1973,History,A Muslim family decides whether to stay in India or migrate after Partition.,hard
+456,Duvidha,1973,Fantasy,A ghost falls in love with a newlywed bride and takes the form of her husband.,hard
+457,Agnantavaas,2025,Thriller,"A group of people goes into hiding in a forest, only to realize they are being hunted.",hard
+458,The Neon Gutter,2026,Neo-Noir,A detective stalks the neon-lit streets of a future Mumbai looking for a ghost.,hard
+459,Bila Khoon Ki Mehandi,1990,Action,A title so long and specific it’s almost impossible to guess without the year.,hard
+460,Bandit Queen,1994,Biography,"The brutal and true life story of Phoolan Devi, the outlaw-turned-politician.",hard
