@@ -31,7 +31,7 @@ const CONFIG = {
     english: { label: 'English', code: 'en' },
     hindi: { label: 'Hindi', code: 'hi' },
     spanish: { label: 'Spanish', code: 'es' },
-    french: { label: 'French', code: 'fr' }
+    french: { label: 'French', code: 'fr' },
     all: { label: 'All Movies', code: '', pageMax: 100 },
     english: { label: 'English', code: 'en', pageMax: 100 },
     hindi: { label: 'Hindi', code: 'hi', pageMax: 15 },
