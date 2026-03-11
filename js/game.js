@@ -395,3 +395,17 @@ $('playAgainBtn').addEventListener('click', () => {
     closeBtn?.addEventListener('click', closeDrawer);
     backdrop?.addEventListener('click', closeDrawer);
 })();
+
+/* ── Hamburger Nav Drawer ── */
+(function () {
+    const drawer = $('mobNavDrawer');
+    const openBtn = $('menuToggleBtn');
+    const closeBtn = $('menuCloseBtn');
+    const backdrop = $('menuBackdrop');
+    if (!drawer || !openBtn) return;
+    function openDrawer() { drawer.classList.add('drawer--open'); }
+    function closeDrawer() { drawer.classList.remove('drawer--open'); }
+    openBtn.addEventListener('click', openDrawer);
+    closeBtn?.addEventListener('click', closeDrawer);
+    backdrop?.addEventListener('click', closeDrawer);
+})();

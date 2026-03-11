@@ -39,33 +39,51 @@ function mpTiles(all = false) {
 
 /* ── Hearts ── */
 function mpHearts() {
-    const c = mpS('mpHeartsBox'); c.innerHTML = '';
-    for (let i = 0; i < 3; i++) {
-        const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        s.setAttribute('viewBox', '0 0 24 24'); s.setAttribute('fill', 'currentColor');
-        s.classList.add('heart-icon'); if (i >= MP.att) s.classList.add('heart-icon--empty');
-        s.innerHTML = '<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>';
-        c.appendChild(s);
+    function fillHearts(c) {
+        if (!c) return;
+        c.innerHTML = '';
+        for (let i = 0; i < 3; i++) {
+            const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            s.setAttribute('viewBox', '0 0 24 24'); s.setAttribute('fill', 'currentColor');
+            s.classList.add('heart-icon'); if (i >= MP.att) s.classList.add('heart-icon--empty');
+            s.innerHTML = '<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>';
+            c.appendChild(s);
+        }
     }
+    fillHearts(mpS('mpHeartsBox'));
+    fillHearts(mpS('mpHeartsMob'));
 }
 
 /* ── UI Update ── */
 function mpUI() {
     const p = MP.p, t = MP.turn;
-    mpS('mpTurnText').textContent = `${p[t].name}'s Turn`;
-    mpS('mpRound').textContent = `Round ${MP.round} / 10`;
-    mpS('mpP1Score').textContent = p[0].score.toLocaleString() + ' PTS';
-    mpS('mpP2Score').textContent = p[1].score.toLocaleString() + ' PTS';
-    mpS('mpP1Name').textContent = p[0].name;
-    mpS('mpP2Name').textContent = p[1].name;
-    mpS('mpLeader').textContent = p[0].score >= p[1].score ? p[0].name : p[1].name;
-    mpS('mpP1Hints').textContent = `${p[0].hints}/3 used`;
-    mpS('mpP2Hints').textContent = `${p[1].hints}/3 used`;
+    const turnName = p[t].name;
+    const leader = p[0].score >= p[1].score ? p[0].name : p[1].name;
+    // Desktop
+    ['mpTurnText'].forEach(id => { const el = mpS(id); if (el) el.textContent = `${turnName}'s Turn`; });
+    ['mpRound', 'mpRound2'].forEach(id => { const el = mpS(id); if (el) el.textContent = `Round ${MP.round} / 10`; });
+    if (mpS('mpP1Score')) mpS('mpP1Score').textContent = p[0].score.toLocaleString() + ' PTS';
+    if (mpS('mpP2Score')) mpS('mpP2Score').textContent = p[1].score.toLocaleString() + ' PTS';
+    if (mpS('mpP1Name')) mpS('mpP1Name').textContent = p[0].name;
+    if (mpS('mpP2Name')) mpS('mpP2Name').textContent = p[1].name;
+    if (mpS('mpLeader')) mpS('mpLeader').textContent = leader;
+    if (mpS('mpTurnRight')) mpS('mpTurnRight').textContent = turnName;
+    if (mpS('mpP1Hints')) mpS('mpP1Hints').textContent = `${p[0].hints}/3`;
+    if (mpS('mpP2Hints')) mpS('mpP2Hints').textContent = `${p[1].hints}/3`;
+    // Avatar active state
     mpS('mpP1Wrap')?.classList.toggle('player-card__avatar-wrap--active', t === 0);
     mpS('mpP2Wrap')?.classList.toggle('player-card__avatar-wrap--active', t === 1);
     const r0 = mpS('mpP1Ring'), r1 = mpS('mpP2Ring');
     r0?.classList.toggle('ring--hidden', t !== 0);
     r1?.classList.toggle('ring--hidden', t !== 1);
+    // Mobile drawer stats
+    if (mpS('mpRoundMob')) mpS('mpRoundMob').textContent = `${MP.round} / 10`;
+    if (mpS('mpTurnMob')) mpS('mpTurnMob').textContent = turnName;
+    if (mpS('mpLeaderMob')) mpS('mpLeaderMob').textContent = leader;
+    if (mpS('mpP1ScoreMob')) mpS('mpP1ScoreMob').textContent = p[0].score.toLocaleString() + ' PTS';
+    if (mpS('mpP2ScoreMob')) mpS('mpP2ScoreMob').textContent = p[1].score.toLocaleString() + ' PTS';
+    if (mpS('mpP1NameMobLabel')) mpS('mpP1NameMobLabel').textContent = p[0].name;
+    if (mpS('mpP2NameMobLabel')) mpS('mpP2NameMobLabel').textContent = p[1].name;
     mpHearts();
 }
 
@@ -85,7 +103,7 @@ async function mpLoad() {
         if (CONFIG.API_KEY === 'YOUR_TMDB_API_KEY_HERE') throw new Error('nokey');
         MP.movie = await API.fetchRandomMovie('medium', MP.lang);
         MP.det = await API.fetchMovieDetails(MP.movie.id);
-        
+
         // Reveal 20% of letters for multiplayer (medium difficulty)
         const letterIndices = [...MP.movie.title].map((c, i) => [c, i])
             .filter(([c]) => /[A-Z0-9]/i.test(c))
@@ -95,7 +113,7 @@ async function mpLoad() {
         for (let i = 0; i < Math.min(revealCount, shuffled.length); i++) {
             MP.revealed.add(shuffled[i]);
         }
-        
+
         mpTiles(); mpUI(); MP.busy = false;
     } catch (e) {
         if (e.message === 'nokey') {
@@ -128,7 +146,7 @@ function mpIsAllRevealed() {
 function mpHandleKey(letter) {
     if (!MP.movie || MP.busy) return;
     letter = letter.toUpperCase();
-    if (!/^[A-Z]$/.test(letter)) return;
+    if (!/^[A-Z0-9]$/.test(letter)) return;
     if (MP.guessedLetters.has(letter)) return;
 
     MP.guessedLetters.add(letter);
@@ -242,6 +260,7 @@ document.querySelectorAll('.key-btn').forEach(btn => {
 document.addEventListener('keydown', e => {
     if (e.target.tagName === 'INPUT') return;
     if (/^[a-zA-Z]$/.test(e.key)) mpHandleKey(e.key.toUpperCase());
+    if (/^[0-9]$/.test(e.key)) mpHandleKey(e.key);
 });
 mpS('mpSkipBtn').addEventListener('click', () => {
     if (!MP.movie || MP.busy) return;
@@ -253,3 +272,27 @@ mpS('mpPlayAgain').addEventListener('click', () => {
     MP.p[0].score = MP.p[1].score = MP.p[0].hints = MP.p[1].hints = 0;
     MP.round = 0; MP.turn = 0; mpLoad();
 });
+
+/* ── Mobile Nav Drawer ── */
+(function () {
+    const drawer = mpS('mpNavDrawer'), openBtn = mpS('mpMenuToggleBtn'),
+        closeBtn = mpS('mpMenuCloseBtn'), backdrop = mpS('mpMenuBackdrop');
+    if (!drawer || !openBtn) return;
+    const open = () => drawer.classList.add('drawer--open');
+    const close = () => drawer.classList.remove('drawer--open');
+    openBtn.addEventListener('click', open);
+    closeBtn?.addEventListener('click', close);
+    backdrop?.addEventListener('click', close);
+})();
+
+/* ── Mobile Stats Drawer ── */
+(function () {
+    const drawer = mpS('mpStatsDrawer'), openBtn = mpS('mpStatsToggleBtn'),
+        closeBtn = mpS('mpStatsCloseBtn'), backdrop = mpS('mpStatsBackdrop');
+    if (!drawer || !openBtn) return;
+    const open = () => drawer.classList.add('drawer--open');
+    const close = () => drawer.classList.remove('drawer--open');
+    openBtn.addEventListener('click', open);
+    closeBtn?.addEventListener('click', close);
+    backdrop?.addEventListener('click', close);
+})();
