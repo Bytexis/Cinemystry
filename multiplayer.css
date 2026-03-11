@@ -16,6 +16,7 @@
     --clr-red-glow: rgba(255, 44, 44, 0.40);
     --clr-red-glow-sm: rgba(255, 44, 44, 0.20);
     --clr-red-glow-xs: rgba(255, 44, 44, 0.10);
+    --clr-green: #2ecc71;
     --clr-gold: #f0b429;
     --clr-text: #ffffff;
     --clr-text-muted: #888888;
@@ -237,6 +238,29 @@ button {
     border-right: 1px solid var(--clr-border);
 }
 
+/* Sidebar Round Info */
+.sidebar-round-info {
+    margin-top: auto;
+    padding: 12px 0;
+    border-top: 1px solid var(--clr-border-2);
+}
+
+.sidebar-round-label {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: var(--clr-text-dim);
+    text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+    .sidebar-round-info {
+        margin-top: 4px;
+        padding: 4px 0 0;
+        border-top: none;
+    }
+}
+
 .player-card {
     display: flex;
     align-items: center;
@@ -296,7 +320,8 @@ button {
 .player-card__info {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 4px;
+    flex: 1;
 }
 
 .player-card__info--right {
@@ -318,7 +343,8 @@ button {
 .player-card__score-row {
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: space-between;
+    gap: 12px;
 }
 
 .player-card__score-row--right {
@@ -352,20 +378,71 @@ button {
     border-color: var(--clr-border-2);
 }
 
+.mob-player-btns {
+    display: none; /* hidden on desktop */
+}
+
+@media (max-width: 900px) {
+    .mob-player-btns {
+        display: flex;
+        gap: 6px;
+        margin-left: auto;
+    }
+}
+
+.mob-action-pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 44, 44, 0.1);
+    border: 1px solid rgba(255, 44, 44, 0.25);
+    border-radius: 8px;
+    color: var(--clr-red);
+    cursor: pointer;
+    transition: all var(--transition);
+    padding: 0;
+}
+
+.mob-btn-text {
+    display: none; /* hide text on small buttons */
+}
+
+.mob-action-pill svg {
+    width: 16px;
+    height: 16px;
+}
+
+.mob-action-pill:hover {
+    background: rgba(255, 44, 44, 0.2);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--clr-red-glow-xs);
+}
+
 /* Hearts */
 .player-card__hearts {
     display: flex;
     gap: 6px;
-    padding-left: 2px;
+    padding-left: 12px;
+    margin-top: -4px;
+    margin-bottom: 8px;
 }
 
-.heart {
+.heart-icon {
     width: 18px;
     height: 18px;
     color: var(--clr-red);
     filter: drop-shadow(0 0 4px var(--clr-red-glow-sm));
     animation: heartbeat 3s ease-in-out infinite;
 }
+
+.heart-icon--empty {
+    color: rgba(255, 255, 255, 0.1);
+    filter: none;
+    animation: none;
+}
+
 
 .heart:last-child {
     animation-delay: 0.4s;
@@ -561,8 +638,8 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    padding: 14px 16px 18px;
+    gap: 6px;
+    padding: 10px 14px 14px;
     background: rgba(13, 13, 13, 0.88);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
@@ -571,16 +648,53 @@ button {
     z-index: 100;
 }
 
+.timer-hud {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    padding: 6px 14px;
+    border-radius: 40px;
+    border: 1px solid var(--clr-border);
+    margin-bottom: 12px;
+}
+
+.timer-hud__label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--clr-red);
+    letter-spacing: 0.1em;
+}
+
+.timer-hud__val {
+    font-family: monospace;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #fff;
+    min-width: 60px;
+}
+
+.timer-hud__pts {
+    font-size: 0.9rem;
+    font-weight: 900;
+    color: var(--clr-gold);
+    background: rgba(255, 215, 0, 0.1);
+    padding: 4px 10px;
+    border-radius: 8px;
+}
+
 .keyboard-row {
     display: flex;
-    gap: 9px;
+    gap: 6px;
     justify-content: center;
 }
 
 .key-btn {
-    width: 52px;
-    height: 58px;
-    border-radius: 10px;
+    width: 46px;
+    height: 54px;
+    border-radius: 9px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     background: #1e1e1e;
     color: var(--clr-text);
@@ -1687,3 +1801,101 @@ button {
         justify-content: center;
     }
 }
+
+/* ── Recent Movies (from game.css) ── */
+.recent-movies__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+.recent-movies__title {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--clr-text-muted);
+}
+.recent-movies__view-all {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--clr-red);
+    text-decoration: none;
+}
+.recent-movies__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.recent-movies__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 6px 8px;
+    background: var(--clr-surface);
+    border: 1px solid var(--clr-border-2);
+    border-radius: var(--radius-xs);
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--clr-text);
+}
+.recent-movies__item--win .recent-movies__pts {
+    color: var(--clr-green);
+}
+.recent-movies__item--skip .recent-movies__pts {
+    color: var(--clr-text-muted);
+}
+.recent-movies__pts {
+    font-size: 0.65rem;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+/* ── Mobile Recent List (from game.css) ── */
+.mob-recent-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.mob-recent-empty {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--clr-text-dim);
+    padding: 20px 0;
+}
+.mob-recent-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--clr-surface);
+    border: 1px solid var(--clr-border-2);
+    border-radius: var(--radius-xs);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--clr-text);
+}
+.mob-recent-item__title {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.mob-recent-item__pts {
+    font-size: 0.72rem;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+.mob-recent-item--win .mob-recent-item__pts {
+    color: var(--clr-green);
+}
+.mob-recent-item--skip .mob-recent-item__pts {
+    color: var(--clr-text-muted);
+}
