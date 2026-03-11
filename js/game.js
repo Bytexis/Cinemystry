@@ -39,16 +39,22 @@ function renderTiles(all = false) {
 
 /* ── Hearts / lives ── */
 function renderHearts() {
-    const c = $('heartsBox'); c.innerHTML = '';
-    for (let i = 0; i < 3; i++) {
-        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        svg.setAttribute('viewBox', '0 0 24 24');
-        svg.setAttribute('fill', 'currentColor');
-        svg.classList.add('heart');
-        if (i >= G.lives) svg.classList.add('heart--lost');
-        svg.innerHTML = '<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>';
-        c.appendChild(svg);
+    // Helper to fill a hearts container
+    function fillHearts(c) {
+        if (!c) return;
+        c.innerHTML = '';
+        for (let i = 0; i < 3; i++) {
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('viewBox', '0 0 24 24');
+            svg.setAttribute('fill', 'currentColor');
+            svg.classList.add('heart');
+            if (i >= G.lives) svg.classList.add('heart--lost');
+            svg.innerHTML = '<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>';
+            c.appendChild(svg);
+        }
     }
+    fillHearts($('heartsBox'));
+    fillHearts($('heartsBoxMob'));
 }
 
 /* ── UI Update ── */
@@ -57,28 +63,63 @@ function updateUI() {
     const rd = `Round ${G.round} / ${CONFIG.TOTAL_ROUNDS}`;
     const sv = $('scoreVal'); if (sv) sv.textContent = pts + ' PTS';
     const sr = $('scoreValRight'); if (sr) sr.textContent = pts + ' PTS';
+    const sm = $('scoreValMob'); if (sm) sm.textContent = pts + ' PTS';
     const rv = $('roundVal'); if (rv) rv.textContent = rd;
     const r2 = $('roundVal2'); if (r2) r2.textContent = rd;
     const rr = $('roundValRight'); if (rr) rr.textContent = rd;
     const rm = $('roundValMob'); if (rm) rm.textContent = rd;
+    const rm2 = $('roundValMob2'); if (rm2) rm2.textContent = `${G.round} / ${CONFIG.TOTAL_ROUNDS}`;
     const hnt = $('spHintsVal'); if (hnt) hnt.textContent = `${G.hints.size}/3`;
+    const hntm = $('spHintsValMob'); if (hntm) hntm.textContent = `${G.hints.size}/3`;
     const stv = $('streakVal'); if (stv) stv.textContent = G.streak;
+    const stm = $('streakValMob'); if (stm) stm.textContent = G.streak;
     renderHearts();
 }
 
 function updateSession() {
-    const list = $('recentList'); list.innerHTML = '';
-    [...G.recent].reverse().slice(0, 5).forEach(e => {
-        const li = document.createElement('li');
-        li.className = `recent-movies__item recent-movies__item--${e.w ? 'win' : 'skip'}`;
-        const title = document.createElement('span');
-        title.textContent = e.t.length > 18 ? e.t.slice(0, 18) + '…' : e.t;
-        const pts = document.createElement('span');
-        pts.className = 'recent-movies__pts';
-        pts.textContent = e.w ? `+${e.p}` : 'Skip';
-        li.appendChild(title); li.appendChild(pts);
-        list.appendChild(li);
-    });
+    const recent5 = [...G.recent].reverse().slice(0, 5);
+
+    // Desktop list
+    const list = $('recentList');
+    if (list) {
+        list.innerHTML = '';
+        recent5.forEach(e => {
+            const li = document.createElement('li');
+            li.className = `recent-movies__item recent-movies__item--${e.w ? 'win' : 'skip'}`;
+            const title = document.createElement('span');
+            title.textContent = e.t.length > 18 ? e.t.slice(0, 18) + '…' : e.t;
+            const pts = document.createElement('span');
+            pts.className = 'recent-movies__pts';
+            pts.textContent = e.w ? `+${e.p}` : 'Skip';
+            li.appendChild(title); li.appendChild(pts);
+            list.appendChild(li);
+        });
+    }
+
+    // Mobile recent drawer list
+    const mobList = $('mobileRecentList');
+    if (mobList) {
+        mobList.innerHTML = '';
+        if (!recent5.length) {
+            const empty = document.createElement('li');
+            empty.className = 'mob-recent-empty';
+            empty.textContent = 'No movies played yet';
+            mobList.appendChild(empty);
+        } else {
+            recent5.forEach(e => {
+                const li = document.createElement('li');
+                li.className = `mob-recent-item mob-recent-item--${e.w ? 'win' : 'skip'}`;
+                const titleEl = document.createElement('span');
+                titleEl.className = 'mob-recent-item__title';
+                titleEl.textContent = e.t;
+                const ptsEl = document.createElement('span');
+                ptsEl.className = 'mob-recent-item__pts';
+                ptsEl.textContent = e.w ? `+${e.p} pts` : 'Skipped';
+                li.appendChild(titleEl); li.appendChild(ptsEl);
+                mobList.appendChild(li);
+            });
+        }
+    }
 }
 
 /* ── Keyboard ── */
@@ -104,7 +145,7 @@ function isAllRevealed() {
 function handleKey(letter) {
     if (!G.movie || G.busy) return;
     letter = letter.toUpperCase();
-    if (!/^[A-Z]$/.test(letter)) return;
+    if (!/^[A-Z0-9]$/.test(letter)) return;
     if (G.guessedLetters.has(letter)) return;
 
     G.guessedLetters.add(letter);
@@ -123,7 +164,7 @@ function handleKey(letter) {
         if (isAllRevealed()) {
             // Win!
             G.total += G.pts; G.streak++;
-            G.recent.push({ t: G.movie.title, p: G.pts, w: true });
+            G.recent.push({ id: G.movie.id, t: G.movie.title, p: G.pts, w: true });
             renderTiles(true); updateSession(); updateUI();
             toast(`✓ You got it! +${G.pts} pts`, 'success');
             G.busy = true;
@@ -136,7 +177,7 @@ function handleKey(letter) {
         updateUI();
         if (G.lives <= 0) {
             G.streak = 0;
-            G.recent.push({ t: G.movie.title, p: 0, w: false });
+            G.recent.push({ id: G.movie.id, t: G.movie.title, p: 0, w: false });
             renderTiles(true); updateSession();
             toast(`✗ No "${letter}" — Out of lives! The answer was: ${G.movie.title}`, 'error');
             G.busy = true;
@@ -158,7 +199,16 @@ async function loadMovie() {
     resetKeyboard(); renderHintChips(); updateUI();
     try {
         if (CONFIG.API_KEY === 'YOUR_TMDB_API_KEY_HERE') throw new Error('nokey');
-        G.movie = await API.fetchRandomMovie(G.diff, G.lang);
+        // Build set of already-seen movie IDs to avoid repeats
+        const seenIds = new Set(G.recent.map(e => e.id).filter(Boolean));
+        let movie = await API.fetchRandomMovie(G.diff, G.lang, seenIds);
+        if (!movie) {
+            // Pool exhausted for this language — reset seen list and retry
+            G.recent = G.recent.map(e => ({ ...e, id: undefined }));
+            movie = await API.fetchRandomMovie(G.diff, G.lang, new Set());
+        }
+        if (!movie) throw new Error('no_results');
+        G.movie = movie;
         G.det = await API.fetchMovieDetails(G.movie.id);
 
         // Pre-reveal letters based on difficulty
@@ -266,6 +316,7 @@ function startGame() {
     const diffLabel = CONFIG.DIFFICULTIES[G.diff].label;
     const db = $('diffBadgeText'); if (db) db.textContent = diffLabel;
     const spd = $('spDiffBadge'); if (spd) spd.textContent = diffLabel;
+    const spdm = $('spDiffBadgeMob'); if (spdm) spdm.textContent = diffLabel;
     $('setupOverlay').classList.add('overlay--hidden');
     // Update player name + avatar
     document.querySelectorAll('.player-card__name').forEach(el => el.textContent = G.name);
@@ -291,15 +342,16 @@ document.querySelectorAll('.key-btn').forEach(btn => {
     btn.addEventListener('click', () => handleKey(btn.dataset.key));
 });
 
-// Physical keyboard support
+// Physical keyboard support (letters + digits)
 document.addEventListener('keydown', e => {
-    if (e.target.tagName === 'INPUT') return; // don't intercept text inputs
+    if (e.target.tagName === 'INPUT') return;
     if (/^[a-zA-Z]$/.test(e.key)) handleKey(e.key.toUpperCase());
+    if (/^[0-9]$/.test(e.key)) handleKey(e.key);
 });
 
 $('skipBtn').addEventListener('click', () => {
     if (!G.movie || G.busy) return;
-    G.streak = 0; G.recent.push({ t: G.movie.title, p: 0, w: false });
+    G.streak = 0; G.recent.push({ id: G.movie.id, t: G.movie.title, p: 0, w: false });
     renderTiles(true); updateSession();
     toast('Movie skipped', 'warn'); setTimeout(loadMovie, 1600);
 });
@@ -315,3 +367,45 @@ $('playAgainBtn').addEventListener('click', () => {
     G.total = 0; G.round = 0; G.streak = 0; G.recent = [];
     updateSession(); loadMovie();
 });
+
+/* ── Mobile Stats Drawer ── */
+(function () {
+    const drawer = $('mobileStatsDrawer');
+    const openBtn = $('statsToggleBtn');
+    const closeBtn = $('statsCloseBtn');
+    const backdrop = $('statsBackdrop');
+    if (!drawer || !openBtn) return;
+    function openDrawer() { drawer.classList.add('drawer--open'); }
+    function closeDrawer() { drawer.classList.remove('drawer--open'); }
+    openBtn.addEventListener('click', openDrawer);
+    closeBtn?.addEventListener('click', closeDrawer);
+    backdrop?.addEventListener('click', closeDrawer);
+})();
+
+/* ── Mobile Recent Drawer ── */
+(function () {
+    const drawer = $('mobileRecentDrawer');
+    const openBtn = $('recentToggleBtn');
+    const closeBtn = $('recentCloseBtn');
+    const backdrop = $('recentBackdrop');
+    if (!drawer || !openBtn) return;
+    function openDrawer() { drawer.classList.add('drawer--open'); }
+    function closeDrawer() { drawer.classList.remove('drawer--open'); }
+    openBtn.addEventListener('click', openDrawer);
+    closeBtn?.addEventListener('click', closeDrawer);
+    backdrop?.addEventListener('click', closeDrawer);
+})();
+
+/* ── Hamburger Nav Drawer ── */
+(function () {
+    const drawer = $('mobNavDrawer');
+    const openBtn = $('menuToggleBtn');
+    const closeBtn = $('menuCloseBtn');
+    const backdrop = $('menuBackdrop');
+    if (!drawer || !openBtn) return;
+    function openDrawer() { drawer.classList.add('drawer--open'); }
+    function closeDrawer() { drawer.classList.remove('drawer--open'); }
+    openBtn.addEventListener('click', openDrawer);
+    closeBtn?.addEventListener('click', closeDrawer);
+    backdrop?.addEventListener('click', closeDrawer);
+})();

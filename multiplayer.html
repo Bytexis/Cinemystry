@@ -56,33 +56,164 @@
 
     <!-- Screen -->
     <div class="screen">
+
+        <!-- Mobile Header -->
         <header class="mob-bar">
             <a href="index.html" class="mob-bar__logo">Cinemystery</a>
-            <span class="mob-bar__round" id="mpRound">Round 0 / 10</span>
-            <a href="index.html" class="mob-bar__exit" aria-label="Exit">
+            <button class="mob-bar__menu-btn" id="mpMenuToggleBtn" aria-label="Open menu">
                 <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
                 </svg>
-            </a>
+            </button>
         </header>
 
-        <div class="layout">
-            <!-- Player 1 Panel -->
-            <aside class="player-panel player-panel--left" id="p1Panel">
-                <div class="player-card">
-                    <div class="player-card__avatar-wrap" id="mpP1Wrap">
-                        <div class="player-card__avatar">P</div>
-                        <span class="player-card__active-ring" id="mpP1Ring"></span>
+        <!-- Mobile Nav Drawer -->
+        <div class="mob-nav-drawer" id="mpNavDrawer">
+            <div class="mob-nav-drawer__backdrop" id="mpMenuBackdrop"></div>
+            <div class="mob-nav-drawer__panel">
+                <div class="mob-nav-drawer__header">
+                    <span class="mob-nav-drawer__logo">Cinemystery</span>
+                    <button class="mobile-stats-drawer__close" id="mpMenuCloseBtn">✕</button>
+                </div>
+                <nav class="mob-nav-drawer__nav">
+                    <a href="index.html" class="mob-nav-drawer__item">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                        </svg>
+                        Home
+                    </a>
+                    <a href="game.html" class="mob-nav-drawer__item">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
+                        </svg>
+                        Single Player
+                    </a>
+                    <a href="leaderboard.html" class="mob-nav-drawer__item">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z" />
+                        </svg>
+                        Leaderboard
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Mobile Stats Drawer -->
+        <div class="mobile-stats-drawer" id="mpStatsDrawer">
+            <div class="mobile-stats-drawer__backdrop" id="mpStatsBackdrop"></div>
+            <div class="mobile-stats-drawer__panel">
+                <div class="mobile-stats-drawer__header">
+                    <span class="mobile-stats-drawer__title">Match Stats</span>
+                    <button class="mobile-stats-drawer__close" id="mpStatsCloseBtn">✕</button>
+                </div>
+                <div class="mobile-stats-drawer__body">
+                    <div class="mob-stat-row">
+                        <span class="mob-stat-label">Round</span>
+                        <span class="mob-stat-value" id="mpRoundMob">0 / 10</span>
                     </div>
-                    <div class="player-card__info">
-                        <span class="player-card__name" id="mpP1Name">Player 1</span>
-                        <div class="player-card__score-row">
-                            <span class="player-card__score" id="mpP1Score">0 PTS</span>
+                    <div class="mob-stat-row">
+                        <span class="mob-stat-label">Current Turn</span>
+                        <span class="mob-stat-value" id="mpTurnMob">—</span>
+                    </div>
+                    <div class="mob-stat-row">
+                        <span class="mob-stat-label">Leader</span>
+                        <span class="mob-stat-value mob-stat-value--gold" id="mpLeaderMob">—</span>
+                    </div>
+                    <div class="mob-stat-row">
+                        <span class="mob-stat-label" id="mpP1NameMobLabel">P1</span>
+                        <span class="mob-stat-value" id="mpP1ScoreMob">0 PTS</span>
+                    </div>
+                    <div class="mob-stat-row">
+                        <span class="mob-stat-label" id="mpP2NameMobLabel">P2</span>
+                        <span class="mob-stat-value" id="mpP2ScoreMob">0 PTS</span>
+                    </div>
+                    <div class="mob-stat-row">
+                        <span class="mob-stat-label">Lives (current)</span>
+                        <div class="mob-stat-hearts" id="mpHeartsMob"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layout">
+
+            <!-- Left — Nav + Both Players -->
+            <aside class="player-panel player-panel--left" id="p1Panel">
+                <nav class="sp-nav sp-nav--top">
+                    <a href="index.html" class="sp-nav__item">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                        </svg>
+                        Home
+                    </a>
+                    <a href="game.html" class="sp-nav__item">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
+                        </svg>
+                        Single Player
+                    </a>
+                    <a href="leaderboard.html" class="sp-nav__item">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z" />
+                        </svg>
+                        Leaderboard
+                    </a>
+                </nav>
+
+                <div class="sp-divider"></div>
+
+                <!-- Player 1 -->
+                <div class="sp-player-block">
+                    <div class="player-card">
+                        <div class="player-card__avatar-wrap" id="mpP1Wrap">
+                            <div class="player-card__avatar" id="mpP1Avatar">P</div>
+                            <span class="player-card__active-ring" id="mpP1Ring"></span>
+                        </div>
+                        <div class="player-card__info">
+                            <span class="player-card__name" id="mpP1Name">Player 1</span>
+                            <div class="player-card__score-row">
+                                <span class="player-card__score" id="mpP1Score">0 PTS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="player-card__hearts" id="mpHeartsBox"></div>
+                </div>
+
+                <div class="mp-vs-divider">VS</div>
+
+                <!-- Player 2 -->
+                <div class="sp-player-block">
+                    <div class="player-card">
+                        <div class="player-card__avatar-wrap" id="mpP2Wrap">
+                            <div class="player-card__avatar player-card__avatar--alt" id="mpP2Avatar">S</div>
+                            <span class="player-card__active-ring ring--hidden" id="mpP2Ring"></span>
+                        </div>
+                        <div class="player-card__info">
+                            <span class="player-card__name" id="mpP2Name">Player 2</span>
+                            <div class="player-card__score-row">
+                                <span class="player-card__score" id="mpP2Score">0 PTS</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="player-card__hearts" id="mpHeartsBox"></div>
+
+                <!-- Mobile action row -->
+                <div class="mob-player-actions">
+                    <span class="mob-round-badge" id="mpRound">Round 0 / 10</span>
+                    <div class="mob-player-btns">
+                        <button class="mob-action-pill" id="mpStatsToggleBtn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z" />
+                            </svg>
+                            Stats
+                        </button>
+                    </div>
+                </div>
             </aside>
 
             <!-- Center -->
@@ -103,22 +234,10 @@
                         <div class="tile-loading">Match not started…</div>
                     </div>
                 </section>
-
             </main>
 
-            <!-- Progress Panel -->
+            <!-- Right — Match Progress -->
             <aside class="progress-panel">
-                <div class="player-card player-card--right" id="p2Card">
-                    <div class="player-card__info player-card__info--right">
-                        <span class="player-card__name" id="mpP2Name">Player 2</span>
-                        <span class="player-card__score" id="mpP2Score">0 PTS</span>
-                    </div>
-                    <div class="player-card__avatar-wrap" id="mpP2Wrap">
-                        <div class="player-card__avatar player-card__avatar--alt">S</div>
-                        <span class="player-card__active-ring ring--hidden" id="mpP2Ring"></span>
-                    </div>
-                </div>
-
                 <div class="progress-card">
                     <span class="progress-card__eyebrow">Match Progress</span>
                     <h2 class="progress-card__round" id="mpRound2">Round 0 / 10</h2>
@@ -126,12 +245,11 @@
                         <div class="progress-stat">
                             <div class="progress-stat__label">
                                 <svg class="progress-stat__icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58z" />
+                                    <path d="M7 2v11h3v9l7-12h-4l4-8z" />
                                 </svg>
-                                Difficulty
+                                Current Turn
                             </div>
-                            <span class="diff-badge">Medium</span>
+                            <span class="progress-stat__value" id="mpTurnRight">—</span>
                         </div>
                         <div class="progress-stat">
                             <div class="progress-stat__label">
@@ -139,9 +257,9 @@
                                     <path
                                         d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z" />
                                 </svg>
-                                P1 Hints Used
+                                P1 Hints
                             </div>
-                            <span class="progress-stat__value" id="mpP1Hints">0/3 used</span>
+                            <span class="progress-stat__value" id="mpP1Hints">0/3</span>
                         </div>
                         <div class="progress-stat">
                             <div class="progress-stat__label">
@@ -149,17 +267,17 @@
                                     <path
                                         d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z" />
                                 </svg>
-                                P2 Hints Used
+                                P2 Hints
                             </div>
-                            <span class="progress-stat__value" id="mpP2Hints">0/3 used</span>
+                            <span class="progress-stat__value" id="mpP2Hints">0/3</span>
                         </div>
                         <div class="progress-stat progress-stat--leader">
                             <div class="progress-stat__label">
                                 <svg class="progress-stat__icon" viewBox="0 0 24 24" fill="currentColor">
                                     <path
-                                        d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" />
+                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                                 </svg>
-                                Current Leader
+                                Leading
                             </div>
                             <span class="progress-stat__leader" id="mpLeader">—</span>
                         </div>
@@ -171,19 +289,41 @@
         <!-- Floating On-screen keyboard -->
         <section class="keyboard-section" id="mpKeyboardSection" aria-label="Letter keyboard">
             <div class="active-hints-container" id="mpActiveHints"></div>
-            <div class="keyboard-row">
-                <button class="key-btn" data-key="Q">Q</button><button class="key-btn" data-key="W">W</button><button class="key-btn" data-key="E">E</button><button class="key-btn" data-key="R">R</button><button class="key-btn" data-key="T">T</button><button class="key-btn" data-key="Y">Y</button><button class="key-btn" data-key="U">U</button><button class="key-btn" data-key="I">I</button><button class="key-btn" data-key="O">O</button><button class="key-btn" data-key="P">P</button>
+            <!-- Number row -->
+            <div class="keyboard-row keyboard-row--nums">
+                <button class="key-btn key-btn--num" data-key="1">1</button><button class="key-btn key-btn--num"
+                    data-key="2">2</button><button class="key-btn key-btn--num" data-key="3">3</button><button
+                    class="key-btn key-btn--num" data-key="4">4</button><button class="key-btn key-btn--num"
+                    data-key="5">5</button><button class="key-btn key-btn--num" data-key="6">6</button><button
+                    class="key-btn key-btn--num" data-key="7">7</button><button class="key-btn key-btn--num"
+                    data-key="8">8</button><button class="key-btn key-btn--num" data-key="9">9</button><button
+                    class="key-btn key-btn--num" data-key="0">0</button>
             </div>
             <div class="keyboard-row">
-                <button class="key-btn" data-key="A">A</button><button class="key-btn" data-key="S">S</button><button class="key-btn" data-key="D">D</button><button class="key-btn" data-key="F">F</button><button class="key-btn" data-key="G">G</button><button class="key-btn" data-key="H">H</button><button class="key-btn" data-key="J">J</button><button class="key-btn" data-key="K">K</button><button class="key-btn" data-key="L">L</button>
+                <button class="key-btn" data-key="Q">Q</button><button class="key-btn" data-key="W">W</button><button
+                    class="key-btn" data-key="E">E</button><button class="key-btn" data-key="R">R</button><button
+                    class="key-btn" data-key="T">T</button><button class="key-btn" data-key="Y">Y</button><button
+                    class="key-btn" data-key="U">U</button><button class="key-btn" data-key="I">I</button><button
+                    class="key-btn" data-key="O">O</button><button class="key-btn" data-key="P">P</button>
             </div>
             <div class="keyboard-row">
-                <button class="key-btn" data-key="Z">Z</button><button class="key-btn" data-key="X">X</button><button class="key-btn" data-key="C">C</button><button class="key-btn" data-key="V">V</button><button class="key-btn" data-key="B">B</button><button class="key-btn" data-key="N">N</button><button class="key-btn" data-key="M">M</button>
+                <button class="key-btn" data-key="A">A</button><button class="key-btn" data-key="S">S</button><button
+                    class="key-btn" data-key="D">D</button><button class="key-btn" data-key="F">F</button><button
+                    class="key-btn" data-key="G">G</button><button class="key-btn" data-key="H">H</button><button
+                    class="key-btn" data-key="J">J</button><button class="key-btn" data-key="K">K</button><button
+                    class="key-btn" data-key="L">L</button>
+            </div>
+            <div class="keyboard-row">
+                <button class="key-btn" data-key="Z">Z</button><button class="key-btn" data-key="X">X</button><button
+                    class="key-btn" data-key="C">C</button><button class="key-btn" data-key="V">V</button><button
+                    class="key-btn" data-key="B">B</button><button class="key-btn" data-key="N">N</button><button
+                    class="key-btn" data-key="M">M</button>
             </div>
             <div class="mp-keyboard-actions">
                 <button class="action-btn" id="mpHintBtn">
                     <svg class="action-btn__icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z" />
+                        <path
+                            d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z" />
                     </svg>
                     Use Hint (max 3)
                 </button>
