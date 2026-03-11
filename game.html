@@ -37,6 +37,12 @@
                     <button class="diff-btn diff-btn--hard" data-diff="hard">Hard</button>
                 </div>
             </div>
+            <div class="setup-field"><label class="setup-label">Timer Option</label>
+                <div class="diff-row">
+                    <button class="diff-btn diff-btn--active" data-timer="on">Timer ON</button>
+                    <button class="diff-btn" data-timer="off">Timer OFF</button>
+                </div>
+            </div>
             <button class="setup-start-btn" id="startGameBtn">Start Game →</button>
         </div>
     </div>
@@ -304,6 +310,12 @@
 
         <!-- Floating On-screen keyboard -->
         <section class="keyboard-section" id="keyboardSection" aria-label="Letter keyboard">
+            <div class="timer-hud">
+                <span class="timer-hud__label">TIME</span>
+                <span class="timer-hud__val" id="timerVal">00:00</span>
+                <span class="timer-hud__pts" id="potentialPts">100</span>
+            </div>
+
             <div class="active-hints-container" id="spActiveHints"></div>
             <!-- Number row -->
             <div class="keyboard-row keyboard-row--nums">

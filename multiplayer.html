@@ -32,6 +32,19 @@
                     <button class="diff-btn" data-lang="hindi">Hindi</button>
                 </div>
             </div>
+            <div class="setup-field"><label class="setup-label">Difficulty</label>
+                <div class="diff-row">
+                    <button class="diff-btn" data-diff="easy">Easy</button>
+                    <button class="diff-btn diff-btn--active" data-diff="medium">Medium</button>
+                    <button class="diff-btn diff-btn--hard" data-diff="hard">Hard</button>
+                </div>
+            </div>
+            <div class="setup-field"><label class="setup-label">Timer Option</label>
+                <div class="diff-row">
+                    <button class="diff-btn diff-btn--active" data-timer="on">Timer ON</button>
+                    <button class="diff-btn" data-timer="off">Timer OFF</button>
+                </div>
+            </div>
             <p class="setup-note">10 rounds, alternating turns. Best score wins!</p>
             <button class="setup-start-btn" id="mpStartBtn">Start Match →</button>
         </div>
@@ -288,6 +301,12 @@
 
         <!-- Floating On-screen keyboard -->
         <section class="keyboard-section" id="mpKeyboardSection" aria-label="Letter keyboard">
+            <div class="timer-hud">
+                <span class="timer-hud__label">TIME</span>
+                <span class="timer-hud__val" id="mpTimerVal">00:00</span>
+                <span class="timer-hud__pts" id="mpPotentialPts">100</span>
+            </div>
+
             <div class="active-hints-container" id="mpActiveHints"></div>
             <!-- Number row -->
             <div class="keyboard-row keyboard-row--nums">
@@ -305,6 +324,11 @@
                     class="key-btn" data-key="T">T</button><button class="key-btn" data-key="Y">Y</button><button
                     class="key-btn" data-key="U">U</button><button class="key-btn" data-key="I">I</button><button
                     class="key-btn" data-key="O">O</button><button class="key-btn" data-key="P">P</button>
+                <button class="key-btn" data-key="Q">Q</button><button class="key-btn" data-key="W">W</button><button
+                    class="key-btn" data-key="E">E</button><button class="key-btn" data-key="R">R</button><button
+                    class="key-btn" data-key="T">T</button><button class="key-btn" data-key="Y">Y</button><button
+                    class="key-btn" data-key="U">U</button><button class="key-btn" data-key="I">I</button><button
+                    class="key-btn" data-key="O">O</button><button class="key-btn" data-key="P">P</button>
             </div>
             <div class="keyboard-row">
                 <button class="key-btn" data-key="A">A</button><button class="key-btn" data-key="S">S</button><button
@@ -312,8 +336,17 @@
                     class="key-btn" data-key="G">G</button><button class="key-btn" data-key="H">H</button><button
                     class="key-btn" data-key="J">J</button><button class="key-btn" data-key="K">K</button><button
                     class="key-btn" data-key="L">L</button>
+                <button class="key-btn" data-key="A">A</button><button class="key-btn" data-key="S">S</button><button
+                    class="key-btn" data-key="D">D</button><button class="key-btn" data-key="F">F</button><button
+                    class="key-btn" data-key="G">G</button><button class="key-btn" data-key="H">H</button><button
+                    class="key-btn" data-key="J">J</button><button class="key-btn" data-key="K">K</button><button
+                    class="key-btn" data-key="L">L</button>
             </div>
             <div class="keyboard-row">
+                <button class="key-btn" data-key="Z">Z</button><button class="key-btn" data-key="X">X</button><button
+                    class="key-btn" data-key="C">C</button><button class="key-btn" data-key="V">V</button><button
+                    class="key-btn" data-key="B">B</button><button class="key-btn" data-key="N">N</button><button
+                    class="key-btn" data-key="M">M</button>
                 <button class="key-btn" data-key="Z">Z</button><button class="key-btn" data-key="X">X</button><button
                     class="key-btn" data-key="C">C</button><button class="key-btn" data-key="V">V</button><button
                     class="key-btn" data-key="B">B</button><button class="key-btn" data-key="N">N</button><button

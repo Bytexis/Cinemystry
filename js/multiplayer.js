@@ -1,10 +1,11 @@
 'use strict';
 /* ── Multiplayer State ── */
 const MP = {
-    p: [{ name: 'Player 1', score: 0, hints: 0 }, { name: 'Player 2', score: 0, hints: 0 }],
+    p: [{ name: 'Player 1', score: 0, hints: 0, streak: 0 }, { name: 'Player 2', score: 0, hints: 0, streak: 0 }],
     turn: 0, round: 0, lang: 'all', movie: null, det: null,
     pts: 0, att: 3, hints: new Set(), revealed: new Set(), busy: false,
-    guessedLetters: new Set()
+    guessedLetters: new Set(), timer: null, startTime: 0, roundScore: 100, hasUsedHint: false,
+    stealMode: false, timerEnabled: true
 };
 const mpS = id => document.getElementById(id);
 const mpNorm = s => s.toLowerCase().trim().replace(/[^a-z0-9 ]/g, '').replace(/ +/g, ' ').trim();
@@ -91,24 +92,66 @@ function mpUI() {
 const MP_DEMOS = ['Inception', 'The Godfather', 'Pulp Fiction', 'Interstellar', 'The Matrix', 'Parasite', 'Titanic', 'Avatar', 'Goodfellas', 'The Dark Knight'];
 
 async function mpLoad() {
-    if (MP.round >= 10) { mpOver(); return; }
+    if (MP.round >= 10) { clearInterval(MP.timer); mpOver(); return; }
     MP.round++; MP.busy = true;
-    MP.pts = CONFIG.DIFFICULTIES['medium'].baseScore;
+    MP.roundScore = 100;
     MP.att = 3; MP.hints = new Set(); MP.revealed = new Set(); MP.guessedLetters = new Set();
+    MP.hasUsedHint = false; MP.stealMode = false;
     mpS('mpTilesRow').innerHTML = '<div class="tile-loading">Loading movie…</div>';
     mpS('mpActiveHints').innerHTML = '';
-    mpResetKeyboard();
-    mpUI();
+
+    if (MP.timer) clearInterval(MP.timer);
+
+    const timerHud = document.querySelector('.timer-hud');
+    if (timerHud) timerHud.style.display = MP.timerEnabled ? 'flex' : 'none';
+
+    if (MP.timerEnabled) {
+        MP.startTime = Date.now();
+        MP.timer = setInterval(() => {
+            const elapsed = Math.floor((Date.now() - MP.startTime) / 1000);
+            const m = Math.floor(elapsed / 60), s = elapsed % 60;
+            const tv = mpS('mpTimerVal'); if (tv) tv.textContent = `${m}:${s < 10 ? '0' : ''}${s}`;
+
+            let liveScore = 100 - (elapsed * CONFIG.SCORING.PENALTY_TIME);
+            MP.hints.forEach(h => {
+                if (h === 'year') liveScore -= CONFIG.SCORING.PENALTY_YEAR;
+                if (h === 'genre') liveScore -= CONFIG.SCORING.PENALTY_GENRE;
+                if (h === 'letter') liveScore -= CONFIG.SCORING.PENALTY_LETTER;
+            });
+            liveScore -= (3 - MP.att) * CONFIG.SCORING.PENALTY_WRONG;
+            MP.roundScore = Math.max(0, liveScore);
+            mpUI();
+        }, 1000);
+    } else {
+        let liveScore = 100;
+        MP.hints.forEach(h => {
+            if (h === 'year') liveScore -= CONFIG.SCORING.PENALTY_YEAR;
+            if (h === 'genre') liveScore -= CONFIG.SCORING.PENALTY_GENRE;
+            if (h === 'letter') liveScore -= CONFIG.SCORING.PENALTY_LETTER;
+        });
+        liveScore -= (3 - MP.att) * CONFIG.SCORING.PENALTY_WRONG;
+        MP.roundScore = Math.max(0, liveScore);
+        mpUI();
+    }
+
+    mpResetKeyboard(); mpUI();
     try {
         if (CONFIG.API_KEY === 'YOUR_TMDB_API_KEY_HERE') throw new Error('nokey');
-        MP.movie = await API.fetchRandomMovie('medium', MP.lang);
+        MP.movie = await API.fetchRandomMovie(MP.diff || 'medium', MP.lang);
         MP.det = await API.fetchMovieDetails(MP.movie.id);
-
+        
         // Reveal 20% of letters for multiplayer (medium difficulty)
         const letterIndices = [...MP.movie.title].map((c, i) => [c, i])
-            .filter(([c]) => /[A-Z0-9]/i.test(c))
+            .filter(([c]) => /[A-Z0-9]/.test(c))
             .map(([, i]) => i);
-        const revealCount = Math.ceil(letterIndices.length * 0.2);
+
+        let revealCount = 0;
+        const diff = MP.diff || 'medium';
+        if (diff === 'easy') revealCount = Math.ceil(letterIndices.length * 0.4);
+        else if (diff === 'medium') revealCount = Math.ceil(letterIndices.length * 0.2);
+        else if (diff === 'hard') revealCount = Math.ceil(letterIndices.length * 0.1);
+        else if (diff === 'extreme') revealCount = Math.ceil(letterIndices.length * 0.05);
+
         const shuffled = [...letterIndices].sort(() => Math.random() - 0.5);
         for (let i = 0; i < Math.min(revealCount, shuffled.length); i++) {
             MP.revealed.add(shuffled[i]);
@@ -163,22 +206,49 @@ function mpHandleKey(letter) {
     if (found) {
         mpTiles();
         if (mpIsAllRevealed()) {
-            MP.p[MP.turn].score += MP.pts;
+            if (MP.timer) clearInterval(MP.timer);
+            let finalRoundPts = MP.roundScore;
+            if (MP.stealMode) {
+                finalRoundPts = Math.floor(finalRoundPts * 0.5);
+                mpToast(`🧤 STEAL! ${MP.p[MP.turn].name} gets +${finalRoundPts} pts`, 'success');
+            } else {
+                const timeTaken = MP.timerEnabled ? Math.floor((Date.now() - MP.startTime) / 1000) : 0;
+                let speedBonus = 0;
+                if (MP.timerEnabled) {
+                    for (const b of CONFIG.SCORING.SPEED_BONUSES) {
+                        if (timeTaken < b.threshold) { speedBonus = b.bonus; break; }
+                    }
+                }
+                const mult = CONFIG.DIFFICULTIES[MP.diff || 'medium'].multiplier;
+                const perfectBonus = MP.hasUsedHint ? 0 : CONFIG.SCORING.PERFECT_GUESS_BONUS;
+                finalRoundPts = Math.round((finalRoundPts + speedBonus) * mult) + perfectBonus;
+                mpToast(`✓ ${MP.p[MP.turn].name} wins round! +${finalRoundPts} pts`, 'success');
+            }
+            MP.p[MP.turn].score += finalRoundPts;
+            if (!MP.stealMode) MP.p[MP.turn].streak++;
+
             mpTiles(true); mpUI();
-            mpToast(`✓ ${MP.p[MP.turn].name} wins round! +${MP.pts} pts`, 'success');
             MP.busy = true;
             setTimeout(nextTurn, 1800);
         } else {
             mpToast(`✓ "${letter}" is in the title!`, 'success');
         }
     } else {
-        MP.att--; MP.pts = Math.max(0, MP.pts - 50);
+        MP.att--; MP.roundScore = Math.max(0, MP.roundScore - CONFIG.SCORING.PENALTY_WRONG);
         mpUI();
         if (MP.att <= 0) {
-            mpTiles(true);
-            mpToast(`✗ No "${letter}" — Out of attempts!`, 'error');
-            MP.busy = true;
-            setTimeout(nextTurn, 2500);
+            if (!MP.stealMode) {
+                MP.stealMode = true; MP.att = 1;
+                MP.turn = (MP.turn + 1) % 2;
+                mpToast(`⚡ P1 FAILED! ${MP.p[MP.turn].name} can STEAL! (1 try)`, 'warn');
+                mpUI();
+            } else {
+                clearInterval(MP.timer);
+                mpTiles(true);
+                mpToast(`✗ Both failed!`, 'error');
+                MP.busy = true;
+                setTimeout(nextTurn, 2500);
+            }
         } else {
             mpToast(`✗ No "${letter}" — ${MP.att} attempts left`, 'error');
         }
@@ -187,11 +257,12 @@ function mpHandleKey(letter) {
 
 /* ── Hint ── */
 function mpUseHint() {
-    if (!MP.movie || MP.busy || MP.p[MP.turn].hints >= 3) return;
+    if (!MP.movie || MP.busy || MP.p[MP.turn].hints >= 3 || MP.stealMode) return;
     const used = MP.hints;
     const type = !used.has('year') ? 'year' : !used.has('genre') ? 'genre' : 'letter';
-    used.add(type); MP.p[MP.turn].hints++;
-    const cost = CONFIG.HINT_COSTS[type]; MP.pts = Math.max(50, MP.pts - cost); mpUI();
+    used.add(type); MP.p[MP.turn].hints++; MP.hasUsedHint = true;
+    const penalty = type === 'year' ? CONFIG.SCORING.PENALTY_YEAR : type === 'genre' ? CONFIG.SCORING.PENALTY_GENRE : CONFIG.SCORING.PENALTY_LETTER;
+    MP.roundScore = Math.max(0, MP.roundScore - penalty); mpUI();
 
     const addPersistentHint = (label, value) => {
         const chip = document.createElement('div');
@@ -224,7 +295,7 @@ function mpUseHint() {
 }
 
 /* ── Turn / Game Over ── */
-function nextTurn() { MP.turn = (MP.turn + 1) % 2; mpLoad(); }
+function nextTurn() { clearInterval(MP.timer); MP.turn = (MP.turn + 1) % 2; mpLoad(); }
 
 function mpOver() {
     const p = MP.p;
@@ -240,6 +311,8 @@ function mpStart() {
     MP.p[0].name = mpS('mp_p1name').value.trim() || 'Player 1';
     MP.p[1].name = mpS('mp_p2name').value.trim() || 'Player 2';
     MP.lang = document.querySelector('#mpSetupOverlay .diff-btn[data-lang].diff-btn--active')?.dataset.lang || 'all';
+    MP.diff = document.querySelector('#mpSetupOverlay .diff-btn[data-diff].diff-btn--active')?.dataset.diff || 'medium';
+    MP.timerEnabled = (document.querySelector('#mpSetupOverlay .diff-btn[data-timer].diff-btn--active')?.dataset.timer === 'on');
     MP.round = 0; MP.turn = 0;
     MP.p[0].score = MP.p[1].score = MP.p[0].hints = MP.p[1].hints = 0;
     mpS('mpSetupOverlay').classList.add('overlay--hidden');
@@ -247,8 +320,13 @@ function mpStart() {
 }
 
 /* ── Bindings ── */
-document.querySelectorAll('#mpSetupOverlay .diff-btn[data-lang]').forEach(b => b.addEventListener('click', () => {
-    document.querySelectorAll('#mpSetupOverlay .diff-btn[data-lang]').forEach(x => x.classList.remove('diff-btn--active'));
+document.querySelectorAll('#mpSetupOverlay .diff-btn[data-lang], #mpSetupOverlay .diff-btn[data-diff], #mpSetupOverlay .diff-btn[data-timer]').forEach(b => b.addEventListener('click', () => {
+    let key = '';
+    if (b.hasAttribute('data-lang')) key = 'lang';
+    else if (b.hasAttribute('data-diff')) key = 'diff';
+    else if (b.hasAttribute('data-timer')) key = 'timer';
+
+    document.querySelectorAll(`#mpSetupOverlay .diff-btn[data-${key}]`).forEach(x => x.classList.remove('diff-btn--active'));
     b.classList.add('diff-btn--active');
 }));
 mpS('mpStartBtn').addEventListener('click', mpStart);
@@ -264,6 +342,7 @@ document.addEventListener('keydown', e => {
 });
 mpS('mpSkipBtn').addEventListener('click', () => {
     if (!MP.movie || MP.busy) return;
+    clearInterval(MP.timer);
     mpTiles(true); mpToast(`${MP.p[MP.turn].name} skipped`, 'warn'); setTimeout(nextTurn, 1500);
 });
 mpS('mpHintBtn').addEventListener('click', mpUseHint);

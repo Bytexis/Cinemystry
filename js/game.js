@@ -4,7 +4,9 @@ const G = {
     diff: 'medium', lang: 'all', name: 'Player', movie: null, det: null,
     pts: 0, total: 0, round: 0, lives: 3, streak: 0,
     hints: new Set(), revealed: new Set(), guessedLetters: new Set(),
-    recent: [], busy: false
+    recent: [], busy: false,
+    timer: null, startTime: 0, roundScore: 100, hasUsedHint: false,
+    timerEnabled: true
 };
 const $ = id => document.getElementById(id);
 
@@ -163,19 +165,41 @@ function handleKey(letter) {
         renderTiles();
         if (isAllRevealed()) {
             // Win!
-            G.total += G.pts; G.streak++;
-            G.recent.push({ id: G.movie.id, t: G.movie.title, p: G.pts, w: true });
+            if (G.timer) clearInterval(G.timer);
+            const timeTaken = G.timerEnabled ? Math.floor((Date.now() - G.startTime) / 1000) : 0;
+            let speedBonus = 0;
+            if (G.timerEnabled) {
+                for (const b of CONFIG.SCORING.SPEED_BONUSES) {
+                    if (timeTaken < b.threshold) { speedBonus = b.bonus; break; }
+                }
+            }
+
+            const mult = CONFIG.DIFFICULTIES[G.diff].multiplier;
+            const perfectBonus = G.hasUsedHint ? 0 : CONFIG.SCORING.PERFECT_GUESS_BONUS;
+            let finalRoundPts = Math.round((G.roundScore + speedBonus) * mult) + perfectBonus;
+
+            G.total += finalRoundPts; G.streak++;
+
+            // Streak Bonus
+            if (CONFIG.SCORING.STREAK_BONUSES[G.streak]) {
+                const sb = CONFIG.SCORING.STREAK_BONUSES[G.streak];
+                finalRoundPts += sb; G.total += sb;
+                toast(`🔥 ${G.streak} STREAK! +${sb} bonus`, 'success');
+            }
+
+            G.recent.push({ t: G.movie.title, p: finalRoundPts, w: true });
             renderTiles(true); updateSession(); updateUI();
-            toast(`✓ You got it! +${G.pts} pts`, 'success');
+            toast(`✓ You got it! +${finalRoundPts} pts`, 'success');
             G.busy = true;
             setTimeout(loadMovie, 1800);
         } else {
             toast(`✓ "${letter}" is in the title!`, 'success');
         }
     } else {
-        G.lives--; G.pts = Math.max(0, G.pts - 50);
+        G.lives--; G.roundScore = Math.max(0, G.roundScore - CONFIG.SCORING.PENALTY_WRONG);
         updateUI();
         if (G.lives <= 0) {
+            clearInterval(G.timer);
             G.streak = 0;
             G.recent.push({ id: G.movie.id, t: G.movie.title, p: 0, w: false });
             renderTiles(true); updateSession();
@@ -190,12 +214,49 @@ function handleKey(letter) {
 
 /* ── Load Movie ── */
 async function loadMovie() {
-    if (G.round >= CONFIG.TOTAL_ROUNDS) { showGameOver(); return; }
+    if (G.round >= CONFIG.TOTAL_ROUNDS) { clearInterval(G.timer); showGameOver(); return; }
     G.round++; G.busy = true;
-    G.pts = CONFIG.DIFFICULTIES[G.diff].baseScore;
+    G.roundScore = CONFIG.SCORING.BASE_SCORE;
+    G.hasUsedHint = false;
     G.lives = 3; G.hints = new Set(); G.revealed = new Set(); G.guessedLetters = new Set();
     $('tilesRow').innerHTML = '<div class="tile-loading">Fetching movie…</div>';
     $('overviewPanel').classList.add('panel--hidden');
+
+    if (G.timer) clearInterval(G.timer);
+
+    const timerHud = document.querySelector('.timer-hud');
+    if (timerHud) timerHud.style.display = G.timerEnabled ? 'flex' : 'none';
+
+    if (G.timerEnabled) {
+        G.startTime = Date.now();
+        G.timer = setInterval(() => {
+            const elapsed = Math.floor((Date.now() - G.startTime) / 1000);
+            const m = Math.floor(elapsed / 60), s = elapsed % 60;
+            const tv = $('timerVal'); if (tv) tv.textContent = `${m}:${s < 10 ? '0' : ''}${s}`;
+
+            let liveScore = CONFIG.SCORING.BASE_SCORE - (elapsed * CONFIG.SCORING.PENALTY_TIME);
+            G.hints.forEach(h => {
+                if (h === 'year') liveScore -= CONFIG.SCORING.PENALTY_YEAR;
+                if (h === 'genre') liveScore -= CONFIG.SCORING.PENALTY_GENRE;
+                if (h === 'letter') liveScore -= CONFIG.SCORING.PENALTY_LETTER;
+            });
+            liveScore -= (3 - G.lives) * CONFIG.SCORING.PENALTY_WRONG;
+            G.roundScore = Math.max(0, liveScore);
+            updateUI();
+        }, 1000);
+    } else {
+        // Static score calculation if timer disabled
+        let liveScore = CONFIG.SCORING.BASE_SCORE;
+        G.hints.forEach(h => {
+            if (h === 'year') liveScore -= CONFIG.SCORING.PENALTY_YEAR;
+            if (h === 'genre') liveScore -= CONFIG.SCORING.PENALTY_GENRE;
+            if (h === 'letter') liveScore -= CONFIG.SCORING.PENALTY_LETTER;
+        });
+        liveScore -= (3 - G.lives) * CONFIG.SCORING.PENALTY_WRONG;
+        G.roundScore = Math.max(0, liveScore);
+        updateUI();
+    }
+
     resetKeyboard(); renderHintChips(); updateUI();
     try {
         if (CONFIG.API_KEY === 'YOUR_TMDB_API_KEY_HERE') throw new Error('nokey');
@@ -274,13 +335,13 @@ function spUseHint() {
 
     if (!type) return;
 
-    G.hints.add(type);
-    const cost = CONFIG.HINT_COSTS[type];
-    G.pts = Math.max(50, G.pts - cost);
+    G.hints.add(type); G.hasUsedHint = true;
+    const penalty = type === 'year' ? CONFIG.SCORING.PENALTY_YEAR : type === 'genre' ? CONFIG.SCORING.PENALTY_GENRE : CONFIG.SCORING.PENALTY_LETTER;
+    G.roundScore = Math.max(0, G.roundScore - penalty);
     updateUI();
 
     if (type === 'year' || type === 'genre') {
-        toast(`${type.charAt(0).toUpperCase() + type.slice(1)} hint used (−${cost} pts)`, 'warn');
+        toast(`${type.charAt(0).toUpperCase() + type.slice(1)} hint used (−${penalty} pts)`, 'warn');
         renderHintChips();
     } else if (type === 'letter') {
         const title = G.movie.title.toUpperCase();
@@ -312,6 +373,7 @@ function startGame() {
     G.name = $('playerNameInput').value.trim() || 'Player';
     G.diff = document.querySelector('#setupOverlay .diff-btn[data-diff].diff-btn--active')?.dataset.diff || 'medium';
     G.lang = document.querySelector('#setupOverlay .diff-btn[data-lang].diff-btn--active')?.dataset.lang || 'all';
+    G.timerEnabled = (document.querySelector('#setupOverlay .diff-btn[data-timer].diff-btn--active')?.dataset.timer === 'on');
     // Update difficulty badge text
     const diffLabel = CONFIG.DIFFICULTIES[G.diff].label;
     const db = $('diffBadgeText'); if (db) db.textContent = diffLabel;
@@ -334,6 +396,10 @@ document.querySelectorAll('#setupOverlay .diff-btn[data-lang]').forEach(b => b.a
     document.querySelectorAll('#setupOverlay .diff-btn[data-lang]').forEach(x => x.classList.remove('diff-btn--active'));
     b.classList.add('diff-btn--active');
 }));
+document.querySelectorAll('#setupOverlay .diff-btn[data-timer]').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#setupOverlay .diff-btn[data-timer]').forEach(x => x.classList.remove('diff-btn--active'));
+    b.classList.add('diff-btn--active');
+}));
 $('startGameBtn').addEventListener('click', startGame);
 $('playerNameInput').addEventListener('keydown', e => { if (e.key === 'Enter') startGame(); });
 
@@ -351,7 +417,8 @@ document.addEventListener('keydown', e => {
 
 $('skipBtn').addEventListener('click', () => {
     if (!G.movie || G.busy) return;
-    G.streak = 0; G.recent.push({ id: G.movie.id, t: G.movie.title, p: 0, w: false });
+    clearInterval(G.timer);
+    G.streak = 0; G.recent.push({ t: G.movie.title, p: 0, w: false });
     renderTiles(true); updateSession();
     toast('Movie skipped', 'warn'); setTimeout(loadMovie, 1600);
 });
