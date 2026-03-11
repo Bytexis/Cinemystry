@@ -331,13 +331,6 @@ button {
 /* ── Mobile player-panel action row ── */
 .mob-player-actions {
     display: none;
-    /* shown only on mobile via media query */
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    margin-top: 8px;
-    padding-top: 8px;
-    border-top: 1px solid var(--clr-border-2);
 }
 
 .mob-round-badge {
@@ -349,35 +342,45 @@ button {
 }
 
 .mob-player-btns {
-    display: flex;
-    gap: 6px;
+    display: none; /* hidden on desktop */
+}
+
+@media (max-width: 900px) {
+    .mob-player-btns {
+        display: flex;
+        gap: 6px;
+        margin-left: auto;
+    }
 }
 
 .mob-action-pill {
     display: flex;
     align-items: center;
-    gap: 4px;
-    background: rgba(255, 44, 44, 0.08);
-    border: 1px solid rgba(255, 44, 44, 0.22);
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 44, 44, 0.1);
+    border: 1px solid rgba(255, 44, 44, 0.25);
     border-radius: 8px;
-    padding: 5px 10px;
-    font-family: var(--font);
-    font-size: 0.64rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
     color: var(--clr-red);
     cursor: pointer;
-    transition: background var(--transition);
+    transition: all var(--transition);
+    padding: 0;
+}
+
+.mob-btn-text {
+    display: none; /* hide text on small buttons */
 }
 
 .mob-action-pill svg {
-    width: 13px;
-    height: 13px;
+    width: 16px;
+    height: 16px;
 }
 
 .mob-action-pill:hover {
-    background: rgba(255, 44, 44, 0.18);
+    background: rgba(255, 44, 44, 0.2);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--clr-red-glow-xs);
 }
 
 /* ────────────────────────────────────────────────────────
@@ -605,11 +608,12 @@ button {
 .player-card__info {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 4px;
+    flex: 1;
 }
 
 .player-card__name {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 800;
     letter-spacing: 0.02em;
     color: var(--clr-text);
@@ -618,7 +622,8 @@ button {
 .player-card__score-row {
     display: flex;
     align-items: center;
-    gap: 6px;
+    justify-content: space-between;
+    gap: 12px;
 }
 
 .player-card__score {
@@ -701,7 +706,30 @@ button {
 .sp-player-block {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
+}
+
+/* Sidebar Round Info */
+.sidebar-round-info {
+    margin-top: auto;
+    padding: 12px 0;
+    border-top: 1px solid var(--clr-border-2);
+}
+
+.sidebar-round-label {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: var(--clr-text-dim);
+    text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+    .sidebar-round-info {
+        margin-top: 4px;
+        padding: 4px 0 0;
+        border-top: none;
+    }
 }
 
 /* ── Sidebar hints ── */
@@ -1133,8 +1161,8 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 9px;
-    padding: 12px 16px 16px;
+    gap: 6px;
+    padding: 10px 14px 14px;
     background: rgba(13, 13, 13, 0.88);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
@@ -1147,8 +1175,8 @@ button {
 .active-hints-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 8px;
+    gap: 6px;
+    margin-bottom: 4px;
     justify-content: center;
 }
 
@@ -1182,8 +1210,8 @@ button {
 /* ── Keyboard actions (Hint/Skip) ── */
 .mp-keyboard-actions {
     display: flex;
-    gap: 12px;
-    margin-top: 8px;
+    gap: 10px;
+    margin-top: 4px;
 }
 
 .action-btn {
@@ -1218,14 +1246,14 @@ button {
 
 .keyboard-row {
     display: flex;
-    gap: 8px;
+    gap: 6px;
     justify-content: center;
 }
 
 .key-btn {
-    width: 58px;
-    height: 66px;
-    border-radius: 12px;
+    width: 48px;
+    height: 56px;
+    border-radius: 9px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     background: #1e1e1e;
     color: var(--clr-text);
@@ -1261,10 +1289,10 @@ button {
     gap: 16px;
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(10px);
-    padding: 8px 16px;
+    padding: 6px 14px;
     border-radius: 40px;
     border: 1px solid var(--clr-border);
-    margin-bottom: 24px;
+    margin-bottom: 12px;
 }
 
 .timer-hud__label {

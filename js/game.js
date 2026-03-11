@@ -70,11 +70,13 @@ function updateUI() {
     const r2 = $('roundVal2'); if (r2) r2.textContent = rd;
     const rr = $('roundValRight'); if (rr) rr.textContent = rd;
     const rm = $('roundValMob'); if (rm) rm.textContent = rd;
+    const rs = $('roundValSide'); if (rs) rs.textContent = rd.toUpperCase();
     const rm2 = $('roundValMob2'); if (rm2) rm2.textContent = `${G.round} / ${CONFIG.TOTAL_ROUNDS}`;
     const hnt = $('spHintsVal'); if (hnt) hnt.textContent = `${G.hints.size}/3`;
     const hntm = $('spHintsValMob'); if (hntm) hntm.textContent = `${G.hints.size}/3`;
     const stv = $('streakVal'); if (stv) stv.textContent = G.streak;
     const stm = $('streakValMob'); if (stm) stm.textContent = G.streak;
+    const ppts = $('potentialPts'); if (ppts) ppts.textContent = Math.round(G.roundScore);
     renderHearts();
 }
 
@@ -88,6 +90,7 @@ function updateSession() {
         recent5.forEach(e => {
             const li = document.createElement('li');
             li.className = `recent-movies__item recent-movies__item--${e.w ? 'win' : 'skip'}`;
+            li.title = e.t;
             const title = document.createElement('span');
             title.textContent = e.t.length > 18 ? e.t.slice(0, 18) + '…' : e.t;
             const pts = document.createElement('span');
@@ -232,7 +235,7 @@ async function loadMovie() {
         G.timer = setInterval(() => {
             const elapsed = Math.floor((Date.now() - G.startTime) / 1000);
             const m = Math.floor(elapsed / 60), s = elapsed % 60;
-            const tv = $('timerVal'); if (tv) tv.textContent = `${m}:${s < 10 ? '0' : ''}${s}`;
+            const tv = $('timerVal'); if (tv) tv.textContent = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
 
             let liveScore = CONFIG.SCORING.BASE_SCORE - (elapsed * CONFIG.SCORING.PENALTY_TIME);
             G.hints.forEach(h => {
