@@ -484,12 +484,6 @@ button {
     background: rgba(230, 57, 70, 0.08);
 }
 
-.lb-diff--extreme {
-    color: #ff6b9d;
-    border-color: rgba(255, 107, 157, 0.2);
-    background: rgba(255, 107, 157, 0.08);
-}
-
 .lb-streak {
     font-size: 0.8rem;
     font-weight: 700;

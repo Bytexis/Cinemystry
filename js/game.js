@@ -10,6 +10,69 @@ const G = {
 };
 const $ = id => document.getElementById(id);
 
+const SINGLE_TOUR_STEPS = [
+    { title: 'Welcome to Single Player', body: 'You will play 10 rounds and guess hidden movie titles one letter at a time.' },
+    { title: 'Lives, Hints and Score', body: 'You have 3 lives each round. Hints help, but each hint reduces your potential points.' },
+    { title: 'Keyboard and Winning', body: 'Tap on-screen keys or use your physical keyboard. Reveal all letters before lives run out.' },
+    { title: 'Speed and Streak Bonus', body: 'Faster guesses and win streaks give bonus points. Try to keep your streak alive.' }
+];
+let singleTourIndex = 0;
+
+function setSetupActive(attr, value) {
+    if (!value) return;
+    const btn = document.querySelector(`#setupOverlay .diff-btn[data-${attr}="${value}"]`);
+    if (!btn) return;
+    document.querySelectorAll(`#setupOverlay .diff-btn[data-${attr}]`).forEach(x => x.classList.remove('diff-btn--active'));
+    btn.classList.add('diff-btn--active');
+}
+
+function persistSingleProgress(inProgress = true) {
+    GameStorage.setPlayerName('single', G.name);
+    GameStorage.setProgress('single', {
+        mode: 'single',
+        inProgress,
+        total: G.total,
+        round: G.round,
+        streak: G.streak,
+        diff: G.diff,
+        lang: G.lang,
+        timerEnabled: G.timerEnabled,
+        updatedAt: Date.now()
+    });
+}
+
+function renderSingleTour() {
+    const step = SINGLE_TOUR_STEPS[singleTourIndex];
+    const title = $('singleTourTitle');
+    const body = $('singleTourBody');
+    const dots = $('singleTourDots');
+    const prev = $('singleTourPrevBtn');
+    const next = $('singleTourNextBtn');
+    if (!step || !title || !body || !dots || !prev || !next) return;
+    title.textContent = step.title;
+    body.textContent = step.body;
+    dots.innerHTML = '';
+    SINGLE_TOUR_STEPS.forEach((_, i) => {
+        const d = document.createElement('span');
+        d.className = `tour-dot ${i === singleTourIndex ? 'tour-dot--active' : ''}`;
+        dots.appendChild(d);
+    });
+    prev.disabled = singleTourIndex === 0;
+    prev.style.opacity = singleTourIndex === 0 ? '0.5' : '1';
+    next.textContent = singleTourIndex === SINGLE_TOUR_STEPS.length - 1 ? 'Finish' : 'Next';
+}
+
+function openSingleTour() {
+    singleTourIndex = 0;
+    $('singleTourOverlay')?.classList.remove('overlay--hidden');
+    renderSingleTour();
+}
+
+function closeSingleTour() {
+    $('singleTourOverlay')?.classList.add('overlay--hidden');
+    GameStorage.markTutorialSeen('single');
+}
+
 /* ── Toast ── */
 function toast(msg, type = 'info') {
     const c = $('toastBox'), d = document.createElement('div');
@@ -78,6 +141,7 @@ function updateUI() {
     const stm = $('streakValMob'); if (stm) stm.textContent = G.streak;
     const ppts = $('potentialPts'); if (ppts) ppts.textContent = Math.round(G.roundScore);
     renderHearts();
+    persistSingleProgress(true);
 }
 
 function updateSession() {
@@ -215,6 +279,19 @@ function handleKey(letter) {
     }
 }
 
+function handleRoundTimeout() {
+    if (!G.movie || G.busy) return;
+    clearInterval(G.timer);
+    G.busy = true;
+    G.streak = 0;
+    G.recent.push({ id: G.movie.id, t: G.movie.title, p: 0, w: false });
+    renderTiles(true);
+    updateSession();
+    updateUI();
+    toast(`⏰ Time's up! The answer was: ${G.movie.title}`, 'error');
+    setTimeout(loadMovie, 2000);
+}
+
 /* ── Load Movie ── */
 async function loadMovie() {
     if (G.round >= CONFIG.TOTAL_ROUNDS) { clearInterval(G.timer); showGameOver(); return; }
@@ -222,6 +299,7 @@ async function loadMovie() {
     G.roundScore = CONFIG.SCORING.BASE_SCORE;
     G.hasUsedHint = false;
     G.lives = 3; G.hints = new Set(); G.revealed = new Set(); G.guessedLetters = new Set();
+    G.movie = null;
     $('tilesRow').innerHTML = '<div class="tile-loading">Fetching movie…</div>';
     $('overviewPanel').classList.add('panel--hidden');
 
@@ -234,6 +312,14 @@ async function loadMovie() {
         G.startTime = Date.now();
         G.timer = setInterval(() => {
             const elapsed = Math.floor((Date.now() - G.startTime) / 1000);
+            if (elapsed >= CONFIG.TIMER_LIMIT_SECONDS) {
+                const limitMin = Math.floor(CONFIG.TIMER_LIMIT_SECONDS / 60);
+                const limitSec = CONFIG.TIMER_LIMIT_SECONDS % 60;
+                const tv = $('timerVal');
+                if (tv) tv.textContent = `${limitMin < 10 ? '0' : ''}${limitMin}:${limitSec < 10 ? '0' : ''}${limitSec}`;
+                handleRoundTimeout();
+                return;
+            }
             const m = Math.floor(elapsed / 60), s = elapsed % 60;
             const tv = $('timerVal'); if (tv) tv.textContent = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
 
@@ -361,6 +447,7 @@ function showGameOver() {
     $('finalStreak').textContent = G.streak;
     $('saveNameInput').value = G.name;
     $('gameOverOverlay').classList.remove('overlay--hidden');
+    persistSingleProgress(false);
 }
 
 /* ── Start Game ── */
@@ -369,6 +456,21 @@ function startGame() {
     G.diff = document.querySelector('#setupOverlay .diff-btn[data-diff].diff-btn--active')?.dataset.diff || 'medium';
     G.lang = document.querySelector('#setupOverlay .diff-btn[data-lang].diff-btn--active')?.dataset.lang || 'all';
     G.timerEnabled = (document.querySelector('#setupOverlay .diff-btn[data-timer].diff-btn--active')?.dataset.timer === 'on');
+
+    const saved = GameStorage.getProgress('single');
+    const shouldResume = saved && saved.inProgress && Number(saved.round) > 0 &&
+        confirm('Resume your previous single-player session?');
+
+    if (shouldResume) {
+        G.total = Number(saved.total) || 0;
+        G.round = Number(saved.round) || 0;
+        G.streak = Number(saved.streak) || 0;
+        G.diff = saved.diff || G.diff;
+        G.lang = saved.lang || G.lang;
+        G.timerEnabled = typeof saved.timerEnabled === 'boolean' ? saved.timerEnabled : G.timerEnabled;
+    } else {
+        G.total = 0; G.round = 0; G.streak = 0;
+    }
     // Update difficulty badge text
     const diffLabel = CONFIG.DIFFICULTIES[G.diff].label;
     const db = $('diffBadgeText'); if (db) db.textContent = diffLabel;
@@ -378,7 +480,8 @@ function startGame() {
     // Update player name + avatar
     document.querySelectorAll('.player-card__name').forEach(el => el.textContent = G.name);
     const av = $('spAvatar'); if (av) av.textContent = G.name.charAt(0).toUpperCase();
-    G.total = 0; G.round = 0; G.streak = 0; G.recent = [];
+    if (!shouldResume) G.recent = [];
+    persistSingleProgress(true);
     updateSession(); loadMovie();
 }
 
@@ -421,13 +524,51 @@ $('spHintBtn').addEventListener('click', spUseHint);
 $('saveBtn').addEventListener('click', () => {
     const name = $('saveNameInput').value.trim() || G.name;
     GameStorage.addToLeaderboard({ name, score: G.total, difficulty: G.diff, streak: G.streak });
-    toast('Score saved to leaderboard!', 'success');
+    toast('Score saved to scoreboard!', 'success');
     $('saveBtn').textContent = 'Saved ✓'; $('saveBtn').disabled = true;
 });
 $('playAgainBtn').addEventListener('click', () => {
     $('gameOverOverlay').classList.add('overlay--hidden');
     G.total = 0; G.round = 0; G.streak = 0; G.recent = [];
+    persistSingleProgress(true);
     updateSession(); loadMovie();
+});
+
+// First-time tutorial bindings
+$('singleTourSkipBtn')?.addEventListener('click', closeSingleTour);
+$('singleTourPrevBtn')?.addEventListener('click', () => {
+    if (singleTourIndex === 0) return;
+    singleTourIndex--;
+    renderSingleTour();
+});
+$('singleTourNextBtn')?.addEventListener('click', () => {
+    if (singleTourIndex >= SINGLE_TOUR_STEPS.length - 1) {
+        closeSingleTour();
+        return;
+    }
+    singleTourIndex++;
+    renderSingleTour();
+});
+
+// Initial restore hints
+(function bootstrapSingleSetup() {
+    const rememberedName = GameStorage.getPlayerName('single');
+    if (rememberedName && $('playerNameInput')) $('playerNameInput').value = rememberedName;
+
+    const saved = GameStorage.getProgress('single');
+    if (saved) {
+        setSetupActive('diff', saved.diff || 'medium');
+        setSetupActive('lang', saved.lang || 'all');
+        setSetupActive('timer', (saved.timerEnabled === false ? 'off' : 'on'));
+    }
+
+    if (!GameStorage.hasSeenTutorial('single')) {
+        openSingleTour();
+    }
+})();
+
+window.addEventListener('beforeunload', () => {
+    persistSingleProgress(G.round < CONFIG.TOTAL_ROUNDS);
 });
 
 /* ── Mobile Stats Drawer ── */

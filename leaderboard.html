@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cinemystry – Leaderboard</title>
+    <title>Cinemystry – Scoreboard</title>
     <meta name="description"
-        content="See the top Cinemystry players. Filter by difficulty, track streaks and high scores." />
+        content="See local Cinemystry scores. Filter by difficulty and track high scores." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
@@ -29,9 +29,9 @@
         <!-- ── Hero ── -->
         <div class="lb-hero">
             <div class="container">
-                <div class="lb-hero__eyebrow">🏆 Hall of Fame</div>
-                <h1 class="lb-hero__title">Leaderboard</h1>
-                <p class="lb-hero__sub">Top scores from all players on this device.</p>
+                <div class="lb-hero__eyebrow">🏆 Local Records</div>
+                <h1 class="lb-hero__title">Scoreboard</h1>
+                <p class="lb-hero__sub">Best scores from all players on this device.</p>
                 <div class="lb-hero__actions">
                     <a href="game.html" class="btn btn--primary">▶ Play Now</a>
                     <button class="btn btn--danger" id="clearBtn">🗑 Clear All Scores</button>
@@ -40,9 +40,6 @@
         </div>
 
         <div class="container">
-            <!-- ── Podium (populated by JS) ── -->
-            <div class="lb-podium" id="lbPodium" style="display:none"></div>
-
             <!-- ── Controls ── -->
             <div class="lb-controls">
                 <div class="lb-filters">
@@ -50,16 +47,14 @@
                     <button class="lb-filter" data-filter="easy">Easy</button>
                     <button class="lb-filter" data-filter="medium">Medium</button>
                     <button class="lb-filter" data-filter="hard">Hard</button>
-                    <button class="lb-filter" data-filter="extreme">Extreme</button>
                 </div>
             </div>
 
             <!-- ── Table ── -->
             <div class="lb-table-wrap">
-                <table class="lb-table" aria-label="Leaderboard scores">
+                <table class="lb-table" aria-label="Scoreboard scores">
                     <thead>
                         <tr>
-                            <th class="lb-th">#</th>
                             <th class="lb-th">Player</th>
                             <th class="lb-th">Score</th>
                             <th class="lb-th">Streak</th>
@@ -72,7 +67,7 @@
                 <div class="lb-empty" id="lbEmpty">
                     <div class="lb-empty__icon">🎬</div>
                     <div class="lb-empty__title">No scores yet</div>
-                    <p>Play a game and be the first on the board!</p>
+                    <p>Play a game and be the first on the scoreboard!</p>
                 </div>
             </div>
         </div>
@@ -81,45 +76,12 @@
     <script src="js/config.js"></script>
     <script src="js/state.js"></script>
     <script>
-        const DIFF_CLASSES = { easy: 'lb-diff--easy', medium: 'lb-diff--medium', hard: 'lb-diff--hard', extreme: 'lb-diff--extreme' };
+        const DIFF_CLASSES = { easy: 'lb-diff--easy', medium: 'lb-diff--medium', hard: 'lb-diff--hard' };
         let currentFilter = 'all';
-
-        function buildPodium(board) {
-            const podium = document.getElementById('lbPodium');
-            const top3 = board.slice(0, 3);
-            if (!top3.length) { podium.style.display = 'none'; return; }
-
-            const medals = ['🥇', '🥈', '🥉'];
-            const positions = top3.length >= 2 ? [1, 0, 2] : [0]; // reorder: 2nd, 1st, 3rd for visual height
-
-            // reorder entries for podium layout (2nd, 1st, 3rd)
-            const ordered = top3.length >= 3
-                ? [top3[1], top3[0], top3[2]]
-                : top3[1] ? [top3[1], top3[0]] : [top3[0]];
-            const orderedClasses = top3.length >= 3 ? ['--2nd', '--1st', '--3rd'] : top3[1] ? ['--2nd', '--1st'] : ['--1st'];
-            const originalIndices = top3.length >= 3 ? [1, 0, 2] : top3[1] ? [1, 0] : [0];
-
-            podium.innerHTML = ordered.map((e, i) => {
-                const idx = originalIndices[i];
-                const initial = (e.name || 'P').charAt(0).toUpperCase();
-                return `
-                <div class="podium-card podium-card${orderedClasses[i]}">
-                    <div class="podium-card__medal">${medals[idx]}</div>
-                    <div class="podium-card__rank">${idx === 0 ? '1st Place' : idx === 1 ? '2nd Place' : '3rd Place'}</div>
-                    <div class="podium-card__avatar">${initial}</div>
-                    <div class="podium-card__name">${e.name || 'Player'}</div>
-                    <div class="podium-card__score">${(e.score || 0).toLocaleString()}</div>
-                    <div class="podium-card__meta">${e.difficulty || ''} · ${e.streak || 0}🔥</div>
-                </div>`;
-            }).join('');
-            podium.style.display = 'flex';
-        }
 
         function render() {
             let board = GameStorage.getLeaderboard();
             if (currentFilter !== 'all') board = board.filter(e => e.difficulty === currentFilter);
-
-            buildPodium(board);
 
             const body = document.getElementById('lbBody');
             const empty = document.getElementById('lbEmpty');
@@ -129,8 +91,7 @@
             empty.style.display = 'none';
 
             board.slice(0, 50).forEach((e, i) => {
-                const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `#${i + 1}`;
-                const rowClass = i === 0 ? 'lb-row lb-row--gold' : i === 1 ? 'lb-row lb-row--silver' : i === 2 ? 'lb-row lb-row--bronze' : 'lb-row';
+                const rowClass = 'lb-row';
                 const diffClass = DIFF_CLASSES[e.difficulty] || '';
                 const streakHtml = (e.streak || 0) > 0
                     ? `<span class="lb-streak-badge">🔥 ${e.streak}</span>`
@@ -139,7 +100,6 @@
                 tr.className = rowClass;
                 tr.style.animationDelay = `${i * 0.03}s`;
                 tr.innerHTML = `
-                    <td class="lb-td lb-td--rank">${medal}</td>
                     <td class="lb-td lb-td--name">${e.name || 'Player'}</td>
                     <td class="lb-td lb-td--score">${(e.score || 0).toLocaleString()}</td>
                     <td class="lb-td">${streakHtml}</td>
@@ -160,7 +120,7 @@
         });
 
         document.getElementById('clearBtn').addEventListener('click', () => {
-            if (confirm('Clear all leaderboard scores? This cannot be undone.')) {
+            if (confirm('Clear all scoreboard scores? This cannot be undone.')) {
                 GameStorage.clearLeaderboard();
                 render();
             }

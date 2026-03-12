@@ -11,6 +11,71 @@ const mpS = id => document.getElementById(id);
 const mpNorm = s => s.toLowerCase().trim().replace(/[^a-z0-9 ]/g, '').replace(/ +/g, ' ').trim();
 const mpMatch = (g, t) => { const a = mpNorm(g), b = mpNorm(t); return a === b || a === b.replace(/^the /, ''); };
 
+const MP_TOUR_STEPS = [
+    { title: 'Welcome to Multiplayer', body: 'Two players take turns on the same device across 10 rounds.' },
+    { title: 'Turn-by-Turn Gameplay', body: 'On your turn, guess letters to reveal the movie title and score points.' },
+    { title: 'Lives and Hints', body: 'Each turn has 3 lives. Hints help but reduce points for that round.' },
+    { title: 'How to Win', body: 'After 10 rounds, the player with the highest total score wins the match.' }
+];
+let mpTourIndex = 0;
+
+function mpSetSetupActive(attr, value) {
+    if (!value) return;
+    const btn = document.querySelector(`#mpSetupOverlay .diff-btn[data-${attr}="${value}"]`);
+    if (!btn) return;
+    document.querySelectorAll(`#mpSetupOverlay .diff-btn[data-${attr}]`).forEach(x => x.classList.remove('diff-btn--active'));
+    btn.classList.add('diff-btn--active');
+}
+
+function persistMultiplayerProgress(inProgress = true) {
+    GameStorage.setPlayerName('multi_p1', MP.p[0].name);
+    GameStorage.setPlayerName('multi_p2', MP.p[1].name);
+    GameStorage.setProgress('multi', {
+        mode: 'multi',
+        inProgress,
+        round: MP.round,
+        turn: MP.turn,
+        lang: MP.lang,
+        diff: MP.diff,
+        timerEnabled: MP.timerEnabled,
+        p1: { name: MP.p[0].name, score: MP.p[0].score, hints: MP.p[0].hints },
+        p2: { name: MP.p[1].name, score: MP.p[1].score, hints: MP.p[1].hints },
+        updatedAt: Date.now()
+    });
+}
+
+function renderMpTour() {
+    const step = MP_TOUR_STEPS[mpTourIndex];
+    const title = mpS('mpTourTitle');
+    const body = mpS('mpTourBody');
+    const dots = mpS('mpTourDots');
+    const prev = mpS('mpTourPrevBtn');
+    const next = mpS('mpTourNextBtn');
+    if (!step || !title || !body || !dots || !prev || !next) return;
+    title.textContent = step.title;
+    body.textContent = step.body;
+    dots.innerHTML = '';
+    MP_TOUR_STEPS.forEach((_, i) => {
+        const d = document.createElement('span');
+        d.className = `tour-dot ${i === mpTourIndex ? 'tour-dot--active' : ''}`;
+        dots.appendChild(d);
+    });
+    prev.disabled = mpTourIndex === 0;
+    prev.style.opacity = mpTourIndex === 0 ? '0.5' : '1';
+    next.textContent = mpTourIndex === MP_TOUR_STEPS.length - 1 ? 'Finish' : 'Next';
+}
+
+function openMpTour() {
+    mpTourIndex = 0;
+    mpS('mpTourOverlay')?.classList.remove('overlay--hidden');
+    renderMpTour();
+}
+
+function closeMpTour() {
+    mpS('mpTourOverlay')?.classList.add('overlay--hidden');
+    GameStorage.markTutorialSeen('multi');
+}
+
 /* ── Toast ── */
 function mpToast(msg, type = 'info') {
     const c = mpS('mpToast'), d = document.createElement('div');
@@ -105,6 +170,7 @@ function mpUI() {
     mpHearts(mpS('mpHeartsBox2'), p2Hearts, 'mpP2HeartsMini');
     mpHearts(mpS('mpHeartsMob'), MP.att); // Mobile HUD shows active player's hearts
     mpUpdateSession();
+    persistMultiplayerProgress(true);
 }
 
 function mpUpdateSession() {
@@ -151,6 +217,17 @@ function mpUpdateSession() {
     }
 }
 
+function mpHandleRoundTimeout() {
+    if (!MP.movie || MP.busy) return;
+    clearInterval(MP.timer);
+    MP.busy = true;
+    MP.recent.push({ t: MP.movie.title, w: false, p: 0 });
+    mpTiles(true);
+    mpUI();
+    mpToast(`⏰ Time's up! ${MP.p[MP.turn].name}'s turn ended.`, 'error');
+    setTimeout(nextTurn, 1800);
+}
+
 /* ── Load Movie ── */
 async function mpLoad() {
     if (MP.round >= 10) { clearInterval(MP.timer); mpOver(); return; }
@@ -158,6 +235,7 @@ async function mpLoad() {
     MP.roundScore = 100;
     MP.att = 3; MP.hints = new Set(); MP.revealed = new Set(); MP.guessedLetters = new Set();
     MP.hasUsedHint = false;
+    MP.movie = null;
     mpS('mpTilesRow').innerHTML = '<div class="tile-loading">Loading movie…</div>';
     mpS('mpActiveHints').innerHTML = '';
 
@@ -170,6 +248,14 @@ async function mpLoad() {
         MP.startTime = Date.now();
         MP.timer = setInterval(() => {
             const elapsed = Math.floor((Date.now() - MP.startTime) / 1000);
+            if (elapsed >= CONFIG.TIMER_LIMIT_SECONDS) {
+                const limitMin = Math.floor(CONFIG.TIMER_LIMIT_SECONDS / 60);
+                const limitSec = CONFIG.TIMER_LIMIT_SECONDS % 60;
+                const tv = mpS('mpTimerVal');
+                if (tv) tv.textContent = `${limitMin < 10 ? '0' : ''}${limitMin}:${limitSec < 10 ? '0' : ''}${limitSec}`;
+                mpHandleRoundTimeout();
+                return;
+            }
             const m = Math.floor(elapsed / 60), s = elapsed % 60;
             const tv = mpS('mpTimerVal'); if (tv) tv.textContent = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
 
@@ -210,7 +296,6 @@ async function mpLoad() {
         if (diff === 'easy') revealCount = Math.ceil(letterIndices.length * 0.4);
         else if (diff === 'medium') revealCount = Math.ceil(letterIndices.length * 0.2);
         else if (diff === 'hard') revealCount = Math.ceil(letterIndices.length * 0.1);
-        else if (diff === 'extreme') revealCount = Math.ceil(letterIndices.length * 0.05);
 
         const shuffled = [...letterIndices].sort(() => Math.random() - 0.5);
         for (let i = 0; i < Math.min(revealCount, shuffled.length); i++) {
@@ -359,6 +444,7 @@ function mpOver() {
     mpS('mpFinalP1').textContent = `${p[0].name}: ${p[0].score.toLocaleString()} pts`;
     mpS('mpFinalP2').textContent = `${p[1].name}: ${p[1].score.toLocaleString()} pts`;
     mpS('mpGameOver').classList.remove('overlay--hidden');
+    persistMultiplayerProgress(false);
 }
 
 /* ── Start ── */
@@ -368,9 +454,31 @@ function mpStart() {
     MP.lang = document.querySelector('#mpSetupOverlay .diff-btn[data-lang].diff-btn--active')?.dataset.lang || 'all';
     MP.diff = document.querySelector('#mpSetupOverlay .diff-btn[data-diff].diff-btn--active')?.dataset.diff || 'medium';
     MP.timerEnabled = (document.querySelector('#mpSetupOverlay .diff-btn[data-timer].diff-btn--active')?.dataset.timer === 'on');
-    MP.round = 0; MP.turn = 0;
-    MP.p[0].score = MP.p[1].score = MP.p[0].hints = MP.p[1].hints = 0;
+
+    const saved = GameStorage.getProgress('multi');
+    const shouldResume = saved && saved.inProgress && Number(saved.round) >= 0 &&
+        confirm('Resume your previous multiplayer session?');
+
+    if (shouldResume) {
+        MP.round = Number(saved.round) || 0;
+        MP.turn = Number(saved.turn) || 0;
+        MP.lang = saved.lang || MP.lang;
+        MP.diff = saved.diff || MP.diff;
+        MP.timerEnabled = typeof saved.timerEnabled === 'boolean' ? saved.timerEnabled : MP.timerEnabled;
+        MP.p[0].score = Number(saved.p1?.score) || 0;
+        MP.p[1].score = Number(saved.p2?.score) || 0;
+        MP.p[0].hints = Number(saved.p1?.hints) || 0;
+        MP.p[1].hints = Number(saved.p2?.hints) || 0;
+        MP.p[0].name = saved.p1?.name || MP.p[0].name;
+        MP.p[1].name = saved.p2?.name || MP.p[1].name;
+    } else {
+        MP.round = 0; MP.turn = 0;
+        MP.p[0].score = MP.p[1].score = MP.p[0].hints = MP.p[1].hints = 0;
+        MP.recent = [];
+    }
+
     mpS('mpSetupOverlay').classList.add('overlay--hidden');
+    persistMultiplayerProgress(true);
     mpLoad();
 }
 
@@ -397,6 +505,7 @@ document.addEventListener('keydown', e => {
 });
 mpS('mpSkipBtn').addEventListener('click', () => {
     if (!MP.movie || MP.busy) return;
+    MP.busy = true;
     MP.recent.push({ t: MP.movie.title, w: false, p: 0 });
     clearInterval(MP.timer);
     mpTiles(true); mpToast(`${MP.p[MP.turn].name} skipped`, 'warn'); setTimeout(nextTurn, 1500);
@@ -405,7 +514,47 @@ mpS('mpHintBtn').addEventListener('click', mpUseHint);
 mpS('mpPlayAgain').addEventListener('click', () => {
     mpS('mpGameOver').classList.add('overlay--hidden');
     MP.p[0].score = MP.p[1].score = MP.p[0].hints = MP.p[1].hints = 0;
+    MP.recent = [];
     MP.round = 0; MP.turn = 0; mpLoad();
+});
+
+// First-time tutorial bindings
+mpS('mpTourSkipBtn')?.addEventListener('click', closeMpTour);
+mpS('mpTourPrevBtn')?.addEventListener('click', () => {
+    if (mpTourIndex === 0) return;
+    mpTourIndex--;
+    renderMpTour();
+});
+mpS('mpTourNextBtn')?.addEventListener('click', () => {
+    if (mpTourIndex >= MP_TOUR_STEPS.length - 1) {
+        closeMpTour();
+        return;
+    }
+    mpTourIndex++;
+    renderMpTour();
+});
+
+// Initial restore hints
+(function bootstrapMpSetup() {
+    const p1 = GameStorage.getPlayerName('multi_p1');
+    const p2 = GameStorage.getPlayerName('multi_p2');
+    if (p1 && mpS('mp_p1name')) mpS('mp_p1name').value = p1;
+    if (p2 && mpS('mp_p2name')) mpS('mp_p2name').value = p2;
+
+    const saved = GameStorage.getProgress('multi');
+    if (saved) {
+        mpSetSetupActive('lang', saved.lang || 'all');
+        mpSetSetupActive('diff', saved.diff || 'medium');
+        mpSetSetupActive('timer', (saved.timerEnabled === false ? 'off' : 'on'));
+    }
+
+    if (!GameStorage.hasSeenTutorial('multi')) {
+        openMpTour();
+    }
+})();
+
+window.addEventListener('beforeunload', () => {
+    persistMultiplayerProgress(MP.round < 10);
 });
 
 /* ── Mobile Nav Drawer ── */

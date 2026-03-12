@@ -50,6 +50,21 @@
         </div>
     </div>
 
+    <!-- First-Time Guide Overlay -->
+    <div class="overlay overlay--hidden" id="mpTourOverlay">
+        <div class="setup-card">
+            <div class="setup-logo">Quick Guide</div>
+            <h2 class="setup-title" id="mpTourTitle">Welcome to Multiplayer</h2>
+            <p class="setup-note" id="mpTourBody">Play in turns and race for the highest score.</p>
+            <div class="tour-dots" id="mpTourDots"></div>
+            <div class="go-actions">
+                <button class="setup-start-btn setup-start-btn--ghost" id="mpTourSkipBtn">Skip</button>
+                <button class="setup-start-btn setup-start-btn--outline" id="mpTourPrevBtn">Back</button>
+                <button class="setup-start-btn" id="mpTourNextBtn">Next</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Game Over Overlay -->
     <div class="overlay overlay--hidden" id="mpGameOver">
         <div class="setup-card">
@@ -107,7 +122,7 @@
                             <path
                                 d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z" />
                         </svg>
-                        Leaderboard
+                        Scoreboard
                     </a>
                 </nav>
             </div>
@@ -181,7 +196,7 @@
                             <path
                                 d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z" />
                         </svg>
-                        Leaderboard
+                        Scoreboard
                     </a>
                 </nav>
 
@@ -328,7 +343,7 @@
                     <div class="recent-movies" style="margin-top:16px">
                         <div class="recent-movies__header">
                             <span class="recent-movies__title">Recent</span>
-                            <a href="leaderboard.html" class="recent-movies__view-all">Board</a>
+                            <a href="leaderboard.html" class="recent-movies__view-all">Scoreboard</a>
                         </div>
                         <ul class="recent-movies__list" id="mpRecentList"></ul>
                     </div>

@@ -1,5 +1,6 @@
 const CONFIG = {
   DATABASE_LABEL: 'Local Movie DB',
+  TIMER_LIMIT_SECONDS: 60,
   LANGUAGES: {
     all: { label: 'All Movies' },
     hindi: { label: 'Hindi' },

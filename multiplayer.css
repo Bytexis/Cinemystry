@@ -1264,8 +1264,37 @@ button {
     box-shadow: none;
 }
 
+.setup-start-btn--outline {
+    background: transparent;
+    border: 1.5px solid var(--clr-red);
+    color: var(--clr-red);
+    box-shadow: none;
+}
+
 .setup-start-btn--ghost:hover {
     color: var(--clr-text);
+}
+
+.tour-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.tour-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.tour-dot--active {
+    background: var(--clr-red);
+    border-color: var(--clr-red);
+    box-shadow: 0 0 8px var(--clr-red-glow-sm);
 }
 
 /* ════════════════════════════════════════════════════════

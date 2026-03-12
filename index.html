@@ -25,7 +25,7 @@
             <a href="index.html" class="navbar__logo">Cinemystry</a>
             <ul class="navbar__links">
                 <li><a href="how-to-play.html" class="navbar__link">How To Play</a></li>
-                <li><a href="leaderboard.html" class="navbar__link">Leaderboard</a></li>
+                <li><a href="leaderboard.html" class="navbar__link">Scoreboard</a></li>
                 <li><a href="multiplayer.html" class="navbar__link">Multiplayer</a></li>
                 <li><a href="game.html" class="navbar__link navbar__link--cta">Play Now</a></li>
             </ul>
@@ -35,7 +35,7 @@
         </div>
         <div class="navbar__mobile" id="navMobile">
             <a href="how-to-play.html" class="navbar__mobile-link">How To Play</a>
-            <a href="leaderboard.html" class="navbar__mobile-link">Leaderboard</a>
+            <a href="leaderboard.html" class="navbar__mobile-link">Scoreboard</a>
             <a href="multiplayer.html" class="navbar__mobile-link">Multiplayer</a>
             <a href="game.html" class="navbar__mobile-link" style="color:var(--red);font-weight:700">▶ Play Now</a>
         </div>
@@ -68,8 +68,8 @@
 
             <div class="hero__tags">
                 <span class="hero__tag">🎬 Thousands of movies</span>
-                <span class="hero__tag">🎯 4 difficulty levels</span>
-                <span class="hero__tag">🏆 Global leaderboard</span>
+                <span class="hero__tag">🎯 3 difficulty levels</span>
+                <span class="hero__tag">🏆 Local scoreboard</span>
                 <span class="hero__tag">⚡ Hindi &amp; English</span>
             </div>
 
@@ -89,17 +89,10 @@
                 </a>
             </div>
         </div>
-
-        <div class="hero__scroll-cue" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
-            </svg>
-            Scroll
-        </div>
     </section>
 
     <!-- ═══════════════════════ STATS STRIP ══════════════════ -->
-    <section class="stats-strip" aria-label="Game statistics">
+    <!-- <section class="stats-strip" aria-label="Game statistics">
         <div class="container">
             <div class="stats-strip__grid">
                 <div class="stats-strip__item fade-in-up">
@@ -121,7 +114,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- ═══════════════════════ HOW IT WORKS ═════════════════ -->
     <section class="how-section" aria-labelledby="howTitle">
@@ -181,8 +174,7 @@
                     <p class="card__desc">Challenge yourself across 10 rounds. Pick your difficulty and language, then
                         race the clock to guess movie titles before your lives run out.</p>
                     <div class="card__features">
-                        <span class="card__feature"><span class="card__feature-dot"></span>Easy · Medium · Hard ·
-                            Extreme</span>
+                        <span class="card__feature"><span class="card__feature-dot"></span>Easy · Medium · Hard</span>
                         <span class="card__feature"><span class="card__feature-dot"></span>Hindi &amp; English
                             movies</span>
                         <span class="card__feature"><span class="card__feature-dot"></span>Speed bonuses &amp; streak
@@ -227,7 +219,7 @@
                                 d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z" />
                         </svg>
                     </div>
-                    <h2 class="card__title">Leaderboard</h2>
+                    <h2 class="card__title">Scoreboard</h2>
                     <p class="card__desc">See local high scores, compare difficulty levels, and track your personal
                         records. Can you reach the top?</p>
                     <div class="card__features">
@@ -238,7 +230,7 @@
                             difficulty</span>
                     </div>
                     <a href="leaderboard.html" class="card__btn" id="cardLBBtn">
-                        View Rankings
+                        View Scores
                         <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px">
                             <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
                         </svg>
@@ -324,7 +316,7 @@
                                 d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" />
                         </svg>
                     </div>
-                    <h3 class="feature__title">Local Leaderboard</h3>
+                    <h3 class="feature__title">Local Scoreboard</h3>
                     <p class="feature__desc">Every game you play is saved locally. Track your progress, beat your
                         personal best, and compare difficulties.</p>
                 </article>
@@ -364,14 +356,14 @@
                 <div class="footer__brand">
                     <span class="footer__logo">Cinemystry</span>
                     <p class="footer__tagline">The ultimate movie guessing game for film lovers. Trust your instincts.
-                        Guess the movie. Conquer the leaderboard.</p>
+                        Guess the movie. Own the scoreboard.</p>
                 </div>
                 <nav class="footer__nav" aria-label="Footer navigation">
                     <div class="footer__nav-col">
                         <h4 class="footer__nav-heading">Play</h4>
                         <a href="game.html" class="footer__nav-link">Single Player</a>
                         <a href="multiplayer.html" class="footer__nav-link">Multiplayer</a>
-                        <a href="leaderboard.html" class="footer__nav-link">Leaderboard</a>
+                        <a href="leaderboard.html" class="footer__nav-link">Scoreboard</a>
                         <a href="how-to-play.html" class="footer__nav-link">How to Play</a>
                     </div>
                     <div class="footer__nav-col">
@@ -379,7 +371,7 @@
                         <span class="footer__nav-link" style="cursor:default">🟢 Easy</span>
                         <span class="footer__nav-link" style="cursor:default">🟡 Medium</span>
                         <span class="footer__nav-link" style="cursor:default">🔴 Hard</span>
-                        <span class="footer__nav-link" style="cursor:default">💀 Extreme</span>
+                        <span class="footer__nav-link" style="cursor:default">⏱️ Timer Mode</span>
                     </div>
                     <div class="footer__nav-col">
                         <h4 class="footer__nav-heading">Legal</h4>

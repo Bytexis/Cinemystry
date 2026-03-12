@@ -1572,6 +1572,28 @@ button {
     gap: 10px;
 }
 
+.tour-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.tour-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.tour-dot--active {
+    background: var(--clr-red);
+    border-color: var(--clr-red);
+    box-shadow: 0 0 8px var(--clr-red-glow-sm);
+}
+
 /* ════════════════════════════════════════════════════════
    TOAST
    ════════════════════════════════════════════════════════ */
