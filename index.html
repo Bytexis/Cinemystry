@@ -4,12 +4,26 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cinemystry – The Ultimate Movie Guessing Game</title>
+    <title>Cinemystry – Movie Guessing Game | Guess the Movie by Letters</title>
     <meta name="description"
-        content="Cinemystry is a free online movie guessing game. Guess movie titles from hidden letters, use hints, build streaks and compete with friends worldwide." />
-    <meta property="og:title" content="Cinemystry – The Ultimate Movie Guessing Game" />
+        content="Free online movie guessing game — reveal hidden letters, use hints, and guess the movie title before you run out of lives. Play solo or challenge a friend in local multiplayer." />
+    <meta name="keywords"
+        content="movie guessing game, guess the movie game, movie title guessing game, movie hangman game, guess movie by letters, online movie quiz, free movie game" />
+    <meta property="og:title" content="Cinemystry – Movie Guessing Game" />
     <meta property="og:description"
-        content="Think you know movies? Prove it. Guess titles, build streaks, challenge friends." />
+        content="Guess movie titles from hidden letters, use strategic hints, build streaks and compete with friends." />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Game",
+      "name": "Cinemystry",
+      "description": "Free online movie guessing game where players guess movie titles from hidden letters using hints and limited lives.",
+      "genre": "Trivia",
+      "playMode": ["SinglePlayer", "MultiPlayer"],
+      "applicationCategory": "Game",
+      "operatingSystem": "Web"
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
@@ -56,21 +70,33 @@
         <div class="hero__content fade-in">
             <div class="hero__eyebrow">
                 <span class="hero__eyebrow-dot"></span>
-                Now with Timer Mode &amp; Number Tiles
+                The Movie Guessing Challenge
             </div>
 
             <h1 class="hero__title">Cinemystry</h1>
-            <p class="hero__subtitle">Think You Know Movies? Prove It.</p>
+            <p class="hero__subtitle">The Ultimate Movie Guessing Game</p>
             <p class="hero__description">
-                A fast-paced movie guessing game powered by real movie data. Reveal letters,
-                use strategic hints, build streaks, and compete with friends — all in your browser.
+                Guess movie titles from hidden letters in this fast-paced movie guessing game.
+                Reveal characters, use hints strategically, and compete against friends.
             </p>
 
             <div class="hero__tags">
-                <span class="hero__tag">🎬 Thousands of movies</span>
-                <span class="hero__tag">🎯 3 difficulty levels</span>
-                <span class="hero__tag">🏆 Local scoreboard</span>
-                <span class="hero__tag">⚡ Hindi &amp; English</span>
+                <span class="hero__tag">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M18 3v2h-2V3H8v2H6V3H4v18h2v-2h2v2h8v-2h2v2h2V3h-2z"/></svg>
+                    Thousands of movies
+                </span>
+                <span class="hero__tag">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                    3 difficulty levels
+                </span>
+                <span class="hero__tag">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+                    Local scoreboard
+                </span>
+                <span class="hero__tag">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+                    Hindi &amp; English
+                </span>
             </div>
 
             <div class="hero__actions">
@@ -121,12 +147,14 @@
         <div class="container">
             <div class="section-header fade-in-up">
                 <span class="section-eyebrow">The Rules</span>
-                <h2 class="section-title" id="howTitle">How It Works</h2>
+                <h2 class="section-title" id="howTitle">How the Movie Guessing Game Works</h2>
                 <p class="section-desc">Three simple steps to become a Cinemystry champion.</p>
             </div>
             <div class="how-steps">
                 <div class="how-step fade-in-up">
-                    <div class="how-step__num">🎬</div>
+                    <div class="how-step__num">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width:32px;height:32px"><path d="M18 3v2h-2V3H8v2H6V3H4v18h2v-2h2v2h8v-2h2v2h2V3h-2z"/></svg>
+                    </div>
                     <div>
                         <h3 class="how-step__title">A movie title is hidden</h3>
                         <p class="how-step__desc">Each round shows a movie title as blank tiles. Some letters are
@@ -134,15 +162,19 @@
                     </div>
                 </div>
                 <div class="how-step fade-in-up" style="animation-delay:.1s">
-                    <div class="how-step__num">🔤</div>
+                    <div class="how-step__num">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width:32px;height:32px"><path d="M20 5H4c-1.1 0-1.99.9-1.99 2L2 17c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-9 3h2v2h-2V8zm0 3h2v2h-2v-2zM8 8h2v2H8V8zm0 3h2v2H8v-2zm-1 2H5v-2h2v2zm0-3H5V8h2v2zm9 7H8v-2h8v2zm0-4h-2v-2h2v2zm0-3h-2V8h2v2zm3 3h-2v-2h2v2zm0-3h-2V8h2v2z"/></svg>
+                    </div>
                     <div>
                         <h3 class="how-step__title">Guess letters one by one</h3>
                         <p class="how-step__desc">Press a key or tap the on-screen keyboard. Wrong letters cost you a
-                            life — you only have 3.</p>
+                            life - you only have 3.</p>
                     </div>
                 </div>
                 <div class="how-step fade-in-up" style="animation-delay:.2s">
-                    <div class="how-step__num">🏆</div>
+                    <div class="how-step__num">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width:32px;height:32px"><path d="M19 5H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 14.5 12 14.5 8.5 12.93 8.5 11 10.07 8 12 8zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 17.82 9.64 17 12 17s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V21z"/></svg>
+                    </div>
                     <div>
                         <h3 class="how-step__title">Score, streak &amp; win</h3>
                         <p class="how-step__desc">Guess faster and without hints for maximum points. Build streaks for
@@ -158,19 +190,19 @@
         <div class="container">
             <div class="section-header fade-in-up">
                 <span class="section-eyebrow">Game Modes</span>
-                <h2 class="section-title" id="modesTitle">Choose Your Challenge</h2>
+                <h2 class="section-title" id="modesTitle">Game Modes</h2>
             </div>
             <div class="cards-grid">
 
                 <article class="card card--featured fade-in-up" id="cardSingle">
-                    <div class="card__badge">⭐ Most Popular</div>
+                    <div class="card__badge">Most Popular</div>
                     <div class="card__icon-wrap card__icon-wrap--featured">
                         <svg class="card__icon card__icon--featured" viewBox="0 0 24 24" fill="currentColor">
                             <path
                                 d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                         </svg>
                     </div>
-                    <h2 class="card__title">Single Player</h2>
+                    <h3 class="card__title">Single Player</h3>
                     <p class="card__desc">Challenge yourself across 10 rounds. Pick your difficulty and language, then
                         race the clock to guess movie titles before your lives run out.</p>
                     <div class="card__features">
@@ -195,8 +227,8 @@
                                 d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
                         </svg>
                     </div>
-                    <h2 class="card__title">Multiplayer (Local)</h2>
-                    <p class="card__desc">Play against a friend on the same device. Take turns guessing letters — the
+                    <h3 class="card__title">Multiplayer (Local)</h3>
+                    <p class="card__desc">Play against a friend on the same device. Take turns guessing letters - the
                         player who reveals the last letter wins that round's points.</p>
                     <div class="card__features">
                         <span class="card__feature"><span class="card__feature-dot"></span>Turn-based 2-player
@@ -219,15 +251,13 @@
                                 d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z" />
                         </svg>
                     </div>
-                    <h2 class="card__title">Scoreboard</h2>
+                    <h3 class="card__title">Scoreboard</h3>
                     <p class="card__desc">See local high scores, compare difficulty levels, and track your personal
                         records. Can you reach the top?</p>
                     <div class="card__features">
-                        <span class="card__feature"><span class="card__feature-dot"></span>🥇 Top players by
-                            score</span>
-                        <span class="card__feature"><span class="card__feature-dot"></span>🔥 Longest streaks</span>
-                        <span class="card__feature"><span class="card__feature-dot"></span>🎚️ Filter by
-                            difficulty</span>
+                        <span class="card__feature"><span class="card__feature-dot"></span>Top players by score</span>
+                        <span class="card__feature"><span class="card__feature-dot"></span>Longest streaks</span>
+                        <span class="card__feature"><span class="card__feature-dot"></span>Filter by difficulty</span>
                     </div>
                     <a href="leaderboard.html" class="card__btn" id="cardLBBtn">
                         View Scores
@@ -246,7 +276,7 @@
         <div class="container">
             <div class="section-header fade-in-up">
                 <span class="section-eyebrow">Features</span>
-                <h2 class="section-title" id="featTitle">Why Cinemystry?</h2>
+                <h2 class="section-title" id="featTitle">Movie Guessing Game Features</h2>
                 <p class="section-desc">Every detail is designed to make guessing movies ridiculously fun.</p>
             </div>
             <div class="features-grid">
@@ -282,7 +312,7 @@
                     </div>
                     <h3 class="feature__title">Strategic Hints</h3>
                     <p class="feature__desc">Reveal Year, Genre, or a random Letter. But every hint chips away at your
-                        potential score — choose wisely.</p>
+                        potential score - choose wisely.</p>
                 </article>
 
                 <article class="feature fade-in-up" id="feat4" style="animation-delay:.18s">
@@ -320,6 +350,25 @@
                     <p class="feature__desc">Every game you play is saved locally. Track your progress, beat your
                         personal best, and compare difficulties.</p>
                 </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════ SEO SECTION ════════════════ -->
+    <section class="seo-section" aria-labelledby="seoTitle">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title" id="seoTitle">What Is a Movie Guessing Game?</h2>
+            </div>
+            <div class="seo-content fade-in-up">
+                <p>A movie guessing game challenges players to identify films using clues such as hidden letters, hints,
+                    genres, or release years. Cinemystry turns this concept into a competitive online game where players
+                    guess movie titles quickly to earn points and build streaks.</p>
+                <p>Similar to a movie hangman game, you reveal characters one by one while trying to identify the movie
+                    before running out of attempts. The faster you guess, the higher your score every round is a race
+                    against the clock.</p>
+                <p>Perfect for movie lovers, trivia fans, and casual gamers who want a fun and challenging movie title
+                    guessing experience available entirely in your browser, no download required.</p>
             </div>
         </div>
     </section>
@@ -368,25 +417,15 @@
                     </div>
                     <div class="footer__nav-col">
                         <h4 class="footer__nav-heading">Difficulty</h4>
-                        <span class="footer__nav-link" style="cursor:default">🟢 Easy</span>
-                        <span class="footer__nav-link" style="cursor:default">🟡 Medium</span>
-                        <span class="footer__nav-link" style="cursor:default">🔴 Hard</span>
-                        <span class="footer__nav-link" style="cursor:default">⏱️ Timer Mode</span>
-                    </div>
-                    <div class="footer__nav-col">
-                        <h4 class="footer__nav-heading">Legal</h4>
-                        <a href="#" class="footer__nav-link">Privacy Policy</a>
-                        <a href="#" class="footer__nav-link">Terms of Service</a>
-                        <a href="#" class="footer__nav-link">TMDB Attribution</a>
+                        <span class="footer__nav-link" style="cursor:default">Easy</span>
+                        <span class="footer__nav-link" style="cursor:default">Medium</span>
+                        <span class="footer__nav-link" style="cursor:default">Hard</span>
+                        <span class="footer__nav-link" style="cursor:default">Timer Mode</span>
                     </div>
                 </nav>
             </div>
             <div class="footer__bottom">
-                <p class="footer__copy">© 2026 Cinemystry. All rights reserved.</p>
-                <div class="footer__badge">
-                    <span class="footer__badge-dot"></span>
-                    Live — powered by real movie data
-                </div>
+                <p class="footer__copy">© 2026 Cinemystry by <a href="https://bytexis.in" target="_blank" rel="noopener" style="color:var(--text-muted);text-decoration:underline;text-underline-offset:3px">Bytexis</a>. All rights reserved.</p>
             </div>
         </div>
     </footer>

@@ -121,34 +121,9 @@ button {
     background-clip: text;
 }
 
-.lb-nav__links {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.lb-nav__link {
-    padding: 7px 14px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    border-radius: var(--radius-xs);
-    transition: color var(--transition), background var(--transition);
-}
-
-.lb-nav__link:hover {
-    color: var(--text);
-    background: var(--surface);
-}
-
-.lb-nav__link--active {
-    color: var(--text);
-    background: var(--surface-2);
-}
-
 /* ── Page hero ──────────────────────────────────────── */
 .lb-main {
-    padding: 0 0 100px;
+    padding: 64px 0 100px;
 }
 
 .lb-hero {
@@ -508,12 +483,20 @@ button {
     font-size: 0.9rem;
     color: var(--text-muted);
     display: none;
+    width: 100%;
+    min-height: 300px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .lb-empty__icon {
     font-size: 3rem;
     margin-bottom: 16px;
     opacity: 0.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .lb-empty__title {
@@ -602,12 +585,4 @@ button {
         display: none;
     }
 
-    .lb-nav__links {
-        gap: 0;
-    }
-
-    .lb-nav__link {
-        padding: 6px 10px;
-        font-size: 0.72rem;
-    }
 }

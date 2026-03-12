@@ -251,16 +251,16 @@ function handleKey(letter) {
             if (CONFIG.SCORING.STREAK_BONUSES[G.streak]) {
                 const sb = CONFIG.SCORING.STREAK_BONUSES[G.streak];
                 finalRoundPts += sb; G.total += sb;
-                toast(`🔥 ${G.streak} STREAK! +${sb} bonus`, 'success');
+                toast(`${G.streak}x Streak! +${sb} bonus`, 'success');
             }
 
             G.recent.push({ t: G.movie.title, p: finalRoundPts, w: true });
             renderTiles(true); updateSession(); updateUI();
-            toast(`✓ You got it! +${finalRoundPts} pts`, 'success');
+            toast(`You got it! +${finalRoundPts} pts`, 'success');
             G.busy = true;
             setTimeout(loadMovie, 1800);
         } else {
-            toast(`✓ "${letter}" is in the title!`, 'success');
+            toast(`"${letter}" is in the title!`, 'success');
         }
     } else {
         G.lives--; G.roundScore = Math.max(0, G.roundScore - CONFIG.SCORING.PENALTY_WRONG);
@@ -270,11 +270,11 @@ function handleKey(letter) {
             G.streak = 0;
             G.recent.push({ id: G.movie.id, t: G.movie.title, p: 0, w: false });
             renderTiles(true); updateSession();
-            toast(`✗ No "${letter}" — Out of lives! The answer was: ${G.movie.title}`, 'error');
+            toast(`No "${letter}" — Out of lives! The answer was: ${G.movie.title}`, 'error');
             G.busy = true;
             setTimeout(loadMovie, 2500);
         } else {
-            toast(`✗ No "${letter}" — ${G.lives} ${G.lives === 1 ? 'life' : 'lives'} left`, 'error');
+            toast(`No "${letter}" — ${G.lives} ${G.lives === 1 ? 'life' : 'lives'} left`, 'error');
         }
     }
 }
@@ -288,7 +288,7 @@ function handleRoundTimeout() {
     renderTiles(true);
     updateSession();
     updateUI();
-    toast(`⏰ Time's up! The answer was: ${G.movie.title}`, 'error');
+    toast(`Time's up! The answer was: ${G.movie.title}`, 'error');
     setTimeout(loadMovie, 2000);
 }
 
@@ -525,7 +525,7 @@ $('saveBtn').addEventListener('click', () => {
     const name = $('saveNameInput').value.trim() || G.name;
     GameStorage.addToLeaderboard({ name, score: G.total, difficulty: G.diff, streak: G.streak });
     toast('Score saved to scoreboard!', 'success');
-    $('saveBtn').textContent = 'Saved ✓'; $('saveBtn').disabled = true;
+    $('saveBtn').textContent = 'Saved'; $('saveBtn').disabled = true;
 });
 $('playAgainBtn').addEventListener('click', () => {
     $('gameOverOverlay').classList.add('overlay--hidden');

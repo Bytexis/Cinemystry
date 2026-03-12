@@ -224,7 +224,7 @@ function mpHandleRoundTimeout() {
     MP.recent.push({ t: MP.movie.title, w: false, p: 0 });
     mpTiles(true);
     mpUI();
-    mpToast(`⏰ Time's up! ${MP.p[MP.turn].name}'s turn ended.`, 'error');
+    mpToast(`Time's up! ${MP.p[MP.turn].name}'s turn ended.`, 'error');
     setTimeout(nextTurn, 1800);
 }
 
@@ -365,12 +365,12 @@ function mpHandleKey(letter) {
 
             MP.recent.push({ t: MP.movie.title, w: true, p: finalRoundPts });
 
-            mpToast(`✓ ${MP.p[MP.turn].name} got it! +${finalRoundPts} pts`, 'success');
+            mpToast(`${MP.p[MP.turn].name} got it! +${finalRoundPts} pts`, 'success');
             mpTiles(true); mpUI();
             MP.busy = true;
             setTimeout(nextTurn, 1800);
         } else {
-            mpToast(`✓ "${letter}" is in the title!`, 'success');
+            mpToast(`"${letter}" is in the title!`, 'success');
         }
     } else {
         MP.att--; MP.roundScore = Math.max(0, MP.roundScore - CONFIG.SCORING.PENALTY_WRONG);
@@ -379,11 +379,11 @@ function mpHandleKey(letter) {
             clearInterval(MP.timer);
             mpTiles(true);
             MP.recent.push({ t: MP.movie.title, w: false, p: 0 });
-            mpToast(`✗ Out of attempts!`, 'error');
+            mpToast(`Out of attempts!`, 'error');
             MP.busy = true;
             setTimeout(nextTurn, 2500);
         } else {
-            mpToast(`✗ No "${letter}" — ${MP.att} attempts left`, 'error');
+            mpToast(`No "${letter}" — ${MP.att} attempts left`, 'error');
         }
     }
 }
@@ -440,7 +440,7 @@ function nextTurn() {
 function mpOver() {
     const p = MP.p;
     const winner = p[0].score > p[1].score ? p[0].name : p[1].score > p[0].score ? p[1].name : 'Tie';
-    mpS('mpWinner').textContent = winner === 'Tie' ? "🤝 It's a Tie!" : `🏆 ${winner} Wins!`;
+    mpS('mpWinner').textContent = winner === 'Tie' ? "It's a Tie!" : `${winner} Wins!`;
     mpS('mpFinalP1').textContent = `${p[0].name}: ${p[0].score.toLocaleString()} pts`;
     mpS('mpFinalP2').textContent = `${p[1].name}: ${p[1].score.toLocaleString()} pts`;
     mpS('mpGameOver').classList.remove('overlay--hidden');

@@ -4,7 +4,23 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cinemystery – Multiplayer</title>
+    <title>Multiplayer Movie Guessing Game – Play vs a Friend | Cinemystry</title>
+    <meta name="description"
+        content="Play a multiplayer movie guessing game against a friend on the same device. Take turns revealing letters and compete across 10 rounds to see who knows more movies." />
+    <meta name="keywords"
+        content="multiplayer movie guessing game, 2 player movie game, guess the movie with friends" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Game",
+      "name": "Cinemystry – Multiplayer Movie Guessing Game",
+      "description": "Two-player local movie guessing game where players take turns revealing letters to identify movie titles.",
+      "genre": "Trivia",
+      "playMode": "MultiPlayer",
+      "applicationCategory": "Game",
+      "operatingSystem": "Web"
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
@@ -69,7 +85,7 @@
     <div class="overlay overlay--hidden" id="mpGameOver">
         <div class="setup-card">
             <div class="setup-logo">Match Over!</div>
-            <h2 class="setup-title" id="mpWinner">🏆 Player 1 Wins!</h2>
+            <h2 class="setup-title" id="mpWinner">Player 1 Wins!</h2>
             <p class="go-stat" id="mpFinalP1">Player 1: 0 pts</p>
             <p class="go-stat" id="mpFinalP2">Player 2: 0 pts</p>
             <div class="go-actions">

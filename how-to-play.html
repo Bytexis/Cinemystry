@@ -4,9 +4,51 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>How to Play Cinemystry – Complete Guide</title>
+    <title>How to Play Cinemystry | Movie Guessing Game Guide</title>
     <meta name="description"
-        content="Learn how to play Cinemystry. Master the movie guessing game with our guide on rules, hints, scoring, hearts and multiplayer." />
+        content="Learn how to play Cinemystry, the movie guessing game where players reveal hidden letters, use hints, and build streaks to guess movie titles before running out of lives." />
+    <meta name="keywords"
+        content="how to play movie guessing game, movie guessing game rules, guess the movie game guide, guess movie by letters how to play" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Cinemystry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cinemystry is a free online movie guessing game where players guess movie titles by revealing hidden letters one at a time, using hints and limited lives across 10 rounds."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you play the movie guessing game?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A movie title is shown as blank tiles. Press letters on your keyboard or tap the on-screen keyboard to reveal matching letters. Wrong guesses cost a life. You have 3 lives per round. Guess the full title before losing all lives to score points."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many rounds are in a game?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Each game consists of 10 rounds. Each round presents a different hidden movie title to guess."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What hints are available?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can use up to 3 hints per round: reveal the release year (costs 15 pts), reveal the genre (costs 10 pts), or reveal a random hidden letter (costs 10 pts)."
+          }
+        }
+      ]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
@@ -23,6 +65,7 @@
             <ul class="navbar__links">
                 <li><a href="index.html" class="navbar__link">Home</a></li>
                 <li><a href="leaderboard.html" class="navbar__link">Scoreboard</a></li>
+                <li><a href="multiplayer.html" class="navbar__link">Multiplayer</a></li>
                 <li><a href="game.html" class="navbar__link navbar__link--cta">Play Now</a></li>
             </ul>
             <button class="navbar__burger" id="navBurger" aria-label="Toggle menu">
@@ -32,18 +75,22 @@
         <div class="navbar__mobile" id="navMobile">
             <a href="index.html" class="navbar__mobile-link">Home</a>
             <a href="leaderboard.html" class="navbar__mobile-link">Scoreboard</a>
-            <a href="game.html" class="navbar__mobile-link" style="color:var(--red);font-weight:700">▶ Play Now</a>
+            <a href="multiplayer.html" class="navbar__mobile-link">Multiplayer</a>
+            <a href="game.html" class="navbar__mobile-link" style="color:var(--red);font-weight:700">&#9654; Play Now</a>
         </div>
     </nav>
 
     <!-- ── Hero ── -->
     <header class="tutorial-hero">
         <div class="container">
-            <div class="tutorial-hero__eyebrow">📖 Game Guide</div>
-            <h1 class="tutorial-hero__title">Master the Mystery</h1>
+            <div class="tutorial-hero__eyebrow">
+                <svg class="tutorial-hero__eyebrow-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/></svg>
+                Game Guide
+            </div>
+            <h1 class="tutorial-hero__title">How to Play Cinemystry<br><span style="font-size:0.6em;font-weight:600;opacity:0.7">The Movie Guessing Game</span></h1>
             <p class="tutorial-hero__sub">
-                Cinemystry is more than a quiz — it's a race against time and your own movie memory.
-                Here's everything you need to climb the scoreboard.
+                Learn how to play this online movie guessing game guess hidden movie titles letter by letter,
+                use hints wisely, and build streaks across 10 rounds to reach the top of the scoreboard.
             </p>
         </div>
     </header>
@@ -53,6 +100,20 @@
         <div class="container">
             <div class="tutorial-content">
 
+                <!-- ── Game Objective ── -->
+                <p class="guide-section-title guide-section-title--tight">Game Objective</p>
+                <div class="tips-box fade-in-up" style="margin-bottom:28px">
+                    <p style="color:var(--text-2);line-height:1.8;margin:0 0 12px">
+                        Cinemystry is a movie guessing game where a movie title is hidden behind blank tiles. Your goal is
+                        to reveal the full title by guessing letters one at a time before you run out of lives.
+                    </p>
+                    <p style="color:var(--text-muted);line-height:1.8;margin:0">
+                        Each match consists of <strong style="color:var(--text-2)">10 rounds</strong>. Each round is a
+                        different hidden movie title. Points are earned based on how quickly and accurately you guess,
+                        and consecutive wins build a streak multiplier that significantly boosts your score.
+                    </p>
+                </div>
+
                 <!-- ── Rules ── -->
                 <p class="guide-section-title">The Rules</p>
                 <div class="guide-steps">
@@ -60,87 +121,111 @@
                     <div class="guide-step fade-in-up">
                         <div class="guide-step__num">1</div>
                         <div class="guide-step__content">
-                            <h3 class="guide-step__title">A movie title is hidden</h3>
-                            <p class="guide-step__desc">Each round reveals a movie title as blank tiles. One or two
-                                letters are pre-filled to get you started. Your goal: expose the full title before
-                                losing all your hearts.</p>
+                            <h2 class="guide-step__title">A movie title is hidden</h2>
+                            <p class="guide-step__desc">At the start of each round, a movie title appears as blank
+                                tiles one tile per letter, with spaces between words. Depending on the difficulty
+                                level, a few letters may already be revealed to give you a starting point.</p>
+                            <p class="guide-step__desc" style="margin-top:10px;font-family:monospace;letter-spacing:4px;font-size:1rem;color:var(--text-2)">_ A _ _ &nbsp; _ _ V _ _</p>
+                            <p class="guide-step__desc" style="margin-top:10px">Your goal is to uncover the entire
+                                movie title before losing all 3 lives.</p>
                         </div>
                     </div>
 
                     <div class="guide-step fade-in-up" style="animation-delay:.07s">
                         <div class="guide-step__num">2</div>
                         <div class="guide-step__content">
-                            <h3 class="guide-step__title">Guess letters one by one</h3>
-                            <p class="guide-step__desc">Press a key on your physical keyboard or tap the on-screen
-                                keyboard. A correct letter reveals all matching tiles. A wrong letter costs you one ❤️ —
-                                you only have 3.</p>
+                            <h2 class="guide-step__title">Guess letters one by one</h2>
+                            <p class="guide-step__desc">Press a key on your physical keyboard or tap a letter on the
+                                on-screen keyboard. A correct letter reveals every matching position in the title.
+                                An incorrect letter costs you one life.</p>
+                            <p class="guide-step__desc" style="margin-top:10px">You have <strong style="color:var(--text-2)">3 lives per round</strong>. Lose all three and
+                                the round ends the full title is revealed and you move to the next one with no points.</p>
                         </div>
                     </div>
 
                     <div class="guide-step fade-in-up" style="animation-delay:.14s">
                         <div class="guide-step__num">3</div>
                         <div class="guide-step__content">
-                            <h3 class="guide-step__title">Earn points and build streaks</h3>
-                            <p class="guide-step__desc">Successfully guess a movie and earn points. Win consecutive
-                                rounds to build a streak — streaks grant large bonus point dumps and track your skill. A
-                                wrong heart reset ends your streak.</p>
+                            <h2 class="guide-step__title">Earn points and build streaks</h2>
+                            <p class="guide-step__desc">Each round starts with a base score of
+                                <strong style="color:var(--text-2)">100 points</strong>. Points decrease over time and
+                                with each wrong letter. Solve the movie quickly and without hints to earn the most.</p>
+                            <p class="guide-step__desc" style="margin-top:10px">Win consecutive rounds to build a
+                                streak. At a <strong style="color:var(--text-2)">3-round streak</strong> you earn a
+                                +20 point bonus. At a <strong style="color:var(--text-2)">5-round streak</strong> you
+                                earn +50. Losing a round resets the streak to zero.</p>
                         </div>
                     </div>
 
                     <div class="guide-step fade-in-up" style="animation-delay:.21s">
                         <div class="guide-step__num">4</div>
                         <div class="guide-step__content">
-                            <h3 class="guide-step__title">Use hints strategically</h3>
-                            <p class="guide-step__desc">Stuck? Use up to 3 hints per round — reveal the <strong>Release
-                                    Year</strong>, the <strong>Genre</strong>, or <strong>a random letter</strong>. Be
-                                careful: each hint permanently reduces the maximum points you can earn that round.</p>
+                            <h2 class="guide-step__title">Use hints strategically</h2>
+                            <p class="guide-step__desc">If you get stuck, you can use up to
+                                <strong style="color:var(--text-2)">3 hints per round</strong>:</p>
+                            <ul style="margin:10px 0 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
+                                <li style="display:flex;gap:10px;align-items:flex-start;color:var(--text-muted);font-size:0.87rem;line-height:1.5">
+                                    <span style="color:var(--red);font-weight:700;flex-shrink:0">Year</span>
+                                    Reveals the movie's release year costs 15 points
+                                </li>
+                                <li style="display:flex;gap:10px;align-items:flex-start;color:var(--text-muted);font-size:0.87rem;line-height:1.5">
+                                    <span style="color:var(--red);font-weight:700;flex-shrink:0">Genre</span>
+                                    Reveals the movie genre costs 10 points
+                                </li>
+                                <li style="display:flex;gap:10px;align-items:flex-start;color:var(--text-muted);font-size:0.87rem;line-height:1.5">
+                                    <span style="color:var(--red);font-weight:700;flex-shrink:0">Letter</span>
+                                    Reveals a random hidden letter costs 10 points
+                                </li>
+                            </ul>
+                            <p class="guide-step__desc" style="margin-top:10px">Each hint permanently reduces the
+                                maximum score for that round, so use them only when necessary.</p>
                         </div>
                     </div>
 
                     <div class="guide-step fade-in-up" style="animation-delay:.28s">
                         <div class="guide-step__num">5</div>
                         <div class="guide-step__content">
-                            <h3 class="guide-step__title">Multiplayer: take turns to steal</h3>
-                            <p class="guide-step__desc">In local multiplayer, two players take turns guessing letters.
-                                If you guess wrong, the turn passes to your opponent. The player who correctly reveals
-                                the <em>last</em> letter wins that round's full point value — strategy is everything!
-                            </p>
+                            <h2 class="guide-step__title">Multiplayer: take turns, steal the win</h2>
+                            <p class="guide-step__desc">Cinemystry includes a local multiplayer mode for two players
+                                on the same device. Players alternate guessing letters. A wrong guess passes the turn to
+                                the opponent.</p>
+                            <p class="guide-step__desc" style="margin-top:10px">The player who correctly reveals the
+                                <em>last</em> letter wins that round's full points. This creates a strategic game where
+                                you may want to hold back on obvious letters and force your opponent into wrong guesses first.</p>
                         </div>
                     </div>
 
                 </div>
 
-                <!-- ── Pro Tips ── -->
-                <div class="tips-box fade-in-up">
-                    <h3 class="tips-box__title">🔥 Pro Tips for High Scores</h3>
-                    <ul class="tips-list">
-                        <li>
-                            <span class="tips-list__dot"></span>
-                            Start with common consonants — S, T, R, N — they appear in almost every movie title.
-                        </li>
-                        <li>
-                            <span class="tips-list__dot"></span>
-                            The Release Year is the most powerful hint. It narrows down the era immediately.
-                        </li>
-                        <li>
-                            <span class="tips-list__dot"></span>
-                            Streaks matter more than single scores. 3 wins in a row often beats one perfect round.
-                        </li>
-                        <li>
-                            <span class="tips-list__dot"></span>
-                            Don't rush into a guess — one wrong letter is more penalizing than pausing to think.
-                        </li>
-                        <li>
-                            <span class="tips-list__dot"></span>
-                            In multiplayer, let your opponent go first on a tough movie — let them waste hints and
-                            hearts.
-                        </li>
-                        <li>
-                            <span class="tips-list__dot"></span>
-                            Shorter movie titles (3–5 letters) are often harder — fewer chances to guess before a wrong
-                            letter.
-                        </li>
-                    </ul>
+                <!-- ── Difficulty Levels ── -->
+                <p class="guide-section-title" style="margin-top:48px">Difficulty Levels</p>
+                <div class="tips-box fade-in-up" style="padding:0;overflow:hidden;margin-bottom:40px">
+                    <table style="width:100%;border-collapse:collapse;font-size:0.85rem">
+                        <thead>
+                            <tr style="background:rgba(255,255,255,0.04);border-bottom:1px solid var(--border)">
+                                <th style="padding:14px 20px;text-align:left;font-size:0.65rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted)">Level</th>
+                                <th style="padding:14px 20px;text-align:left;font-size:0.65rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted)">Letters Pre-Revealed</th>
+                                <th style="padding:14px 20px;text-align:left;font-size:0.65rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted)">Score Multiplier</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
+                                <td style="padding:12px 20px;color:#2ecc71;font-weight:700">Easy</td>
+                                <td style="padding:12px 20px;color:var(--text-2)">~40% of letters</td>
+                                <td style="padding:12px 20px;color:var(--text-muted)">×1</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
+                                <td style="padding:12px 20px;color:#f5a623;font-weight:700">Medium</td>
+                                <td style="padding:12px 20px;color:var(--text-2)">~20% of letters</td>
+                                <td style="padding:12px 20px;color:var(--text-muted)">×1.5</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:12px 20px;color:var(--red);font-weight:700">Hard</td>
+                                <td style="padding:12px 20px;color:var(--text-2)">~10% of letters</td>
+                                <td style="padding:12px 20px;color:var(--text-muted)">×2</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <!-- ── Scoring Table ── -->
@@ -149,50 +234,106 @@
                     <table style="width:100%;border-collapse:collapse;font-size:0.85rem">
                         <thead>
                             <tr style="background:rgba(255,255,255,0.04);border-bottom:1px solid var(--border)">
-                                <th
-                                    style="padding:14px 20px;text-align:left;font-size:0.65rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted)">
-                                    Action</th>
-                                <th
-                                    style="padding:14px 20px;text-align:left;font-size:0.65rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted)">
-                                    Points</th>
+                                <th style="padding:14px 20px;text-align:left;font-size:0.65rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted)">Action</th>
+                                <th style="padding:14px 20px;text-align:left;font-size:0.65rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted)">Effect on Score</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
-                                <td style="padding:12px 20px;color:var(--text-2);font-weight:600">Correct letter guess
-                                </td>
-                                <td style="padding:12px 20px;color:#2ecc71;font-weight:800">+50 pts base</td>
+                                <td style="padding:12px 20px;color:var(--text-2);font-weight:600">Round start</td>
+                                <td style="padding:12px 20px;color:#2ecc71;font-weight:800">100 pts base</td>
                             </tr>
                             <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
-                                <td style="padding:12px 20px;color:var(--text-2);font-weight:600">Full title solved (no
-                                    hints)</td>
-                                <td style="padding:12px 20px;color:#f5a623;font-weight:800">Bonus multiplier</td>
-                            </tr>
-                            <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
-                                <td style="padding:12px 20px;color:var(--text-2);font-weight:600">Using a hint</td>
-                                <td style="padding:12px 20px;color:var(--red);font-weight:800">−25% max score</td>
+                                <td style="padding:12px 20px;color:var(--text-2);font-weight:600">Timer (each second elapsed)</td>
+                                <td style="padding:12px 20px;color:var(--red);font-weight:800">&#8722;1 pt / sec</td>
                             </tr>
                             <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
                                 <td style="padding:12px 20px;color:var(--text-2);font-weight:600">Wrong letter</td>
-                                <td style="padding:12px 20px;color:var(--red);font-weight:800">−1 ❤️</td>
+                                <td style="padding:12px 20px;color:var(--red);font-weight:800">&#8722;5 pts + lose 1 life</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
+                                <td style="padding:12px 20px;color:var(--text-2);font-weight:600">Year hint used</td>
+                                <td style="padding:12px 20px;color:var(--red);font-weight:800">&#8722;15 pts</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
+                                <td style="padding:12px 20px;color:var(--text-2);font-weight:600">Genre hint used</td>
+                                <td style="padding:12px 20px;color:var(--red);font-weight:800">&#8722;10 pts</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
+                                <td style="padding:12px 20px;color:var(--text-2);font-weight:600">Letter hint used</td>
+                                <td style="padding:12px 20px;color:var(--red);font-weight:800">&#8722;10 pts</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
+                                <td style="padding:12px 20px;color:var(--text-2);font-weight:600">Solved without any hints</td>
+                                <td style="padding:12px 20px;color:#2ecc71;font-weight:800">+50 pts bonus</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
+                                <td style="padding:12px 20px;color:var(--text-2);font-weight:600">Speed bonus (solved in under 5 sec)</td>
+                                <td style="padding:12px 20px;color:#f5a623;font-weight:800">+30 pts</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
+                                <td style="padding:12px 20px;color:var(--text-2);font-weight:600">3-round win streak</td>
+                                <td style="padding:12px 20px;color:#f5a623;font-weight:800">+20 pts bonus</td>
                             </tr>
                             <tr>
-                                <td style="padding:12px 20px;color:var(--text-2);font-weight:600">Streak bonus (3+ wins)
-                                </td>
-                                <td style="padding:12px 20px;color:#f5a623;font-weight:800">+streak × 50 pts</td>
+                                <td style="padding:12px 20px;color:var(--text-2);font-weight:600">5-round win streak</td>
+                                <td style="padding:12px 20px;color:#f5a623;font-weight:800">+50 pts bonus</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+                <p style="margin-top:12px;font-size:0.8rem;color:var(--text-dim);text-align:center">Final round score is multiplied by the difficulty multiplier (×1 Easy, ×1.5 Medium, ×2 Hard).</p>
+
+                <!-- ── Pro Tips ── -->
+                <div class="tips-box fade-in-up" style="margin-top:40px">
+                    <h3 class="tips-box__title">Pro Tips to Win More Rounds</h3>
+                    <ul class="tips-list">
+                        <li>
+                            <span class="tips-list__dot"></span>
+                            Start with common consonants ( S, T, R, N )  they appear in almost every movie title.
+                        </li>
+                        <li>
+                            <span class="tips-list__dot"></span>
+                            The Release Year hint costs the most (15 pts) but narrows down the era fastest.
+                        </li>
+                        <li>
+                            <span class="tips-list__dot"></span>
+                            Streaks matter. A 5-win streak adds +50 bonus on top of every round score.
+                        </li>
+                        <li>
+                            <span class="tips-list__dot"></span>
+                            Avoid random guessing early one wrong letter costs 5 pts and a life.
+                        </li>
+                        <li>
+                            <span class="tips-list__dot"></span>
+                            In multiplayer, let your opponent reveal early letters on tough movies make them burn lives first.
+                        </li>
+                        <li>
+                            <span class="tips-list__dot"></span>
+                            Short movie titles are often the hardest fewer letters means fewer chances before a wrong guess.
+                        </li>
+                    </ul>
+                </div>
 
                 <!-- ── CTA ── -->
-                <div class="tutorial-cta fade-in-up" style="margin-top:48px">
-                    <a href="game.html" class="btn btn--primary" style="margin:0 auto">
-                        <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M8 5v14l11-7z" />
-                        </svg>
-                        Start Your First Game
-                    </a>
+                <div class="tutorial-cta fade-in-up" style="margin-top:48px;text-align:center">
+                    <p style="color:var(--text-muted);margin-bottom:20px;font-size:0.92rem">
+                        Ready to test your movie knowledge? Start a game and see how many titles you can guess.
+                    </p>
+                    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+                        <a href="game.html" class="btn btn--primary">
+                            <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                            Play Solo
+                        </a>
+                        <a href="multiplayer.html" class="btn btn--outline">
+                            <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+                            </svg>
+                            Play vs Friend
+                        </a>
+                    </div>
                 </div>
 
             </div>
@@ -200,11 +341,33 @@
     </main>
 
     <!-- ── Footer ── -->
-    <footer class="footer" style="padding:32px 0">
+    <footer class="footer">
         <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <span class="footer__logo">Cinemystry</span>
+                    <p class="footer__tagline">The ultimate movie guessing game for film lovers. Trust your instincts.
+                        Guess the movie. Own the scoreboard.</p>
+                </div>
+                <nav class="footer__nav" aria-label="Footer navigation">
+                    <div class="footer__nav-col">
+                        <h4 class="footer__nav-heading">Play</h4>
+                        <a href="game.html" class="footer__nav-link">Single Player</a>
+                        <a href="multiplayer.html" class="footer__nav-link">Multiplayer</a>
+                        <a href="leaderboard.html" class="footer__nav-link">Scoreboard</a>
+                        <a href="how-to-play.html" class="footer__nav-link">How to Play</a>
+                    </div>
+                    <div class="footer__nav-col">
+                        <h4 class="footer__nav-heading">Difficulty</h4>
+                        <span class="footer__nav-link" style="cursor:default">Easy</span>
+                        <span class="footer__nav-link" style="cursor:default">Medium</span>
+                        <span class="footer__nav-link" style="cursor:default">Hard</span>
+                        <span class="footer__nav-link" style="cursor:default">Timer Mode</span>
+                    </div>
+                </nav>
+            </div>
             <div class="footer__bottom">
-                <p class="footer__copy">© 2026 Cinemystry. All rights reserved.</p>
-                <a href="index.html" class="footer__copy" style="color:var(--text-muted)">← Back to Home</a>
+                <p class="footer__copy">&#169; 2026 Cinemystry by <a href="https://bytexis.in" target="_blank" rel="noopener" style="color:var(--text-muted);text-decoration:underline;text-underline-offset:3px">Bytexis</a>. All rights reserved.</p>
             </div>
         </div>
     </footer>
